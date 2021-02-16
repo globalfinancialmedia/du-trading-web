@@ -16,10 +16,10 @@
     font-weight: normal;
     font-style: normal;
   }
-  body {
+  /* body {
     color: #000;
     font-family: 'HelveticaNeueW23forSKY-Reg';
-  }
+  } */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'HelveticaNeueW23foSKY-Bd';
   }
@@ -62,9 +62,9 @@
     background-color: #1A1A1A;
     padding: 0 0 0 12px;
 }
-body {
+/* body {
     font-family: 'HelveticaNeueW23forSKY-Reg';
-}
+} */
 .width-100{
     width: 100%;
 }

@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="assets/css/du-bootstrap.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/index.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+    <script src="assets/js/du-widget.js"></script>
 </head>
 
 <body>
@@ -41,7 +41,7 @@
                             <p>However, the outlook report mentioned that despite the difficulties, committed
                                 investments in the GCC region increased by 2.3% compared to a 6% overall decrease in the
                                 entire MENA region.</p>
-                            <img class="du-img-fluid mb-3 d-block du-mx-auto" src="./assets/images/image-49.png" alt="">
+                            <img class="du-img-fluid mb-3 du-d-block du-mx-auto" src="./assets/images/image-49.png" alt="">
                             <p>In addition, the report referred to the current dilemma in dealing with the consequences
                                 of the COVID-19 pandemic, emphasizing that the resumption of travel and trade will
                                 require international coordination.</p>
@@ -67,89 +67,35 @@
                     </div>
                     <div class="du-row mt-5">
                         <div class="du-col-12 news-separator">
-                            <h4>Related News</h4>
-                            <hr>
-                        </div>
-                        <div class="du-col-sm-4">
-                            <img class="du-img-fluid width-100"
-                                src="./assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt="">
-                        </div>
-                        <div class="du-col-sm-8">
-                            <small>Markets - <span>10 minutes ago</span></small>
-                            <h4 class="news-title"><a href="#">Egypt runs first return flight for workers stranded in
-                                    Kuwait</a></h4>
-                            <p>Riyadh – Mubasher: The Saudi Ministry of Health recorded 3,045 new cases with the
-                                coronavirus disease (COVID-19) on Sunday. The total number of cases in the kingdom
-                                increased to 101,914.</p>
-                        </div>
-                        <div class="du-col-12 news-separator">
-                            <hr>
-                        </div>
-                        <div class="du-col-sm-4">
-                            <img class="du-img-fluid width-100"
-                                src="./assets/images/5652a90a3cf6c70cc7e11e0ae97c9d3d-1.png" alt="">
-                        </div>
-                        <div class="du-col-sm-8">
-                            <small>Markets - <span>10 minutes ago</span></small>
-                            <h4 class="news-title"><a href="#">Egypt runs first return flight for workers stranded in
-                                    Kuwait</a></h4>
-                            <p>Riyadh – Mubasher: The Saudi Ministry of Health recorded 3,045 new cases with the
-                                coronavirus disease (COVID-19) on Sunday. The total number of cases in the kingdom
-                                increased to 101,914.</p>
-                        </div>
-                        <div class="du-col-12 news-separator">
-                            <hr>
-                        </div>
-                        <div class="du-col-sm-4">
-                            <img class="du-img-fluid width-100"
-                                src="./assets/images/01abf890bdc6ddfff8451fe7d54057f0-1.png" alt="">
-                        </div>
-                        <div class="du-col-sm-8">
-                            <small>Markets - <span>10 minutes ago</span></small>
-                            <h4 class="news-title"><a href="#">Egypt runs first return flight for workers stranded in
-                                    Kuwait</a></h4>
-                            <p>Riyadh – Mubasher: The Saudi Ministry of Health recorded 3,045 new cases with the
-                                coronavirus disease (COVID-19) on Sunday. The total number of cases in the kingdom
-                                increased to 101,914.</p>
-                        </div>
-                        <div class="du-col-12 news-separator">
-                            <hr>
-                        </div>
-                        <div class="du-col-sm-4">
-                            <img class="du-img-fluid width-100"
-                                src="./assets/images/c1f9e57c6ddf2c58cfee31841afa593d-1.png" alt="">
-                        </div>
-                        <div class="du-col-sm-8">
-                            <small>Markets - <span>10 minutes ago</span></small>
-                            <h4 class="news-title"><a href="#">Egypt runs first return flight for workers stranded in
-                                    Kuwait</a></h4>
-                            <p>Riyadh – Mubasher: The Saudi Ministry of Health recorded 3,045 new cases with the
-                                coronavirus disease (COVID-19) on Sunday. The total number of cases in the kingdom
-                                increased to 101,914.</p>
-                        </div>
-                        <div class="du-col-12 news-separator">
-                            <hr>
-                        </div>
-                        <div class="du-col-sm-4">
-                            <img class="du-img-fluid width-100"
-                                src="./assets/images/034714cfa2fcb186cbd560e75418285d-1.png" alt="">
-                        </div>
-                        <div class="du-col-sm-8">
-                            <small>Markets - <span>10 minutes ago</span></small>
-                            <h4 class="news-title"><a href="#">Egypt runs first return flight for workers stranded in
-                                    Kuwait</a></h4>
-                            <p>Riyadh – Mubasher: The Saudi Ministry of Health recorded 3,045 new cases with the
-                                coronavirus disease (COVID-19) on Sunday. The total number of cases in the kingdom
-                                increased to 101,914.</p>
-                        </div>
-                        <div class="du-col-12 news-separator">
-                            <hr>
+                            <div id="du_related_news_container"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <script type="text/javascript">
+        var info_widgets_config_data = {
+            "widgets": [{
+                "widget_config": [
+                    { "widgetSlug": "du_related_news" },
+                    { "htmlContainerId": "du_related_news_container" },
+                    { "requestType": "GET" },
+                    { "data": [{ "selected_country": "sa" }] },
+                    { "urlParam": "" },
+                    { "customeStyles": [] }
+                ]
+            },
+            ],
+            authToken:
+                "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+        };
+        window.onload = (event) => {
+            console.log("windows ready ");
+            loadInfoJsWidget(info_widgets_config_data);
+        };
+    </script>
 </body>
 
 </html>
