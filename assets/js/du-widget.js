@@ -110,7 +110,7 @@ function createHTML(reqDataObject, widgetSlug) {
     } else if (widgetSlug === "du_news_view_listing") {
         return newsListingViewNewsHTML(reqDataObject);
     } else if (widgetSlug === "market_snapshot") {
-        return '<div class="d-flex gray-border mb-2 mt-4 coun-ls-gcc">marketSNapShot Data is in console</div>';
+        return '<div class="d-flex gray-border mb-2 mt-4 coun-ls-gcc">market Snapshot Data is in console</div>';
     }
 };
 
@@ -119,17 +119,18 @@ function topNewsHomeHTML(responseDataObj) {
     let outputHtmlString = "";
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
-        insideLoopHTML += ` <div class="du-col-md-6"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
-            <h5 class="title-img-description">` + data.title + `</h5><hr>
+        insideLoopHTML += ` <div class="du-col-md-6"><a href="#" onClick="viewDuNewsPage();"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
+            <h5 class="title-img-description">` + data.title + `</h5></a><hr>
             </div>`
     });
     outputHtmlString = `<a href="news-view.html" class="lnd-tp-news lnd-tp-news-des">
-        <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png"><span class="lnd-tp-news-title font35 ff-hel-b text-white">
+        <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png"><span class="lnd-tp-news-title font35 ff-hel-b du-text-white">
         Egypt runs first return flight for workers stranded in Kuwait</span>
-        <span class="lnd-tp-news-time font14 text-white">Markets - 10 minutes ago</span></a><div class="du-row du-mt-3">
+        <span class="lnd-tp-news-time font14 du-text-white">Markets - 10 minutes ago</span></a><div class="du-row du-mt-3">
         <a href="news-view.html" class="lnd-tp-news lnd-tp-news-mob">
-        <span class="lnd-tp-news-title font35 ff-hel-b text-white">Egypt runs first return flight for workers stranded in Kuwait</span>
-        <span class="lnd-tp-news-time font14 text-white">Markets - 10 minutes ago</span><img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png"></a>` + insideLoopHTML + `</div>`;
+        <span class="lnd-tp-news-title font35 ff-hel-b du-text-white">Egypt runs first return flight for workers stranded in Kuwait</span>
+        <span class="lnd-tp-news-time font14 du-text-white">Markets - 10 minutes ago</span>
+        <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png"></a>` + insideLoopHTML + `</div>`;
     return outputHtmlString;
 }
 
@@ -138,11 +139,12 @@ function exclusiveNewsHomeHTML(responseDataObj) {
     let outputHtmlString = "";
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
-        insideLoopHTML += `<div class="du-col-md-4"><img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-mubasher-exclusive.png">
-        <smal class="title-under-img">Markets - <span>10 minutes ago</span></small>
-        <h5 class="title-img-description">` + data.title + `</h5><hr></div>`
+        insideLoopHTML += `<div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage();">
+        <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-mubasher-exclusive.png">
+        <small class="title-under-img">Markets - <span>10 minutes ago</span></small>
+        <h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading mt70">Mubasher Exclusive</h4><a href="#" class="view-all-text">See all
+    outputHtmlString = `<h4 class="exclusive-heading mt70">Mubasher Exclusive</h4><a href="#" class="view-all-text" onClick="duListingNewsPage();">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row">` + insideLoopHTML + `</div>`;
     return outputHtmlString;
 }
@@ -153,10 +155,11 @@ function islamicFinanceNewsHTML(responseDataObj) {
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
         insideLoopHTML += `<div class="isl-fi-news-wrap du-col-sm-4" style="margin-bottom:25px;"><div class="du-row"><div class="du-col-sm-4">
-        <img class="du-img-fluid du-w-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e.png" alt=""></div><div class="du-col-sm-8">
-        <small>Markets - <span>10 minutes ago</span></small><h6>Egypt runs first return flight for workers stranded in Kuwait</h6></div></div></div>`
+        <a href="#" onClick="viewDuNewsPage();"><img class="du-img-fluid du-w-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e.png" alt="">
+        </div><div class="du-col-sm-8"><small>Markets - <span>10 minutes ago</span></small>
+        <h6>Egypt runs first return flight for workers stranded in Kuwait</h6></a></div></div></div>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">Islamic Finance</h4><a href="#" class="view-all-text">See all
+    outputHtmlString = `<h4 class="exclusive-heading">Islamic Finance</h4><a href="#" class="view-all-text" onClick="duListingNewsPage();">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><hr><div class="du-row">` + insideLoopHTML + `<div class="du-col-12"><hr></div></div>`;
     return outputHtmlString;
 }
@@ -166,11 +169,12 @@ function arabMarketNewsHTML(responseDataObj) {
     let outputHtmlString = "";
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
-        insideLoopHTML += `<div class="isl-fi-news-wrap du-col-sm-4"><img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/111.png" alt="">
+        insideLoopHTML += `<div class="isl-fi-news-wrap du-col-sm-4"><a href="#" onClick="viewDuNewsPage();">
+        <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/111.png" alt="">
         <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
-        <h6 class="title-img-description">` + data.title + `</h6></div><hr></div>`
+        <h6 class="title-img-description">` + data.title + `</h6></div></a><hr></div>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">Arab Market</h4><a href="#" class="view-all-text">See all
+    outputHtmlString = `<h4 class="exclusive-heading">Arab Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage();">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row du-mt-2">` + insideLoopHTML + `</div>`;
     return outputHtmlString;
 }
@@ -180,11 +184,12 @@ function internationalMarketHTML(responseDataObj) {
     let outputHtmlString = "";
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
-        insideLoopHTML += `<div class="du-row"><div class="du-col-md-4"><img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/111.png"></div>
+        insideLoopHTML += `<div class="du-row"><div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage();">
+        <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/111.png"></div>
         <div class="du-col-md-8 du-mt-4"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
-        <h5 class="title-img-description">` + data.title + `</h5><p>` + data.body + `</p></div></div><hr>`
+        <h5 class="title-img-description">` + data.title + `</h5><p>` + data.body + `</p></a></div></div><hr>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">International Market</h4><a href="news-listing.html" class="view-all-text">See all<img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTML;
+    outputHtmlString = `<h4 class="exclusive-heading">International Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage();">See all<img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTML;
     return outputHtmlString;
 }
 
@@ -193,11 +198,11 @@ function pressReleaseNewsHTML(responseDataObj) {
     let outputHtmlString = "";
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
-        insideLoopHTML += `<div class="press-rel-news">
+        insideLoopHTML += `<a href="#" onClick="viewDuNewsPage();"><div class="press-rel-news">
         <small class="title-under-img">Markets - <span>10 minutes ago</span></small>
-        <h5 class="title-img-description mb-3">` + data.title + `</h5></div><hr>`
+        <h5 class="title-img-description mb-3">` + data.title + `</h5></div></a><hr>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">Press Release</h4><a href="news-listing.html" class="view-all-text">See all
+    outputHtmlString = `<h4 class="exclusive-heading">Press Release</h4><a href="#" class="view-all-text" onClick="duListingNewsPage();">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row">
     <div class="du-col-md-4"><img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/ccb89c0d02e8fdcc7cfdb45678d7395f.png"></div>
     <div class="du-col-md-8">` + insideLoopHTML + `</div></div>`;
@@ -222,10 +227,152 @@ function mostReadNewsHTML(responseDataObj) {
 
 
 
+
+/* Du Page Redirection */
+
+function duListingNewsPage() {
+    document.body.innerHTML = "";
+    document.body.innerHTML = `<main><section class="banking du-mb-5"><div class="du-container container-section">
+    <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><a href="#" class="back-btn-du" onClick="duNewsSummaryPage();">Back to Du News Summary</a>
+    <div id="du_news_view_container"></div></div></div></div></section></main>`
+    var info_widgets_config_data = {
+        "widgets": [
+            {
+                "widget_config": [
+                    { "widgetSlug": "du_news_view_listing" },
+                    { "htmlContainerId": "du_news_view_container" },
+                    { "requestType": "GET" },
+                    { "data": [{ "selected_country": "sa" }] },
+                    { "urlParam": "du_news_listing" },
+                    { "customeStyles": [] }
+                ]
+            },
+        ],
+        authToken:
+            "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+    };
+    loadInfoJsWidget(info_widgets_config_data);
+}
+
+function viewDuNewsPage() {
+    document.body.innerHTML = "";
+    document.body.innerHTML = `<div id="du_news_view_page"><div class="du-container du-mt-5">
+    <div class="du-row"><div class="du-col-md-12 news-left-col"><a href="#" class="back-btn-du" onClick="duNewsSummaryPage();">Back to Du News Summary</a>
+    <div id="du_related_news_container"></div></div></div></div></div>`
+    var info_widgets_config_data = {
+        "widgets": [
+            {
+                "widget_config": [
+                    { "widgetSlug": "du_related_news" },
+                    { "htmlContainerId": "du_related_news_container" },
+                    { "requestType": "GET" },
+                    { "data": [{ "selected_country": "sa" }] },
+                    { "urlParam": "du_news_view" },
+                    { "customeStyles": [] }
+                ]
+            }
+        ],
+        authToken:
+            "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+    };
+    loadInfoJsWidget(info_widgets_config_data);
+}
+
+function duNewsSummaryPage() {
+    document.body.innerHTML = "";
+    document.body.innerHTML = `<main><div id="du_news_page"><div class="du-container-fluid container-fluid-pd du-mt-5"><section>
+    <div class="du-row"><div class="du-col-md-9"><div id="du_top_container_news"></div></div><div class="du-col-md-3 stocks-sidebar">
+    <div id="du_most_read_container_news"></div></div></div></section><section><div class="du-row"><div class="du-col-md-12">
+    <div id="du_exclusive_news_container"></div></div></div></section><section><div class="du-row du-mt-5"><div class="du-col-md-12">
+    <div id="du_ismalic_finance_container"></div></div></div></section><section><div class="du-row du-mt-5"><div class="du-col-md-12">
+    <div id="du_arab_market_container"></div></div></div></section><section><div class="du-row mt70"><div class="du-col-md-12">
+    <div id="du_international_market_container"></div></div></div></section><section><div class="du-row mt70 du-mb-5"><div class="du-col-md-12">
+    <div id="du_press_container_release"></div></div></div></section></div></div></main>`
+    var info_widgets_config_data = {
+        "widgets": [{
+            "widget_config": [
+                { "widgetSlug": "du_top_news" },
+                { "htmlContainerId": "du_top_container_news" },
+                { "requestType": "GET" },
+                { "data": [{ "selected_country": "sa" }] },
+                { "urlParam": "du_news" },
+                { "customeStyles": [] }
+            ]
+        },
+        {
+            "widget_config": [
+                { "widgetSlug": "du_most_read" },
+                { "htmlContainerId": "du_most_read_container_news" },
+                { "requestType": "GET" },
+                { "data": [{ "selected_country": "sa" }] },
+                { "urlParam": "du_news" },
+                { "customeStyles": [] }
+            ]
+        },
+        {
+            "widget_config": [
+                { "widgetSlug": "du_press_release" },
+                { "htmlContainerId": "du_press_container_release" },
+                { "requestType": "GET" },
+                { "data": [{ "selected_country": "sa" }] },
+                { "urlParam": "du_news" },
+                { "customeStyles": [] }
+            ]
+        },
+        {
+            "widget_config": [
+                { "widgetSlug": "du_international_market" },
+                { "htmlContainerId": "du_international_market_container" },
+                { "requestType": "GET" },
+                { "data": [{ "selected_country": "sa" }] },
+                { "urlParam": "du_news" },
+                { "customeStyles": [] }
+            ]
+        },
+        {
+            "widget_config": [
+                { "widgetSlug": "du_arab_market" },
+                { "htmlContainerId": "du_arab_market_container" },
+                { "requestType": "GET" },
+                { "data": [{ "selected_country": "sa" }] },
+                { "urlParam": "du_news" },
+                { "customeStyles": [] }
+            ]
+        },
+        {
+            "widget_config": [
+                { "widgetSlug": "du_islamic_finance" },
+                { "htmlContainerId": "du_ismalic_finance_container" },
+                { "requestType": "GET" },
+                { "data": [{ "selected_country": "sa" }] },
+                { "urlParam": "du_news" },
+                { "customeStyles": [] }
+            ]
+        },
+        {
+            "widget_config": [
+                { "widgetSlug": "du_news_exclusive" },
+                { "htmlContainerId": "du_exclusive_news_container" },
+                { "requestType": "GET" },
+                { "data": [{ "selected_country": "sa" }] },
+                { "urlParam": "du_news" },
+                { "customeStyles": [] }
+            ]
+        },
+        ],
+        authToken:
+            "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+    };
+    loadInfoJsWidget(info_widgets_config_data);
+}
+
+
 /* DU News View */
 
 /* Related News DU */
 function relatedViewNewsHTML(responseDataObj) {
+    // $('#du_news_listing_page').css('display', 'none');
+    // $('#du_news_page').css('display', 'none');
     let outputHtmlString = "";
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
@@ -235,7 +382,28 @@ function relatedViewNewsHTML(responseDataObj) {
         <a href="#">` + data.title + `</a></h4>
         <p>` + data.body + `</p></div></div><hr>`
     });
-    outputHtmlString = `<h4>Related News</h4><hr>` + insideLoopHTML;
+    outputHtmlString = `<h1>Egypt runs first return flight for workers stranded in Kuwait</h1>
+    <img class="du-img-fluid du-mb-4 width-100" src="./assets/images/Group 1062.png" alt=""><div class="du-row"><div class="du-col-md-6">
+    <p class="du-mb-4">Committed investments in the GCC region increased by 2.3% </p></div><div class="du-col-md-6">
+    <small class="pull-right">Markets - <span>10 minutes ago</span></small></div></div><div class="du-row"><div class="du-col-sm-12">
+    <p>Mubasher: The Arab Petroleum Investments Corporation (APICORP) estimates that planned and committed investments in the Middle East and North Africa 
+    (MENA) region will exceed $792 billion over the next five years from 2020 to 2024.</p><p>The estimated value marks a $173 billion decline from last year’s 
+    estimation, which is mostly in planned investments due to what APICORP calls the 2020 triple crisis.</p><p>The triple crisis is referring to the 
+    coronavirus (COVID-19) pandemic and its related health crisis, coupled with the oil crisis and the looming financial crisis, according to the 
+    MENA Energy Investment Outlook 2020-2024.</p><p>However, the outlook report mentioned that despite the difficulties, committed investments in 
+    the GCC region increased by 2.3% compared to a 6% overall decrease in the entire MENA region.</p>
+    <img class="du-img-fluid mb-3 du-d-block du-mx-auto" src="./assets/images/image-49.png" alt="">
+    <p>In addition, the report referred to the current dilemma in dealing with the consequences of the COVID-19 pandemic, emphasizing that the resumption of 
+    travel and trade will require international coordination.</p><p>APICORP estimates the price of Brent crude oil to average $30-40 in 2020 and 2021 before 
+    reflecting a more balanced market.</p><p>As for the financial crisis, the report noted that stimulus plans could create enormous unproductive debt that 
+    could negatively impact economic growth.</p><p>“The nature of this triple crisis and the profound restructuring in oil and gas will hit energy investments 
+    for a potentially long period of time, sowing the seeds of supply crunches and price volatility. Therefore, we expect a W-shaped recovery for the MENA 
+    region,” said Ahmed Ali Attiga, CEO of APICORP.</p><p>Attiga further noted that despite the positive effects of digitization and automation on 
+    efficiencies across the value chains, many fundamental questions remain, which will negatively affect investments.</p><p>“International 
+    collaboration between the private and public sector will, therefore, be critical to counter the expected shortfalls in investment,” the CEO added.</p>
+    <p>APICORP expects “a restructuring of the value chain, thus putting the strongest countries and companies from a total cost and leverage 
+    standpoint in the best position to preserve their long-term value proposition and return to their respective shareholders,” according 
+    to Leila R Benali, Chief Economist, Head of Strategy, Energy Economics and Sustainability of APICORP.</p></div></div><h4>Related News</h4><hr>` + insideLoopHTML;
     return outputHtmlString;
 }
 
@@ -245,6 +413,8 @@ function relatedViewNewsHTML(responseDataObj) {
 
 /* Listing View News DU */
 function newsListingViewNewsHTML(responseDataObj) {
+    // $('#du_news_view_page').css('display', 'none');
+    // $('#du_news_page').css('display', 'none');
     let outputHtmlString = "";
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {

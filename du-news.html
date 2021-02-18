@@ -15,52 +15,54 @@
 
 <body>
     <main>
-        <div class="du-container-fluid container-fluid-pd du-mt-5">
-            <section>
-                <div class="du-row">
-                    <div class="du-col-md-9">
-                        <div id="du_top_container_news"></div>
+        <div id="du_news_page">
+            <div class="du-container-fluid container-fluid-pd du-mt-5">
+                <section>
+                    <div class="du-row">
+                        <div class="du-col-md-9">
+                            <div id="du_top_container_news"></div>
+                        </div>
+                        <div class="du-col-md-3 stocks-sidebar">
+                            <div id="du_most_read_container_news"></div>
+                        </div>
                     </div>
-                    <div class="du-col-md-3 stocks-sidebar">
-                        <div id="du_most_read_container_news"></div>
+                </section>
+                <section>
+                    <div class="du-row">
+                        <div class="du-col-md-12">
+                            <div id="du_exclusive_news_container"></div>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section>
-                <div class="du-row">
-                    <div class="du-col-md-12">
-                        <div id="du_exclusive_news_container"></div>
+                </section>
+                <section>
+                    <div class="du-row du-mt-5">
+                        <div class="du-col-md-12">
+                            <div id="du_ismalic_finance_container"></div>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section>
-                <div class="du-row du-mt-5">
-                    <div class="du-col-md-12">
-                        <div id="du_ismalic_finance_container"></div>
+                </section>
+                <section>
+                    <div class="du-row du-mt-5">
+                        <div class="du-col-md-12">
+                            <div id="du_arab_market_container"></div>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section>
-                <div class="du-row du-mt-5">
-                    <div class="du-col-md-12">
-                        <div id="du_arab_market_container"></div>
+                </section>
+                <section>
+                    <div class="du-row mt70">
+                        <div class="du-col-md-12">
+                            <div id="du_international_market_container"></div>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section>
-                <div class="du-row mt70">
-                    <div class="du-col-md-12">
-                        <div id="du_international_market_container"></div>
+                </section>
+                <section>
+                    <div class="du-row mt70 du-mb-5">
+                        <div class="du-col-md-12">
+                            <div id="du_press_container_release"></div>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section>
-                <div class="du-row mt70 du-mb-5">
-                    <div class="du-col-md-12">
-                        <div id="du_press_container_release"></div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
     </main>
     <script type="text/javascript">
@@ -71,7 +73,7 @@
                     { "htmlContainerId": "du_top_container_news" },
                     { "requestType": "GET" },
                     { "data": [{ "selected_country": "sa" }] },
-                    { "urlParam": "" },
+                    { "urlParam": "du_news" },
                     { "customeStyles": [] }
                 ]
             },
@@ -81,7 +83,7 @@
                     { "htmlContainerId": "du_most_read_container_news" },
                     { "requestType": "GET" },
                     { "data": [{ "selected_country": "sa" }] },
-                    { "urlParam": "" },
+                    { "urlParam": "du_news" },
                     { "customeStyles": [] }
                 ]
             },
@@ -91,7 +93,7 @@
                     { "htmlContainerId": "du_press_container_release" },
                     { "requestType": "GET" },
                     { "data": [{ "selected_country": "sa" }] },
-                    { "urlParam": "" },
+                    { "urlParam": "du_news" },
                     { "customeStyles": [] }
                 ]
             },
@@ -101,7 +103,7 @@
                     { "htmlContainerId": "du_international_market_container" },
                     { "requestType": "GET" },
                     { "data": [{ "selected_country": "sa" }] },
-                    { "urlParam": "" },
+                    { "urlParam": "du_news" },
                     { "customeStyles": [] }
                 ]
             },
@@ -111,7 +113,7 @@
                     { "htmlContainerId": "du_arab_market_container" },
                     { "requestType": "GET" },
                     { "data": [{ "selected_country": "sa" }] },
-                    { "urlParam": "" },
+                    { "urlParam": "du_news" },
                     { "customeStyles": [] }
                 ]
             },
@@ -121,7 +123,7 @@
                     { "htmlContainerId": "du_ismalic_finance_container" },
                     { "requestType": "GET" },
                     { "data": [{ "selected_country": "sa" }] },
-                    { "urlParam": "" },
+                    { "urlParam": "du_news" },
                     { "customeStyles": [] }
                 ]
             },
@@ -131,7 +133,27 @@
                     { "htmlContainerId": "du_exclusive_news_container" },
                     { "requestType": "GET" },
                     { "data": [{ "selected_country": "sa" }] },
-                    { "urlParam": "" },
+                    { "urlParam": "du_news" },
+                    { "customeStyles": [] }
+                ]
+            },
+            {
+                "widget_config": [
+                    { "widgetSlug": "du_related_news" },
+                    { "htmlContainerId": "du_related_news_container" },
+                    { "requestType": "GET" },
+                    { "data": [{ "selected_country": "sa" }] },
+                    { "urlParam": "du_news_view" },
+                    { "customeStyles": [] }
+                ]
+            },
+            {
+                "widget_config": [
+                    { "widgetSlug": "du_news_view_listing" },
+                    { "htmlContainerId": "du_news_view_container" },
+                    { "requestType": "GET" },
+                    { "data": [{ "selected_country": "sa" }] },
+                    { "urlParam": "du_news_listing" },
                     { "customeStyles": [] }
                 ]
             },
@@ -140,7 +162,6 @@
                 "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
         };
         window.onload = (event) => {
-            console.log("windows ready ");
             loadInfoJsWidget(info_widgets_config_data);
         };
     </script>
