@@ -231,8 +231,10 @@ function mostReadNewsHTML(responseDataObj) {
 /* Du Page Redirection */
 
 function duListingNewsPage() {
-    document.body.innerHTML = "";
-    document.body.innerHTML = `<main><section class="banking du-mb-5"><div class="du-container container-section">
+    // document.body.innerHTML = "";
+    var innerContent =  document.getElementById("du_news_page");
+    innerContent.innerHTML = "";
+    document.body.innerHTML = `<main><section class="banking du-mb-5" id="du_news_page"><div class="du-container container-section">
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><a href="#" class="back-btn-du" onClick="duNewsSummaryPage();">Back to Du News Summary</a>
     <div id="du_news_view_container"></div></div></div></div></section></main>`
     var info_widgets_config_data = {
@@ -255,8 +257,9 @@ function duListingNewsPage() {
 }
 
 function viewDuNewsPage() {
-    document.body.innerHTML = "";
-    document.body.innerHTML = `<div id="du_news_view_page"><div class="du-container du-mt-5">
+    var innerContent =  document.getElementById("du_news_page");
+    innerContent.innerHTML = "";
+    innerContent.innerHTML = `<div id="du_news_view_page"><div class="du-container du-mt-5">
     <div class="du-row"><div class="du-col-md-12 news-left-col"><a href="#" class="back-btn-du" onClick="duNewsSummaryPage();">Back to Du News Summary</a>
     <div id="du_related_news_container"></div></div></div></div></div>`
     var info_widgets_config_data = {
@@ -279,7 +282,9 @@ function viewDuNewsPage() {
 }
 
 function duNewsSummaryPage() {
-    document.body.innerHTML = "";
+    // document.body.innerHTML = "";
+    var innerContent =  document.getElementById("du_news_page");
+    innerContent.innerHTML = "";
     document.body.innerHTML = `<main><div id="du_news_page"><div class="du-container-fluid container-fluid-pd du-mt-5"><section>
     <div class="du-row"><div class="du-col-md-9"><div id="du_top_container_news"></div></div><div class="du-col-md-3 stocks-sidebar">
     <div id="du_most_read_container_news"></div></div></div></section><section><div class="du-row"><div class="du-col-md-12">
