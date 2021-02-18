@@ -152,13 +152,14 @@
   }
   
   a {
-    color: #000000;
+    /* color: #000000; */
+    color: #ffffff;
     text-decoration: none;
     background-color: transparent;
   }
   
   a:hover {
-    color: #000000;
+    color: #ffffff;
     text-decoration: underline;
   }
   
@@ -4325,11 +4326,11 @@
     text-align: center;
   }
   
-  .tab-content > .tab-pane {
+  .du-tab-content > .du-tab-pane {
     display: none;
   }
   
-  .tab-content > .active {
+  .du-tab-content > .active {
     display: block;
   }
   
