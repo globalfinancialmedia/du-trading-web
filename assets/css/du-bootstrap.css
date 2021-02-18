@@ -39,6 +39,14 @@
   *::after {
     box-sizing: border-box;
   } */
+
+main *,
+main *:before,
+main *:after {
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: border-box !important;
+}
   
   html {
     /* font-family: sans-serif; */
