@@ -18,33 +18,57 @@
         <div class="du-container du-mt-5">
             <div class="du-row">
                 <div class="du-col-md-12 news-left-col">
-                     <div id="du_related_news_container"></div>
+                    <div id="du_related_news_container"></div>
                 </div>
             </div>
         </div>
     </main>
 
     <script type="text/javascript">
-        var info_widgets_config_data = {
-            "widgets": [{
+        if (typeof info_widgets_config_data === "undefined") {
+            var info_widgets_config_data = {"widgets":[]};
+        };
+
+        info_widgets_config_data.widgets.push({
+            "widget_config": [
+                { "widgetSlug": "du_related_news" },
+                { "htmlContainerId": "du_related_news_container" },
+                { "requestType": "GET" },
+                { "data": [{ "selected_country": "sa" }] },
+                { "urlParam": "" },
+                { "seeAllPageURL": "" },
+                { "seeAll": true },
+
+                { "customeStyles": [] }
+            ]
+        });
+        info_widgets_config_data.authToken = "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE";
+    </script>
+           <script type="text/javascript">
+            if (typeof info_widgets_config_data === "undefined") {
+                var info_widgets_config_data = {};
+                info_widgets_config_data["widgets"] = [];
+            };
+    
+            info_widgets_config_data.widgets.push({
                 "widget_config": [
                     { "widgetSlug": "du_related_news" },
                     { "htmlContainerId": "du_related_news_container" },
                     { "requestType": "GET" },
                     { "data": [{ "selected_country": "sa" }] },
                     { "urlParam": "" },
+                    { "seeAllPageURL": "" },
                     { "customeStyles": [] }
                 ]
-            },
-            ],
-            authToken:
-                "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
-        };
-        window.onload = (event) => {
-            console.log("windows ready ");
-            loadInfoJsWidget(info_widgets_config_data);
-        };
-    </script>
+            });
+            info_widgets_config_data.authToken = "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE";
+        </script>
+            <script type="text/javascript">
+                window.onload = (event) => {
+                    console.log("windows ready " , JSON.stringify(info_widgets_config_data));
+                    loadInfoJsWidget(info_widgets_config_data);
+                };
+            </script>
 </body>
 
 </html>

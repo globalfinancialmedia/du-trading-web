@@ -3,6 +3,7 @@ const info_mubasher_widget_urls = [
     { "slug": "du_most_read", "url": "http://localhost:8183/api/news" },
     { "slug": "du_press_release", "url": "http://localhost:8183/api/news" },
     { "slug": "du_international_market", "url": "http://localhost:8183/api/news" },
+    { "slug": "du_international_market",  "url": "http://localhost:8183/api/news" },
     { "slug": "du_arab_market", "url": "http://localhost:8183/api/news" },
     { "slug": "du_islamic_finance", "url": "http://localhost:8183/api/news" },
     { "slug": "du_news_exclusive", "url": "http://localhost:8183/api/news" },
@@ -10,6 +11,7 @@ const info_mubasher_widget_urls = [
     { "slug": "du_related_news", "url": "http://localhost:8183/api/news" },
     // Du News View Listing
     { "slug": "du_news_view_listing", "url": "http://localhost:8183/api/news" },
+    { "slug": "du_news_view_listing","url": "http://localhost:8183/api/news" },
 ];
 
 
@@ -144,7 +146,7 @@ function exclusiveNewsHomeHTML(responseDataObj) {
         <small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading mt70">Mubasher Exclusive</h4><a href="#" class="view-all-text" onClick="duListingNewsPage();">See all
+    outputHtmlString = `<h4 class="exclusive-heading mt70">Mubasher Exclusive</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id);">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row">` + insideLoopHTML + `</div>`;
     return outputHtmlString;
 }
@@ -159,7 +161,7 @@ function islamicFinanceNewsHTML(responseDataObj) {
         </div><div class="du-col-sm-8"><small>Markets - <span>10 minutes ago</span></small>
         <h6>Egypt runs first return flight for workers stranded in Kuwait</h6></a></div></div></div>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">Islamic Finance</h4><a href="#" class="view-all-text" onClick="duListingNewsPage();">See all
+    outputHtmlString = `<h4 class="exclusive-heading">Islamic Finance</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id);">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><hr><div class="du-row">` + insideLoopHTML + `<div class="du-col-12"><hr></div></div>`;
     return outputHtmlString;
 }
@@ -174,7 +176,7 @@ function arabMarketNewsHTML(responseDataObj) {
         <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h6 class="title-img-description">` + data.title + `</h6></div></a><hr></div>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">Arab Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage();">See all
+    outputHtmlString = `<h4 class="exclusive-heading">Arab Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id);">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row du-mt-2">` + insideLoopHTML + `</div>`;
     return outputHtmlString;
 }
@@ -189,7 +191,7 @@ function internationalMarketHTML(responseDataObj) {
         <div class="du-col-md-8 du-mt-4"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h5 class="title-img-description">` + data.title + `</h5><p>` + data.body + `</p></a></div></div><hr>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">International Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage();">See all<img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTML;
+    outputHtmlString = `<h4 class="exclusive-heading">International Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id);">See all<img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTML;
     return outputHtmlString;
 }
 
@@ -202,7 +204,7 @@ function pressReleaseNewsHTML(responseDataObj) {
         <small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h5 class="title-img-description mb-3">` + data.title + `</h5></div></a><hr>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">Press Release</h4><a href="#" class="view-all-text" onClick="duListingNewsPage();">See all
+    outputHtmlString = `<h4 class="exclusive-heading">Press Release</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id);">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row">
     <div class="du-col-md-4"><img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/ccb89c0d02e8fdcc7cfdb45678d7395f.png"></div>
     <div class="du-col-md-8">` + insideLoopHTML + `</div></div>`;
@@ -230,36 +232,80 @@ function mostReadNewsHTML(responseDataObj) {
 
 /* Du Page Redirection */
 
-function duListingNewsPage() {
+function duListingNewsPage(element_id) {
+
+    var idfff = element_id;
+
+    console.log("item"+info_widgets_config_data);
+    console.log("item 2222::"+ idfff);
+
+    info_widgets_config_data.widgets.forEach(removeAddWidgetSection);
+    function removeAddWidgetSection(config_data) {
+        if(config_data.widget_config[1].htmlContainerId==="du_news_view_container"){
+
+         var duNewsViewContainer = document.getElementById(config_data.widget_config[1].htmlContainerId);
+         duNewsViewContainer.removeAttribute("style");
+                let widgetSlug = config_data.widget_config[0].widgetSlug;
+                let info_req_headers = {};
+                info_req_headers = Object.assign({ "Content-Type": "application/json;charset=UTF-8" }, info_req_headers);
+                info_req_headers = Object.assign({ "authorization": info_widgets_config_data.authToken }, info_req_headers);
+                let apiUrlObj = info_mubasher_widget_urls.find(
+                    ({ slug }) => slug === widgetSlug
+                );
+                if ((apiUrlObj.url != "" && apiUrlObj.url !== undefined)) {
+                    infoSendRequest(info_req_headers,
+                        config_data.widget_config[3].data[0], //body
+                        apiUrlObj.url, //url
+                        config_data.widget_config[4].urlParam,//url_param
+                        config_data.widget_config[2].requestType, //request_type
+                        config_data.widget_config[1].htmlContainerId,//htmlContainerId
+                        config_data.widget_config[5].customeStyles, //styles
+                        widgetSlug //widget identifier
+                    );
+                    console.log(info_req_headers+
+                        config_data.widget_config[3].data[0]+
+                        apiUrlObj.url+
+                        config_data.widget_config[4].urlParam+
+                        config_data.widget_config[2].requestType+config_data.widget_config[1].htmlContainerId+config_data.widget_config[5].customeStyles+ widgetSlug //widget identifier
+                        );
+                    //return newsListingViewNewsHTML();
+
+                }
+        }else{
+            var selectedElement = document.getElementById(config_data.widget_config[1].htmlContainerId);
+            console.log("config_data.widget_config[1].htmlContainerId"+config_data.widget_config[1].htmlContainerId);
+            console.log(selectedElement);
+            if(selectedElement!==null)
+            selectedElement.remove()
+        }
+    }
+
     // document.body.innerHTML = "";
-    var innerContent =  document.getElementById("du_news_page");
-    innerContent.innerHTML = "";
-    document.body.innerHTML = `<main><section class="banking du-mb-5" id="du_news_page"><div class="du-container container-section">
-    <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><a href="#" class="back-btn-du" onClick="duNewsSummaryPage();">Back to Du News Summary</a>
-    <div id="du_news_view_container"></div></div></div></div></section></main>`
-    var info_widgets_config_data = {
-        "widgets": [
-            {
-                "widget_config": [
-                    { "widgetSlug": "du_news_view_listing" },
-                    { "htmlContainerId": "du_news_view_container" },
-                    { "requestType": "GET" },
-                    { "data": [{ "selected_country": "sa" }] },
-                    { "urlParam": "du_news_listing" },
-                    { "customeStyles": [] }
-                ]
-            },
-        ],
-        authToken:
-            "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
-    };
-    loadInfoJsWidget(info_widgets_config_data);
+    // document.body.innerHTML = `<main><section class="banking du-mb-5"><div class="du-container container-section">
+    // <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><a href="#" class="back-btn-du" onClick="duNewsSummaryPage();">Back to Du News Summary</a>
+    // <div id="du_news_view_container"></div></div></div></div></section></main>`
+    // var info_widgets_config_data = {
+    //     "widgets": [
+    //         {
+    //             "widget_config": [
+    //                 { "widgetSlug": "du_news_view_listing" },
+    //                 { "htmlContainerId": "du_news_view_container" },
+    //                 { "requestType": "GET" },
+    //                 { "data": [{ "selected_country": "sa" }] },
+    //                 { "urlParam": "du_news_listing" },
+    //                 { "customeStyles": [] }
+    //             ]
+    //         },
+    //     ],
+    //     authToken:
+    //         "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+    // };
+    // loadInfoJsWidget(info_widgets_config_data);
 }
 
 function viewDuNewsPage() {
-    var innerContent =  document.getElementById("du_news_page");
-    innerContent.innerHTML = "";
-    innerContent.innerHTML = `<div id="du_news_view_page"><div class="du-container du-mt-5">
+    document.body.innerHTML = "";
+    document.body.innerHTML = `<div id="du_news_view_page"><div class="du-container du-mt-5">
     <div class="du-row"><div class="du-col-md-12 news-left-col"><a href="#" class="back-btn-du" onClick="duNewsSummaryPage();">Back to Du News Summary</a>
     <div id="du_related_news_container"></div></div></div></div></div>`
     var info_widgets_config_data = {
@@ -282,9 +328,7 @@ function viewDuNewsPage() {
 }
 
 function duNewsSummaryPage() {
-    // document.body.innerHTML = "";
-    var innerContent =  document.getElementById("du_news_page");
-    innerContent.innerHTML = "";
+    document.body.innerHTML = "";
     document.body.innerHTML = `<main><div id="du_news_page"><div class="du-container-fluid container-fluid-pd du-mt-5"><section>
     <div class="du-row"><div class="du-col-md-9"><div id="du_top_container_news"></div></div><div class="du-col-md-3 stocks-sidebar">
     <div id="du_most_read_container_news"></div></div></div></section><section><div class="du-row"><div class="du-col-md-12">
