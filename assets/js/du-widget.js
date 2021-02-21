@@ -234,6 +234,9 @@ function mostReadNewsHTML(responseDataObj) {
 
 function duListingNewsPage(element_id) {
 
+    event.preventDefault(); 
+    event.stopPropagation(); 
+
     var idfff = element_id;
 
     console.log("item"+info_widgets_config_data);
