@@ -217,7 +217,7 @@ function mostReadNewsHTML(responseDataObj) {
         insideLoopHTML += `<div class="du-row">
         <div class="du-row ml-1"><div class="du-col-sm-4 col-3 pr-0 d-flex flex-wrap align-content-center">
         <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-3.png"></div><div class="du-col-sm-8 col-9">
-        <div class="most-read-news-title">` + data.title + `</div></div><div class="du-col-12"><hr></div>
+        <p class="most-read-news-title">` + data.title + `</p></div><div class="du-col-12"><hr></div>
         </div></div>`
     });
     outputHtmlString = `<h4 class="font26">Most Read</h4><hr>` + insideLoopHTML + `<div class="du-col-sm-12 text-center">
