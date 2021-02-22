@@ -119,7 +119,7 @@ function topNewsHomeHTML(responseDataObj) {
     let outputHtmlString = "";
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
-        insideLoopHTML += ` <div class="du-col-md-6"><a href="#" onClick="viewDuNewsPage();"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
+        insideLoopHTML += ` <div class="du-col-md-6"><a href="#" onClick="viewDuNewsPage(event);"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
             <h5 class="title-img-description">` + data.title + `</h5></a><hr>
             </div>`
     });
@@ -139,7 +139,7 @@ function exclusiveNewsHomeHTML(responseDataObj) {
     let outputHtmlString = "";
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
-        insideLoopHTML += `<div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage();">
+        insideLoopHTML += `<div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage(event);">
         <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-mubasher-exclusive.png">
         <small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
@@ -155,7 +155,7 @@ function islamicFinanceNewsHTML(responseDataObj) {
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
         insideLoopHTML += `<div class="isl-fi-news-wrap du-col-sm-4" style="margin-bottom:25px;"><div class="du-row"><div class="du-col-sm-4">
-        <a href="#" onClick="viewDuNewsPage();"><img class="du-img-fluid du-w-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e.png" alt="">
+        <a href="#" onClick="viewDuNewsPage(event);"><img class="du-img-fluid du-w-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e.png" alt="">
         </div><div class="du-col-sm-8"><small>Markets - <span>10 minutes ago</span></small>
         <h6>Egypt runs first return flight for workers stranded in Kuwait</h6></a></div></div></div>`
     });
@@ -169,7 +169,7 @@ function arabMarketNewsHTML(responseDataObj) {
     let outputHtmlString = "";
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
-        insideLoopHTML += `<div class="isl-fi-news-wrap du-col-sm-4"><a href="#" onClick="viewDuNewsPage();">
+        insideLoopHTML += `<div class="isl-fi-news-wrap du-col-sm-4"><a href="#" onClick="viewDuNewsPage(event);">
         <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/111.png" alt="">
         <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h6 class="title-img-description">` + data.title + `</h6></div></a><hr></div>`
@@ -184,7 +184,7 @@ function internationalMarketHTML(responseDataObj) {
     let outputHtmlString = "";
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
-        insideLoopHTML += `<div class="du-row"><div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage();">
+        insideLoopHTML += `<div class="du-row"><div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage(event);">
         <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/111.png"></div>
         <div class="du-col-md-8 du-mt-4"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h5 class="title-img-description">` + data.title + `</h5><p>` + data.body + `</p></a></div></div><hr>`
@@ -198,7 +198,7 @@ function pressReleaseNewsHTML(responseDataObj) {
     let outputHtmlString = "";
     let insideLoopHTML = "";
     responseDataObj.articles.forEach(data => {
-        insideLoopHTML += `<a href="#" onClick="viewDuNewsPage();"><div class="press-rel-news">
+        insideLoopHTML += `<a href="#" onClick="viewDuNewsPage(event);"><div class="press-rel-news">
         <small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h5 class="title-img-description mb-3">` + data.title + `</h5></div></a><hr>`
     });
@@ -235,9 +235,9 @@ function duListingNewsPage(event) {
     // document.body.innerHTML = "";
     var innerContent =  document.getElementById("du_news_page");
     innerContent.innerHTML = "";
-    document.body.innerHTML = `<main><section class="banking du-mb-5" id="du_news_page"><div class="du-container container-section">
-    <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><a href="#" class="back-btn-du" onClick="duNewsSummaryPage();">Back to Du News Summary</a>
-    <div id="du_news_view_container"></div></div></div></div></section></main>`
+    document.body.innerHTML = `<main><div id="du_news_page"><section class="banking du-mb-5"><div class="du-container container-section">
+    <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><a href="#" class="back-btn-du" onClick="duNewsSummaryPage(event);">Back to Du News Summary</a>
+    <div id="du_news_view_container"></div></div></div></div></section></div></main>`
     var info_widgets_config_data = {
         "widgets": [
             {
@@ -257,13 +257,13 @@ function duListingNewsPage(event) {
     loadInfoJsWidget(info_widgets_config_data);
 }
 
-function viewDuNewsPage() {
+function viewDuNewsPage(event) {
     event.preventDefault();
     var innerContent =  document.getElementById("du_news_page");
     innerContent.innerHTML = "";
-    innerContent.innerHTML = `<div id="du_news_view_page"><div class="du-container du-mt-5">
-    <div class="du-row"><div class="du-col-md-12 news-left-col"><a href="#" class="back-btn-du" onClick="duNewsSummaryPage();">Back to Du News Summary</a>
-    <div id="du_related_news_container"></div></div></div></div></div>`
+    innerContent.innerHTML = `<div id="du_news_page"><div id="du_news_view_page"><div class="du-container du-mt-5">
+    <div class="du-row"><div class="du-col-md-12 news-left-col"><a href="#" class="back-btn-du" onClick="duNewsSummaryPage(event);">Back to Du News Summary</a>
+    <div id="du_related_news_container"></div></div></div></div></div></div>`
     var info_widgets_config_data = {
         "widgets": [
             {
@@ -283,7 +283,7 @@ function viewDuNewsPage() {
     loadInfoJsWidget(info_widgets_config_data);
 }
 
-function duNewsSummaryPage() {
+function duNewsSummaryPage(event) {
     event.preventDefault();
     // document.body.innerHTML = "";
     var innerContent =  document.getElementById("du_news_page");
