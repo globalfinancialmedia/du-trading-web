@@ -232,8 +232,8 @@ function mostReadNewsHTML(responseDataObj) {
 function duListingNewsPage(element_id, event) {
 
     event.preventDefault(); 
-    event.stopPropagation();
-    event.stopImmediatePropagation();
+    // event.stopPropagation();
+    // event.stopImmediatePropagation();
 
     var idfff = element_id;
     info_widgets_config_data.widgets.forEach(removeAddWidgetSection);
