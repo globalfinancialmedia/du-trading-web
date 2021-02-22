@@ -143,7 +143,7 @@ function exclusiveNewsHomeHTML(responseDataObj) {
         <small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading mt70">Mubasher Exclusive</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id, $event);">See all
+    outputHtmlString = `<h4 class="exclusive-heading mt70">Mubasher Exclusive</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id, event);">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row">` + insideLoopHTML + `</div>`;
     return outputHtmlString;
 }
@@ -158,7 +158,7 @@ function islamicFinanceNewsHTML(responseDataObj) {
         </div><div class="du-col-sm-8"><small>Markets - <span>10 minutes ago</span></small>
         <h6>Egypt runs first return flight for workers stranded in Kuwait</h6></a></div></div></div>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">Islamic Finance</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id, $event);">See all
+    outputHtmlString = `<h4 class="exclusive-heading">Islamic Finance</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id, event);">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><hr><div class="du-row">` + insideLoopHTML + `<div class="du-col-12"><hr></div></div>`;
     return outputHtmlString;
 }
@@ -173,7 +173,7 @@ function arabMarketNewsHTML(responseDataObj) {
         <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h6 class="title-img-description">` + data.title + `</h6></div></a><hr></div>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">Arab Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id, $event);">See all
+    outputHtmlString = `<h4 class="exclusive-heading">Arab Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id, event);">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row du-mt-2">` + insideLoopHTML + `</div>`;
     return outputHtmlString;
 }
@@ -188,7 +188,7 @@ function internationalMarketHTML(responseDataObj) {
         <div class="du-col-md-8 du-mt-4"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h5 class="title-img-description">` + data.title + `</h5><p>` + data.body + `</p></a></div></div><hr>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">International Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id, $event);">See all<img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTML;
+    outputHtmlString = `<h4 class="exclusive-heading">International Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id, event);">See all<img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTML;
     return outputHtmlString;
 }
 
@@ -201,7 +201,7 @@ function pressReleaseNewsHTML(responseDataObj) {
         <small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h5 class="title-img-description mb-3">` + data.title + `</h5></div></a><hr>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">Press Release</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id, $event);">See all
+    outputHtmlString = `<h4 class="exclusive-heading">Press Release</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(this.id, event);">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row">
     <div class="du-col-md-4"><img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/ccb89c0d02e8fdcc7cfdb45678d7395f.png"></div>
     <div class="du-col-md-8">` + insideLoopHTML + `</div></div>`;
@@ -232,7 +232,8 @@ function mostReadNewsHTML(responseDataObj) {
 function duListingNewsPage(element_id, event) {
 
     event.preventDefault(); 
-    event.stopPropagation(); 
+    event.stopPropagation();
+    event.stopImmediatePropagation();
 
     var idfff = element_id;
     info_widgets_config_data.widgets.forEach(removeAddWidgetSection);
