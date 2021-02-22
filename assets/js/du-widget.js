@@ -77,13 +77,10 @@ function infoSendRequest(req_headers, body, url, url_param, request_type, htmlCo
         }
     })
         .then(response => {
-            console.log('response', response);
             let generatedHTML = createHTML(response, widgetSlug);
             var container = document.getElementById(htmlContainerId);
             if (typeof container === "object") {
                 container.innerHTML = generatedHTML;
-            } else {
-                console.log("Unable to find container by specified id in widget config. Slug name is ( " + widgetSlug + " )");
             }
             return response;
         })
@@ -234,14 +231,10 @@ function mostReadNewsHTML(responseDataObj) {
 
 function duListingNewsPage(element_id) {
 
-    event.preventDefault(); 
-    event.stopPropagation(); 
+    element_id.preventDefault(); 
+    element_id.stopPropagation(); 
 
     var idfff = element_id;
-
-    console.log("item"+info_widgets_config_data);
-    console.log("item 2222::"+ idfff);
-
     info_widgets_config_data.widgets.forEach(removeAddWidgetSection);
     function removeAddWidgetSection(config_data) {
         if(config_data.widget_config[1].htmlContainerId==="du_news_view_container"){
@@ -265,19 +258,17 @@ function duListingNewsPage(element_id) {
                         config_data.widget_config[5].customeStyles, //styles
                         widgetSlug //widget identifier
                     );
-                    console.log(info_req_headers+
-                        config_data.widget_config[3].data[0]+
-                        apiUrlObj.url+
-                        config_data.widget_config[4].urlParam+
-                        config_data.widget_config[2].requestType+config_data.widget_config[1].htmlContainerId+config_data.widget_config[5].customeStyles+ widgetSlug //widget identifier
-                        );
+                    // console.log(info_req_headers+
+                    //     config_data.widget_config[3].data[0]+
+                    //     apiUrlObj.url+
+                    //     config_data.widget_config[4].urlParam+
+                    //     config_data.widget_config[2].requestType+config_data.widget_config[1].htmlContainerId+config_data.widget_config[5].customeStyles+ widgetSlug //widget identifier
+                    //     );
                     //return newsListingViewNewsHTML();
 
                 }
         }else{
             var selectedElement = document.getElementById(config_data.widget_config[1].htmlContainerId);
-            console.log("config_data.widget_config[1].htmlContainerId"+config_data.widget_config[1].htmlContainerId);
-            console.log(selectedElement);
             if(selectedElement!==null)
             selectedElement.remove()
         }
