@@ -160,14 +160,14 @@ main *:after {
   }
   
   a {
-    /* color: #000000; */
-    color: #ffffff;
+    color: #000000;
+    /* color: #ffffff; */
     text-decoration: none;
     background-color: transparent;
   }
   
   a:hover {
-    color: #ffffff;
+    color: #000000;
     text-decoration: underline;
   }
   

@@ -667,6 +667,11 @@ ul.navbar-nav li.nav-item > a {
     font-family: 'HelveticaNeueW23foSKY-Bd';
     color: #0090ff;
 }
+#du_news_page{
+    background-color: #FFFFFF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 /* Custom End */
 
 
