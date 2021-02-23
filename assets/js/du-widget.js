@@ -232,12 +232,11 @@ function mostReadNewsHTML(responseDataObj) {
 
 function duListingNewsPage(event) {
     event.preventDefault();
-    // document.body.innerHTML = "";
     var innerContent =  document.getElementById("du_news_page");
     innerContent.innerHTML = "";
-    document.body.innerHTML = `<main><div id="du_news_page"><section class="banking du-mb-5"><div class="du-container container-section">
+    innerContent.innerHTML = `<div id="du_news_page"><section class="banking du-mb-5"><div class="du-container container-section">
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><a href="#" class="back-btn-du" onClick="duNewsSummaryPage(event);">Back to Du News Summary</a>
-    <div id="du_news_view_container"></div></div></div></div></section></div></main>`
+    <div id="du_news_view_container"></div></div></div></div></section></div>`
     var info_widgets_config_data = {
         "widgets": [
             {
@@ -285,10 +284,9 @@ function viewDuNewsPage(event) {
 
 function duNewsSummaryPage(event) {
     event.preventDefault();
-    // document.body.innerHTML = "";
     var innerContent =  document.getElementById("du_news_page");
     innerContent.innerHTML = "";
-    document.body.innerHTML = `<main><div id="du_news_page"><div class="du-container-fluid container-fluid-pd du-mt-5"><section>
+    innerContent.innerHTML = `<main><div id="du_news_page"><div class="du-container-fluid container-fluid-pd du-mt-5"><section>
     <div class="du-row"><div class="du-col-md-9"><div id="du_top_container_news"></div></div><div class="du-col-md-3 stocks-sidebar">
     <div id="du_most_read_container_news"></div></div></div></section><section><div class="du-row"><div class="du-col-md-12">
     <div id="du_exclusive_news_container"></div></div></div></section><section><div class="du-row du-mt-5"><div class="du-col-md-12">
