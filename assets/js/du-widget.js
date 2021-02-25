@@ -144,7 +144,7 @@ function exclusiveNewsHomeHTML(responseDataObj) {
         <small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading mt70">Mubasher Exclusive</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(event);">See all
+    outputHtmlString = `<h4 class="exclusive-heading mt70">Mubasher Exclusive</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row">` + insideLoopHTML + `</div>`;
     return outputHtmlString;
 }
@@ -159,7 +159,7 @@ function islamicFinanceNewsHTML(responseDataObj) {
         </div><div class="du-col-sm-8"><small>Markets - <span>10 minutes ago</span></small>
         <h6>Egypt runs first return flight for workers stranded in Kuwait</h6></a></div></div></div>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">Islamic Finance</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(event);">See all
+    outputHtmlString = `<h4 class="exclusive-heading">Islamic Finance</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><hr><div class="du-row">` + insideLoopHTML + `<div class="du-col-12"><hr></div></div>`;
     return outputHtmlString;
 }
@@ -174,7 +174,7 @@ function arabMarketNewsHTML(responseDataObj) {
         <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h6 class="title-img-description">` + data.title + `</h6></div></a><hr></div>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">Arab Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(event);">See all
+    outputHtmlString = `<h4 class="exclusive-heading">Arab Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row du-mt-2">` + insideLoopHTML + `</div>`;
     return outputHtmlString;
 }
@@ -189,7 +189,7 @@ function internationalMarketHTML(responseDataObj) {
         <div class="du-col-md-8 du-mt-4"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h5 class="title-img-description">` + data.title + `</h5><p>` + data.body + `</p></a></div></div><hr>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">International Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(event);">See all<img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTML;
+    outputHtmlString = `<h4 class="exclusive-heading">International Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all<img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTML;
     return outputHtmlString;
 }
 
@@ -202,7 +202,7 @@ function pressReleaseNewsHTML(responseDataObj) {
         <small class="title-under-img">Markets - <span>10 minutes ago</span></small>
         <h5 class="title-img-description mb-3">` + data.title + `</h5></div></a><hr>`
     });
-    outputHtmlString = `<h4 class="exclusive-heading">Press Release</h4><a href="#" class="view-all-text" onClick="duListingNewsPage(event);">See all
+    outputHtmlString = `<h4 class="exclusive-heading">Press Release</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
     <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row">
     <div class="du-col-md-4"><img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/ccb89c0d02e8fdcc7cfdb45678d7395f.png"></div>
     <div class="du-col-md-8">` + insideLoopHTML + `</div></div>`;
@@ -220,23 +220,91 @@ function mostReadNewsHTML(responseDataObj) {
         <p class="most-read-news-title">` + data.title + `</p></div><div class="du-col-12"><hr></div>
         </div></div>`
     });
-    outputHtmlString = `<h4 class="font26">Most Read</h4><hr>` + insideLoopHTML + `<div class="du-col-sm-12 text-center">
+    outputHtmlString = `<h4 class="font26 du-black-title">Most Read</h4><hr>` + insideLoopHTML + `<div class="du-col-sm-12 du-text-center">
     <a href="#" class="main-color ff-hel-b">View More<span><img src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div>`;
     return outputHtmlString;
 }
 
 
+/* DU News View */
+
+/* Related News DU */
+function relatedViewNewsHTML(responseDataObj) {
+    // $('#du_news_listing_page').css('display', 'none');
+    // $('#du_news_page').css('display', 'none');
+    let outputHtmlString = "";
+    let insideLoopHTML = "";
+    responseDataObj.articles.forEach(data => {
+        insideLoopHTML += `<div class="du-row"><div class="du-col-sm-4 ml-5">
+        <a href="#" onClick="viewDuNewsPage(detailPage, event);"><img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt="">
+        </div><div class="du-col-sm-8"><small>Markets - <span>10 minutes ago</span></small><br><br><h4 class="news-title">
+        <a href="#">` + data.title + `</a></h4>
+        <p>` + data.body + `</p></a></div></div><hr>`
+    });
+    outputHtmlString = `<h1>Egypt runs first return flight for workers stranded in Kuwait</h1>
+    <img class="du-img-fluid du-mb-4 width-100" src="./assets/images/Group 1062.png" alt=""><div class="du-row"><div class="du-col-md-6">
+    <p class="du-mb-4">Committed investments in the GCC region increased by 2.3% </p></div><div class="du-col-md-6">
+    <small class="pull-right">Markets - <span>10 minutes ago</span></small></div></div><div class="du-row"><div class="du-col-sm-12">
+    <p>Mubasher: The Arab Petroleum Investments Corporation (APICORP) estimates that planned and committed investments in the Middle East and North Africa 
+    (MENA) region will exceed $792 billion over the next five years from 2020 to 2024.</p><p>The estimated value marks a $173 billion decline from last year’s 
+    estimation, which is mostly in planned investments due to what APICORP calls the 2020 triple crisis.</p><p>The triple crisis is referring to the 
+    coronavirus (COVID-19) pandemic and its related health crisis, coupled with the oil crisis and the looming financial crisis, according to the 
+    MENA Energy Investment Outlook 2020-2024.</p><p>However, the outlook report mentioned that despite the difficulties, committed investments in 
+    the GCC region increased by 2.3% compared to a 6% overall decrease in the entire MENA region.</p>
+    <img class="du-img-fluid mb-3 du-d-block du-mx-auto" src="./assets/images/image-49.png" alt="">
+    <p>In addition, the report referred to the current dilemma in dealing with the consequences of the COVID-19 pandemic, emphasizing that the resumption of 
+    travel and trade will require international coordination.</p><p>APICORP estimates the price of Brent crude oil to average $30-40 in 2020 and 2021 before 
+    reflecting a more balanced market.</p><p>As for the financial crisis, the report noted that stimulus plans could create enormous unproductive debt that 
+    could negatively impact economic growth.</p><p>“The nature of this triple crisis and the profound restructuring in oil and gas will hit energy investments 
+    for a potentially long period of time, sowing the seeds of supply crunches and price volatility. Therefore, we expect a W-shaped recovery for the MENA 
+    region,” said Ahmed Ali Attiga, CEO of APICORP.</p><p>Attiga further noted that despite the positive effects of digitization and automation on 
+    efficiencies across the value chains, many fundamental questions remain, which will negatively affect investments.</p><p>“International 
+    collaboration between the private and public sector will, therefore, be critical to counter the expected shortfalls in investment,” the CEO added.</p>
+    <p>APICORP expects “a restructuring of the value chain, thus putting the strongest countries and companies from a total cost and leverage 
+    standpoint in the best position to preserve their long-term value proposition and return to their respective shareholders,” according 
+    to Leila R Benali, Chief Economist, Head of Strategy, Energy Economics and Sustainability of APICORP.</p></div></div><h4>Related News</h4><hr>` + insideLoopHTML;
+    return outputHtmlString;
+}
+
+
+/* DU News Listing View */
+
+/* Listing View News DU */
+function newsListingViewNewsHTML(responseDataObj) {
+    // $('#du_news_view_page').css('display', 'none');
+    // $('#du_news_page').css('display', 'none');
+    let outputHtmlString = "";
+    let insideLoopHTML = "";
+    responseDataObj.articles.forEach(data => {
+        insideLoopHTML += `<div class="du-row"><div class="du-col-sm-4">
+        <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt="">
+        </div><div class="du-col-sm-8 du-mt-4"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
+        <h4 class="title-news-description">` + data.title + `</h4><p>` + data.body + `</p></div>
+        <div class="du-col-12"><hr></div></div>`
+    });
+    outputHtmlString = `<h1 class="main-news-title du-mt-4">Banking</h1><div class="du-row"><div class="du-col-sm-6">
+    <div class="news-inner"><a href="news-view.html"><div class="bg-clr-fr-news d-flex flex-wrap align-content-center">
+    <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/Image%2056.png" alt=""></div></a><div class="clearfix du-mt-3">
+    <small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
+    <a class="title-img-description txt-black" href="news-view.html"> Egypt runs first return flight for workers stranded in Kuwait</a></h3></div></div></div>
+    <div class="du-col-sm-6"><div class="news-inner"><img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/Image%2056.png" alt="">
+    <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
+    Egypt runs first return flight for workers stranded in Kuwait</h3></div></div></div></div>` + insideLoopHTML;
+    return outputHtmlString;
+}
+
 
 
 /* Du Page Redirection */
 
-function duListingNewsPage(event) {
+function duListingNewsPage(state, event) {
     event.preventDefault();
-    var innerContent =  document.getElementById("du_news_page");
+    sessionStorage.setItem('du-widget-state', state);
+    var innerContent = document.getElementById("du_news_page");
     innerContent.innerHTML = "";
-    innerContent.innerHTML = `<div id="du_news_page"><section class="banking du-mb-5"><div class="du-container container-section">
-    <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><a href="#" class="back-btn-du" onClick="duNewsSummaryPage(event);">Back to Du News Summary</a>
-    <div id="du_news_view_container"></div></div></div></div></section></div>`
+    innerContent.innerHTML = `<section class="banking du-mb-5"><div class="du-container-fluid container-section">
+    <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><a href="#" class="back-btn-du" onClick="duNewsBackState(event);">Back to Du News Summary</a>
+    <div id="du_news_view_container"></div></div></div></div></section>`
     var info_widgets_config_data = {
         "widgets": [
             {
@@ -256,13 +324,14 @@ function duListingNewsPage(event) {
     loadInfoJsWidget(info_widgets_config_data);
 }
 
-function viewDuNewsPage(event) {
+function viewDuNewsPage(state, event) {
     event.preventDefault();
-    var innerContent =  document.getElementById("du_news_page");
+    sessionStorage.setItem('du-widget-state', state);
+    var innerContent = document.getElementById("du_news_page");
     innerContent.innerHTML = "";
-    innerContent.innerHTML = `<div id="du_news_page"><div id="du_news_view_page"><div class="du-container du-mt-5">
-    <div class="du-row"><div class="du-col-md-12 news-left-col"><a href="#" class="back-btn-du" onClick="duNewsSummaryPage(event);">Back to Du News Summary</a>
-    <div id="du_related_news_container"></div></div></div></div></div></div>`
+    innerContent.innerHTML = `<div class="du-container-fluid du-mt-5">
+    <div class="du-row"><div class="du-col-md-12 news-left-col"><a href="#" class="back-btn-du" onClick="duNewsBackState(event);">Back to Du News Summary</a>
+    <div id="du_related_news_container"></div></div></div></div>`
     var info_widgets_config_data = {
         "widgets": [
             {
@@ -282,18 +351,19 @@ function viewDuNewsPage(event) {
     loadInfoJsWidget(info_widgets_config_data);
 }
 
-function duNewsSummaryPage(event) {
+function duNewsSummaryPage(state, event) {
     event.preventDefault();
-    var innerContent =  document.getElementById("du_news_page");
+    sessionStorage.setItem('du-widget-state', state);
+    var innerContent = document.getElementById("du_news_page");
     innerContent.innerHTML = "";
-    innerContent.innerHTML = `<main><div id="du_news_page"><div class="du-container-fluid container-fluid-pd du-mt-5"><section>
+    innerContent.innerHTML = `<div class="du-container-fluid container-fluid-pd du-mt-5"><section>
     <div class="du-row"><div class="du-col-md-9"><div id="du_top_container_news"></div></div><div class="du-col-md-3 stocks-sidebar">
     <div id="du_most_read_container_news"></div></div></div></section><section><div class="du-row"><div class="du-col-md-12">
     <div id="du_exclusive_news_container"></div></div></div></section><section><div class="du-row du-mt-5"><div class="du-col-md-12">
     <div id="du_ismalic_finance_container"></div></div></div></section><section><div class="du-row du-mt-5"><div class="du-col-md-12">
     <div id="du_arab_market_container"></div></div></div></section><section><div class="du-row mt70"><div class="du-col-md-12">
     <div id="du_international_market_container"></div></div></div></section><section><div class="du-row mt70 du-mb-5"><div class="du-col-md-12">
-    <div id="du_press_container_release"></div></div></div></section></div></div></main>`
+    <div id="du_press_container_release"></div></div></div></section></div>`
     var info_widgets_config_data = {
         "widgets": [{
             "widget_config": [
@@ -372,71 +442,19 @@ function duNewsSummaryPage(event) {
     loadInfoJsWidget(info_widgets_config_data);
 }
 
-
-/* DU News View */
-
-/* Related News DU */
-function relatedViewNewsHTML(responseDataObj) {
-    // $('#du_news_listing_page').css('display', 'none');
-    // $('#du_news_page').css('display', 'none');
-    let outputHtmlString = "";
-    let insideLoopHTML = "";
-    responseDataObj.articles.forEach(data => {
-        insideLoopHTML += `<div class="du-row"><div class="du-col-sm-4 ml-5">
-        <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt="">
-        </div><div class="du-col-sm-8"><small>Markets - <span>10 minutes ago</span></small><br><br><h4 class="news-title">
-        <a href="#">` + data.title + `</a></h4>
-        <p>` + data.body + `</p></div></div><hr>`
-    });
-    outputHtmlString = `<h1>Egypt runs first return flight for workers stranded in Kuwait</h1>
-    <img class="du-img-fluid du-mb-4 width-100" src="./assets/images/Group 1062.png" alt=""><div class="du-row"><div class="du-col-md-6">
-    <p class="du-mb-4">Committed investments in the GCC region increased by 2.3% </p></div><div class="du-col-md-6">
-    <small class="pull-right">Markets - <span>10 minutes ago</span></small></div></div><div class="du-row"><div class="du-col-sm-12">
-    <p>Mubasher: The Arab Petroleum Investments Corporation (APICORP) estimates that planned and committed investments in the Middle East and North Africa 
-    (MENA) region will exceed $792 billion over the next five years from 2020 to 2024.</p><p>The estimated value marks a $173 billion decline from last year’s 
-    estimation, which is mostly in planned investments due to what APICORP calls the 2020 triple crisis.</p><p>The triple crisis is referring to the 
-    coronavirus (COVID-19) pandemic and its related health crisis, coupled with the oil crisis and the looming financial crisis, according to the 
-    MENA Energy Investment Outlook 2020-2024.</p><p>However, the outlook report mentioned that despite the difficulties, committed investments in 
-    the GCC region increased by 2.3% compared to a 6% overall decrease in the entire MENA region.</p>
-    <img class="du-img-fluid mb-3 du-d-block du-mx-auto" src="./assets/images/image-49.png" alt="">
-    <p>In addition, the report referred to the current dilemma in dealing with the consequences of the COVID-19 pandemic, emphasizing that the resumption of 
-    travel and trade will require international coordination.</p><p>APICORP estimates the price of Brent crude oil to average $30-40 in 2020 and 2021 before 
-    reflecting a more balanced market.</p><p>As for the financial crisis, the report noted that stimulus plans could create enormous unproductive debt that 
-    could negatively impact economic growth.</p><p>“The nature of this triple crisis and the profound restructuring in oil and gas will hit energy investments 
-    for a potentially long period of time, sowing the seeds of supply crunches and price volatility. Therefore, we expect a W-shaped recovery for the MENA 
-    region,” said Ahmed Ali Attiga, CEO of APICORP.</p><p>Attiga further noted that despite the positive effects of digitization and automation on 
-    efficiencies across the value chains, many fundamental questions remain, which will negatively affect investments.</p><p>“International 
-    collaboration between the private and public sector will, therefore, be critical to counter the expected shortfalls in investment,” the CEO added.</p>
-    <p>APICORP expects “a restructuring of the value chain, thus putting the strongest countries and companies from a total cost and leverage 
-    standpoint in the best position to preserve their long-term value proposition and return to their respective shareholders,” according 
-    to Leila R Benali, Chief Economist, Head of Strategy, Energy Economics and Sustainability of APICORP.</p></div></div><h4>Related News</h4><hr>` + insideLoopHTML;
-    return outputHtmlString;
-}
-
-
-
-/* DU News Listing View */
-
-/* Listing View News DU */
-function newsListingViewNewsHTML(responseDataObj) {
-    // $('#du_news_view_page').css('display', 'none');
-    // $('#du_news_page').css('display', 'none');
-    let outputHtmlString = "";
-    let insideLoopHTML = "";
-    responseDataObj.articles.forEach(data => {
-        insideLoopHTML += `<div class="du-row"><div class="du-col-sm-4">
-        <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt="">
-        </div><div class="du-col-sm-8 du-mt-4"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
-        <h4 class="title-news-description">` + data.title + `</h4><p>` + data.body + `</p></div>
-        <div class="du-col-12"><hr></div></div>`
-    });
-    outputHtmlString = `<h1 class="main-news-title du-mt-4">Banking</h1><div class="du-row"><div class="du-col-sm-6">
-    <div class="news-inner"><a href="news-view.html"><div class="bg-clr-fr-news d-flex flex-wrap align-content-center">
-    <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/Image%2056.png" alt=""></div></a><div class="clearfix du-mt-3">
-    <small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
-    <a class="title-img-description txt-black" href="news-view.html"> Egypt runs first return flight for workers stranded in Kuwait</a></h3></div></div></div>
-    <div class="du-col-sm-6"><div class="news-inner"><img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/Image%2056.png" alt="">
-    <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
-    Egypt runs first return flight for workers stranded in Kuwait</h3></div></div></div></div>` + insideLoopHTML;
-    return outputHtmlString;
+function duNewsBackState() {
+    var state = sessionStorage.getItem('du-widget-state');
+    switch (state) {
+        case summaryPage:
+            return this.duNewsSummaryPage();
+            break;
+        case detailPage:
+            return this.viewDuNewsPage();
+            break;
+        case listingPage:
+            return this.duNewsSummaryPage();
+            break;
+        default:
+            return [];
+    }
 }

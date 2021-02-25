@@ -10283,3 +10283,9 @@ main *:after {
       border-color: #dee2e6;
     }
   }
+  .du-black-title{
+    color: #000000;
+  }
+  .du-white-title{
+    color: #ffffff;
+  }
