@@ -115,21 +115,38 @@ function createHTML(reqDataObject, widgetSlug) {
 
 /* Top News DU */
 function topNewsHomeHTML(responseDataObj) {
-    let outputHtmlString = "";
-    let insideLoopHTML = "";
-    responseDataObj.articles.forEach(data => {
-        insideLoopHTML += ` <div class="du-col-md-6"><a href="#" onClick="viewDuNewsPage('summaryPage', event);">
-        <small class="title-under-img">Markets - <span>10 minutes ago</span></small><h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
-    });
-    outputHtmlString = `<a href="news-view.html" class="lnd-tp-news lnd-tp-news-des">
-        <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png"><span class="lnd-tp-news-title font35 ff-hel-b du-text-white">
-        Egypt runs first return flight for workers stranded in Kuwait</span>
-        <span class="lnd-tp-news-time font14 du-text-white">Markets - 10 minutes ago</span></a><div class="du-row du-mt-3">
-        <a href="news-view.html" class="lnd-tp-news lnd-tp-news-mob">
-        <span class="lnd-tp-news-title font35 ff-hel-b du-text-white">Egypt runs first return flight for workers stranded in Kuwait</span>
-        <span class="lnd-tp-news-time font14 du-text-white">Markets - 10 minutes ago</span>
-        <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png"></a>` + insideLoopHTML + `</div>`;
-    return outputHtmlString;
+    switch (sessionStorage.getItem('duStateLanguage')) {
+        default:
+            let outputHtmlString = "";
+            let insideLoopHTML = "";
+            responseDataObj.articles.forEach(data => {
+                insideLoopHTML += ` <div class="du-col-md-6"><a href="#" onClick="viewDuNewsPage('summaryPage', event);">
+                <small class="title-under-img">Markets - <span>10 minutes ago</span></small><h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
+            });
+            outputHtmlString = `<a href="#" class="lnd-tp-news lnd-tp-news-des">
+                <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png"><span class="lnd-tp-news-title font35 ff-hel-b du-text-white">
+                Egypt runs first return flight for workers stranded in Kuwait</span>
+                <span class="lnd-tp-news-time font14 du-text-white">Markets - 10 minutes ago</span></a><div class="du-row du-mt-3">
+                <a href="#" class="lnd-tp-news lnd-tp-news-mob">
+                <span class="lnd-tp-news-title font35 ff-hel-b du-text-white">Egypt runs first return flight for workers stranded in Kuwait</span>
+                <span class="lnd-tp-news-time font14 du-text-white">Markets - 10 minutes ago</span>
+                <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png"></a>` + insideLoopHTML + `</div>`;
+            return outputHtmlString;
+            break;
+        case 'AR':
+            let outputHtmlStringAr = "";
+            let insideLoopHTMLAr = "";
+            responseDataObj.articles.forEach(data => {
+                insideLoopHTMLAr += `<div class="du-col-md-6">
+                <small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
+                <h5 class="title-img-description">متعامل يتابع أس الأسهم سوق الأسهم السعودية يرتفع بالختام بسيولة 4.4 مليار ريال بدعم القياديات</h5><hr></div>`
+            });
+            outputHtmlStringAr = `<a href="news-view-arabic.html" class="lnd-tp-news"><img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png">
+            <span class="lnd-tp-news-title ff-hel-b du-text-white">متعامل يتابع أس الأسهم سوق الأسهم السعودية يرتفع بالختام بسيولة 4.4 مليار ريال بدعم القياديات</span>
+            <span class="lnd-tp-news-time font14 du-text-white">قبل 3 ساعات</span></a><div class="du-row du-mt-3">` + insideLoopHTMLAr + `</div>`;
+            return outputHtmlStringAr;
+            break;
+    }
 }
 
 /* Exclusive News DU */
@@ -278,10 +295,10 @@ function newsListingViewNewsHTML(responseDataObj) {
         <div class="du-col-12"><hr></a></div></div>`
     });
     outputHtmlString = `<h1 class="main-news-title du-mt-4">Banking</h1><div class="du-row"><div class="du-col-sm-6">
-    <div class="news-inner"><a href="news-view.html"><div class="bg-clr-fr-news d-flex flex-wrap align-content-center">
+    <div class="news-inner"><a href="#"><div class="bg-clr-fr-news d-flex flex-wrap align-content-center">
     <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/Image%2056.png" alt=""></div></a><div class="clearfix du-mt-3">
     <small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
-    <a class="title-img-description txt-black" href="news-view.html"> Egypt runs first return flight for workers stranded in Kuwait</a></h3></div></div></div>
+    <a class="title-img-description txt-black" href="#"> Egypt runs first return flight for workers stranded in Kuwait</a></h3></div></div></div>
     <div class="du-col-sm-6"><div class="news-inner"><img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/Image%2056.png" alt="">
     <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
     Egypt runs first return flight for workers stranded in Kuwait</h3></div></div></div></div>` + insideLoopHTML;
