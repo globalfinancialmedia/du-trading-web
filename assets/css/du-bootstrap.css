@@ -75,19 +75,19 @@ main *:after {
   }
   
   hr {
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible;
+    box-sizing: content-box !important;
+    height: 0 !important;
+    overflow: visible !important;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
   }
   
   p {
-    margin-top: 0;
-    margin-bottom: 1rem;
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important;
   }
   
   abbr[title],
@@ -140,7 +140,7 @@ main *:after {
   }
   
   small {
-    font-size: 80%;
+    font-size: 80% !important;
   }
   
   sub,
@@ -160,8 +160,7 @@ main *:after {
   }
   
   a {
-    color: #000000;
-    /* color: #ffffff; */
+    color: #000000 !important;
     text-decoration: none;
     background-color: transparent;
   }
@@ -201,8 +200,8 @@ main *:after {
   }
   
   img {
-    vertical-align: middle;
-    border-style: none;
+    vertical-align: middle !important;
+    border-style: none !important;
   }
   
   svg {
@@ -363,33 +362,33 @@ main *:after {
   
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6 {
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    line-height: 1.2;
+    margin-bottom: 0.5rem !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
   }
   
   h1, .h1 {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
   }
   
   h2, .h2 {
-    font-size: 2rem;
+    font-size: 2rem !important;
   }
   
   h3, .h3 {
-    font-size: 1.75rem;
+    font-size: 1.75rem !important;
   }
   
   h4, .h4 {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
   }
   
   h5, .h5 {
-    font-size: 1.25rem;
+    font-size: 1.25rem !important;
   }
   
   h6, .h6 {
-    font-size: 1rem;
+    font-size: 1rem !important;
   }
   
   .du-lead {
