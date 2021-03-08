@@ -24,8 +24,8 @@
     font-family: 'HelveticaNeueW23foSKY-Bd';
   }
   a:hover {
-        color: #008998;
-        text-decoration: none;
+        color: #008998 !important;
+        text-decoration: none !important;
     }
   p {
     font-family: 'HelveticaNeueW23forSKY-Reg';
