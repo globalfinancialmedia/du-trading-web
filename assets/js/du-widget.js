@@ -172,7 +172,7 @@ function mostReadNewsHTML(responseDataObj) {
             responseDataObj.articles.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-row"><div class="du-col-4">
                 <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-2.png" alt="">
-                </div><div class="du-col-8"><div class="sidebar-readmore-description">هو السيناريو الأكثر قسوة على المملكة ودول العالم، وهي أن تتخذ السعودية قراراً بإلغاء</div></div>
+                </div><div class="du-col-8"><div class="sidebar-readmore-description txt-black">هو السيناريو الأكثر قسوة على المملكة ودول العالم، وهي أن تتخذ السعودية قراراً بإلغاء</div></div>
                 <div class="du-col-12"><hr class="sidebar-hr"></div></div>`
             });
             outputHtmlStringAr = `<div class="most-read-news-list"><h4 class="sidebar-readmore-title">الأخبار الأكثر</h4>` + insideLoopHTMLAr + `<div class="du-row">
