@@ -89,55 +89,19 @@ function createHTML(reqDataObject, widgetSlug) {
 
 function testHTML(responseDataObj) {
     let outputHtmlStringAr = "";
-    outputHtmlStringAr = `
-    <div id="wrapper">
-    <div class="row">
-      <div class="col-xs-5">
-        <div id="cards">
-          <img src="./assets/images/Visa-icon.png">
-          <img src="./assets/images/Master-Card-icon.png">
-          <img src="./assets/images/Paypal-icon.png">
-        </div><!--#cards end-->
-      </div><!--col-xs-5 end-->
-    </div><!--row end-->
-    
-    <div class="row">
-      <div class="col-xs-5">
-        <i class="fa fa fa-user"></i>
-        <label for="cardholder">Cardholder's Name</label>
-        
-        <input type="hidden" id="currency" name="currency" value="EGP">
-        <input type="hidden" id="clientIdentifier" name="clientIdentifier" value="duMubasher">
-        <input type="hidden" id="amount" name="amount" value="27">
-        
-
-        <input type="text" name='cardholder' placeholder="Mike John" id="cardholder">
-      </div><!--col-xs-5-->
-      <div class="col-xs-5">
-        <i class="fa fa-credit-card-alt"></i>
-        <label for="cardnumber">Card Number</label>
-        <input type="text" placeholder="1234567891011" id="cardNumber" name="cardNumber">
-      </div><!--col-xs-5-->
-    </div><!--row end-->
-    <div class="row row-three">
-      <div class="col-xs-2">
-        <i class="fa fa-calendar"></i>
-        <label for="date">Valid thru</label>
-        <input type="text" placeholder="01/22" id="cardExpiryDate" name="cardExpiryDate">
-      </div><!--col-xs-3-->
-      <div class="col-xs-2">
-        <i class="fa fa-lock"></i>
-        <label for="date">CVV / CVC *</label>
-        <input type="text" placeholder="123" id="cardSecurityCode" name="cardSecurityCode">
-      </div><!--col-xs-3-->
-      <div class="col-xs-5">
-        <span class="small">* CVV or CVC is the card security code, unique three digits number on the back of your card seperate from its number.</span>
-      </div><!--col-xs-6 end-->
-    </div><!--row end-->
-    <footer>
-      <button class="btn" onclick='handleSubmit(event)'>Start Subscription</button>
-    </footer>
-  </div>`;
+    outputHtmlStringAr = `<div class="du-card du-payment-wrapper"><div class="du-card-header">Payment Info</div><div class="du-card-body">
+    <div class="du-text-center"><img src="./assets/images/Visa-icon.png" width="100px"><img src="./assets/images/Master-Card-icon.png" width="100px">
+    <img src="./assets/images/Paypal-icon.png" width="100px"></div><form><div class="du-row du-mb-3"><div class="du-col">
+    <label for="formGroupExampleInput">Cardholder's Name</label><input type="hidden" id="currency" name="currency" value="EGP">
+    <input type="hidden" id="clientIdentifier" name="clientIdentifier" value="duMubasher"><input type="hidden" id="amount" name="amount" value="27">
+    <input type="text" class="du-form-control" name='cardholder' placeholder="Mike John" id="cardholder"></div><div class="du-col">
+    <label for="formGroupExampleInput">Card Number</label><input type="text" class="du-form-control" placeholder="1234567891011" 
+    id="cardNumber" name="cardNumber"></div></div><div class="du-row"><div class="du-col"><label for="formGroupExampleInput">
+    Valid thru</label><input type="text" name="cardExpiryDate" id="cardExpiryDate" class="du-form-control" placeholder="01/22">
+    </div><div class="du-col"><label for="formGroupExampleInput">CVV / CVC *</label><input type="text" class="du-form-control" 
+    placeholder="123" id="cardSecurityCode" name="cardSecurityCode"></div></div><div class="du-row du-mt-3"><div class="du-col">
+    <p class="small">* CVV or CVC is the card security code, unique three digits number on the back of your card seperate from its number.</p>
+    </div></div><button class="btn du-btn-primary du-payment-btn-submit" onclick='handleSubmit(event)'>Start Subscription</button></form></div></div>`;
     return outputHtmlStringAr;
 };
 
