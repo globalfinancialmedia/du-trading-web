@@ -1,15 +1,15 @@
 const info_mubasher_widget_urls = [
-    { "slug": "du_top_news", "url": "http://localhost:8183/api/news" },
-    { "slug": "du_most_read", "url": "http://localhost:8183/api/news" },
-    { "slug": "du_press_release", "url": "http://localhost:8183/api/news" },
-    { "slug": "du_international_market", "url": "http://localhost:8183/api/news" },
-    { "slug": "du_arab_market", "url": "http://localhost:8183/api/news" },
-    { "slug": "du_islamic_finance", "url": "http://localhost:8183/api/news" },
-    { "slug": "du_news_exclusive", "url": "http://localhost:8183/api/news" },
+    { "slug": "du_top_news", "url": "http://72.26.216.39:8183/api/news" },
+    { "slug": "du_most_read", "url": "http://72.26.216.39:8183/api/news" },
+    { "slug": "du_press_release", "url": "http://72.26.216.39:8183/api/news" },
+    { "slug": "du_international_market", "url": "http://72.26.216.39:8183/api/news" },
+    { "slug": "du_arab_market", "url": "http://72.26.216.39:8183/api/news" },
+    { "slug": "du_islamic_finance", "url": "http://72.26.216.39:8183/api/news" },
+    { "slug": "du_news_exclusive", "url": "http://72.26.216.39:8183/api/news" },
     // Du News View
-    { "slug": "du_related_news", "url": "http://localhost:8183/api/news" },
+    { "slug": "du_related_news", "url": "http://72.26.216.39:8183/api/news" },
     // Du News View Listing
-    { "slug": "du_news_view_listing", "url": "http://localhost:8183/api/news" },
+    { "slug": "du_news_view_listing", "url": "http://72.26.216.39:8183/api/news" },
 ];
 
 
@@ -389,12 +389,12 @@ function relatedViewNewsHTML(responseDataObj) {
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
             responseDataObj.articles.forEach(data => {
-                insideLoopHTMLAr += `<div class="du-row"><div class="du-col-sm-4"><img class="img-fluid width-100" 
+                insideLoopHTMLAr += `<div class="du-row"><div class="du-col-sm-4"><a href="#" onClick="viewDuNewsPage('summaryPag1e', event);"><img class="img-fluid width-100" 
                 src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt=""></div><div class="du-col-sm-8 news-block"><small class="title-under-img">
                 محتوی الشریک - <span>قبل 3 ساعات</span></small><h4 class="title-news-description">متعامل يتابع أس الأسهم سوق الأسهم
                  السعودية يرتفع بالختام بسيولة 4.4 مليار ريال</h4><p>هو السيناريو الأكثر قسوة على المملكة ودول العالم، وهي أن تتخذ السعودية
                   قراراً بإلغاء موسم الحج لهذا العام، خوفاً من تكوين بؤرة جديدة لانتشار فيروس كورونا
-                  في واحدة من أكبر التجمعات البشرية سنوياً في العالم، خاصة بعدما تخطت</p></div><div class="du-col-12"><hr></div></div>`
+                  في واحدة من أكبر التجمعات البشرية سنوياً في العالم، خاصة بعدما تخطت</p></div><div class="du-col-12"></a><hr></div></div>`
             });
             outputHtmlStringAr = `<h1 class="news-main-heading">لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار النشوة وتمجيد الألم</h1>
             <small class="news-under-title-description">محتوی الشریک - <span>قبل 3 ساعات</span></small><img class="img-fluid du-mb-3 du-mt-2 width-100" 
@@ -408,7 +408,7 @@ function relatedViewNewsHTML(responseDataObj) {
                     التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض المتعة ؟</p>
                 <br><p class="mubasher-news-description"> علي الجانب الآخر نشجب ونستنكر هؤلاء الرجال المفتونون بنشوة اللحظة الهائمون في رغباتهم
                  فلا يدركون ما يعقبها من الألم والأسي المحتم، واللوم كذلك يشمل هؤلاء الذين أخفقوا</p><br>
-                 <img class="img-fluid du-mb-3 d-block du-mx-auto" src="https://du-widget.herokuapp.com/assets/images/image-49.png" alt="">
+                 <img class="img-fluid du-mb-3 du-d-block du-mx-auto" src="https://du-widget.herokuapp.com/assets/images/image-49.png" alt="">
                  <p class="mubasher-news-description">لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول
                     استنكار النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك
                     السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص
@@ -466,7 +466,7 @@ function newsListingViewNewsHTML(responseDataObj) {
             <a class="title-img-description txt-black" href="#"> Egypt runs first return flight for workers stranded in Kuwait</a></h3></div></div></div>
             <div class="du-col-sm-6"><div class="news-inner"><img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/Image%2056.png" alt="">
             <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
-            Egypt runs first return flight for workers stranded in Kuwait</h3></div></div></div></div>` + insideLoopHTML;
+            <a class="title-img-description txt-black" href="#">Egypt runs first return flight for workers stranded in Kuwait</a></h3></div></div></div></div>` + insideLoopHTML;
             return outputHtmlString;
         break;
         case 'AR':
@@ -475,8 +475,8 @@ function newsListingViewNewsHTML(responseDataObj) {
             responseDataObj.articles.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-row"><div class="du-col-sm-4">
                 <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt=""></div>
-                <div class="du-col-sm-8"><small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
-                <h4 class="title-news-description">متعامل يتابع أس الأسهم سوق الأسهم السعودية يرتفع بالختام بسيولة 4.4 مليار ريال بدعم القياديات</h4>
+                <div class="du-col-sm-8"><small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small><a href="#" onClick="viewDuNewsPage('listingPage', event);">
+                <h4 class="title-news-description">متعامل يتابع أس الأسهم سوق الأسهم السعودية يرتفع بالختام بسيولة 4.4 مليار ريال بدعم القياديات</h4></a>
                 <p>هو السيناريو الأكثر قسوة على المملكة ودول العالم، وهي أن تتخذ السعودية قراراً بإلغاء موسم الحج لهذا العام،
                  خوفاً من تكوين بؤرة جديدة لانتشار فيروس كورونا في واحدة من أكبر التجمعات البشرية سنوياً في العالم، خاصة بعدما تخطت</p></div>
                  <div class="du-col-12"><hr></div></div>`
@@ -531,7 +531,7 @@ function viewDuNewsPage(state, event) {
     sessionStorage.setItem('du-widget-state', state);
     var innerContent = document.getElementById("du_news_page");
     innerContent.innerHTML = "";
-    innerContent.innerHTML = `<div class="du-container-fluid du-mt-5">
+    innerContent.innerHTML = `<div class="du-container-fluid">
     <div class="du-row"><div class="du-col-md-12 news-left-col"><a href="#" class="back-btn-du" onClick="duNewsBackState();">Back to Du News Summary</a>
     <div id="du_related_news_container"></div></div></div></div>`
     var info_widgets_config_data = {
