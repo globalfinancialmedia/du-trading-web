@@ -135,7 +135,7 @@ function testHTML(responseDataObj) {
       </div><!--col-xs-6 end-->
     </div><!--row end-->
     <footer>
-      <button class="btn" type='submit'>Start Subscription</button>
+      <button class="btn" onclick='handleSubmit(event)'>Start Subscription</button>
     </footer>
   </div>`;
     return outputHtmlStringAr;
@@ -145,25 +145,30 @@ function handleSubmit(event) {
     event.preventDefault();
 
     console.log('submit Payment function');
-    
+    var cd = document.getElementById('cardholder').value;
+	var cn = document.getElementById('cardNumber').value;
+	var ced = document.getElementById('cardExpiryDate').value;
+	var csc = document.getElementById('cardSecurityCode').value;
 
-    const data = new FormData(event.target);
-    const value = Object.fromEntries(data.entries());
+//4005550000000001
+	var ItemJSON = '{    "cardExpiryDate": "'+ced+'",    "cardNumber": "'+cn+'",   "cardHolder": "'+cd+'",   "cardSecurityCode": "'+csc+'", "currency": "EGP",  "customer_email": "test@test.com",  "language": "en",  "clientIdentifier": "testClient", "userId":"testUser", "appId":"duTestApp", "amount":"100"  }';
+
+console.log('request body: ' + ItemJSON);
 
     fetch('http://localhost:2120/payment/v1/init', {
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
     },
-    body: JSON.stringify(value),
+    body: ItemJSON,
     })
     .then(response => response.json())
     .then(value => {
     console.log('Success:', value);
+	
     })
     .catch((error) => {
     console.error('Error:', error);
     });
-
-    console.log({ value });
+    
 };
