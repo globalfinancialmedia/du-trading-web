@@ -1,17 +1,16 @@
 const info_mubasher_widget_urls = [
-    { "slug": "du_top_news", "url": "http://72.26.216.39:8183/api/news" },
-    { "slug": "du_most_read", "url": "http://72.26.216.39:8183/api/news" },
-    { "slug": "du_press_release", "url": "http://72.26.216.39:8183/api/news" },
-    { "slug": "du_international_market", "url": "http://72.26.216.39:8183/api/news" },
-    { "slug": "du_arab_market", "url": "http://72.26.216.39:8183/api/news" },
-    { "slug": "du_islamic_finance", "url": "http://72.26.216.39:8183/api/news" },
-    { "slug": "du_news_exclusive", "url": "http://72.26.216.39:8183/api/news" },
+    { "slug": "du_top_news", "url": "http://0cbd9a1b158b.ngrok.io/api/v1/news/2/" },
+    { "slug": "du_most_read", "url": "http://0cbd9a1b158b.ngrok.io/api/v1/news/2/" },
+    { "slug": "du_press_release", "url": "http://0cbd9a1b158b.ngrok.io/api/v1/news/2/" },
+    { "slug": "du_international_market", "url": "http://0cbd9a1b158b.ngrok.io/api/v1/news/2/" },
+    { "slug": "du_arab_market", "url": "http://0cbd9a1b158b.ngrok.io/api/v1/news/2/" },
+    { "slug": "du_islamic_finance", "url": "http://0cbd9a1b158b.ngrok.io/api/v1/news/2/" },
+    { "slug": "du_news_exclusive", "url": "http://0cbd9a1b158b.ngrok.io/api/v1/news/2/" },
     // Du News View
-    { "slug": "du_related_news", "url": "http://72.26.216.39:8183/api/news" },
+    { "slug": "du_related_news", "url": "http://0cbd9a1b158b.ngrok.io/api/v1/news/2/" },
     // Du News View Listing
-    { "slug": "du_news_view_listing", "url": "http://72.26.216.39:8183/api/news" },
+    { "slug": "du_news_view_listing", "url": "http://0cbd9a1b158b.ngrok.io/api/v1/news/2/" },
 ];
-
 
 function loadInfoJsWidget(widget_data) {
     widget_data.widgets.forEach((config_data) => {
@@ -22,6 +21,7 @@ function loadInfoJsWidget(widget_data) {
         let apiUrlObj = info_mubasher_widget_urls.find(
             ({ slug }) => slug === widgetSlug
         );
+        loader(config_data.widget_config[1].htmlContainerId);
         if ((apiUrlObj.url != "" && apiUrlObj.url !== undefined)) {
             infoSendRequest(info_req_headers,
                 config_data.widget_config[3].data[0], //body
@@ -36,9 +36,14 @@ function loadInfoJsWidget(widget_data) {
     });
 };
 
+function loader(containerId) {
+    var element = document.getElementById(containerId);
+    element.classList.add("loader");
+};
+
 function infoSendRequest(req_headers, body, url, url_param, request_type, htmlContainerId, customeStyles, widgetSlug) {
     if (url_param !== "") {
-        url = url + "?" + url_param;
+        url = url + url_param;
     }
     let fetchParams = request_type === "POST" ? { method: request_type, headers: req_headers, body: body } : { method: request_type, headers: req_headers }
     fetch(url, fetchParams).then(res => {
@@ -75,8 +80,10 @@ function infoSendRequest(req_headers, body, url, url_param, request_type, htmlCo
         }
     })
         .then(response => {
+            console.log('res', response);
             let generatedHTML = createHTML(response, widgetSlug);
             var container = document.getElementById(htmlContainerId);
+            container.classList.remove("loader");
             if (typeof container === "object") {
                 container.innerHTML = generatedHTML;
             } else {
@@ -119,7 +126,7 @@ function topNewsHomeHTML(responseDataObj) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="du-col-md-6"><a href="#" onClick="viewDuNewsPage('summaryPage', event);">
                 <small class="title-under-img">Markets - <span>10 minutes ago</span></small><h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
             });
@@ -136,7 +143,7 @@ function topNewsHomeHTML(responseDataObj) {
         case 'AR':
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-col-md-6"><a href="#" onClick="viewDuNewsPage('summaryPage', event);">
                 <small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
                 <h5 class="title-img-description">متعامل يتابع أس الأسهم سوق الأسهم السعودية يرتفع بالختام بسيولة 4.4 مليار ريال بدعم القياديات</h5></a><hr></div>`
@@ -155,7 +162,7 @@ function mostReadNewsHTML(responseDataObj) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="du-row">
                 <div class="du-row ml-1"><div class="du-col-sm-4 col-3 pr-0 d-flex flex-wrap align-content-center">
                 <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-3.png"></div><div class="du-col-sm-8 col-9">
@@ -165,11 +172,11 @@ function mostReadNewsHTML(responseDataObj) {
             outputHtmlString = `<h4 class="font26 du-black-title">Most Read</h4><hr>` + insideLoopHTML + `<div class="du-col-sm-12 du-text-center">
             <a href="#" class="main-color ff-hel-b">View More<span><img src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div>`;
             return outputHtmlString;
-        break;
+            break;
         case 'AR':
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-row"><div class="du-col-4">
                 <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-2.png" alt="">
                 </div><div class="du-col-8"><div class="sidebar-readmore-description txt-black">هو السيناريو الأكثر قسوة على المملكة ودول العالم، وهي أن تتخذ السعودية قراراً بإلغاء</div></div>
@@ -179,7 +186,7 @@ function mostReadNewsHTML(responseDataObj) {
             <div class="du-col-sm-12 du-text-center du-mb-3"><a href="#" class="view-all-text main-color">عرض الكل <img class="pr-1 rotate90" 
             src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></a></div></div></div>`;
             return outputHtmlStringAr;
-        break;
+            break;
     }
 }
 
@@ -189,7 +196,7 @@ function exclusiveNewsHomeHTML(responseDataObj) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage('summaryPage', event);">
                 <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-mubasher-exclusive.png">
                 <small class="title-under-img">Markets - <span>10 minutes ago</span></small>
@@ -198,11 +205,11 @@ function exclusiveNewsHomeHTML(responseDataObj) {
             outputHtmlString = `<h4 class="exclusive-heading mt70">Mubasher Exclusive</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
             <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row">` + insideLoopHTML + `</div>`;
             return outputHtmlString;
-        break;
+            break;
         case 'AR':
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage('summaryPage', event);">
                 <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-mubasher-exclusive.png">
                 <small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
@@ -211,7 +218,7 @@ function exclusiveNewsHomeHTML(responseDataObj) {
             outputHtmlStringAr = `<h4 class="exclusive-heading mt70">حصرياً مباشر</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">اظهار الكل <img class="pr-1 rotate180" 
             src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row du-mt-3 du-mb-5">` + insideLoopHTMLAr + `</div>`;
             return outputHtmlStringAr;
-        break;
+            break;
     }
 }
 
@@ -221,7 +228,7 @@ function islamicFinanceNewsHTML(responseDataObj) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="isl-fi-news-wrap du-col-sm-4" style="margin-bottom:25px;"><div class="du-row"><div class="du-col-sm-4">
                 <a href="#" onClick="viewDuNewsPage('summaryPage', event);"><img class="du-img-fluid du-w-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e.png" alt="">
                 </div><div class="du-col-sm-8"><small>Markets - <span>10 minutes ago</span></small>
@@ -230,11 +237,11 @@ function islamicFinanceNewsHTML(responseDataObj) {
             outputHtmlString = `<h4 class="exclusive-heading">Islamic Finance</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
             <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><hr><div class="du-row">` + insideLoopHTML + `<div class="du-col-12"><hr></div></div>`;
             return outputHtmlString;
-        break;
+            break;
         case 'AR':
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="isl-fi-news-wrap du-col-sm-4 du-mb-4"><div class="du-row"><div class="du-col-sm-4">
                 <a href="#" onClick="viewDuNewsPage('summaryPage', event);"><img class="du-img-fluid w-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e.png" alt=""></div><div class="du-col-sm-8">
                 <small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
@@ -243,7 +250,7 @@ function islamicFinanceNewsHTML(responseDataObj) {
             outputHtmlStringAr = `<h4 class="exclusive-heading">اقتصاد إسلامي</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">اظهار الكل<img class="pr-1 rotate180" 
             src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><hr><div class="du-row">` + insideLoopHTMLAr + `<div class="du-col-12"><hr></div></div>`;
             return outputHtmlStringAr;
-        break;
+            break;
     }
 }
 
@@ -253,7 +260,7 @@ function arabMarketNewsHTML(responseDataObj) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="isl-fi-news-wrap du-col-sm-4"><a href="#" onClick="viewDuNewsPage('summaryPage', event);">
                 <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/111.png" alt="">
                 <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
@@ -262,11 +269,11 @@ function arabMarketNewsHTML(responseDataObj) {
             outputHtmlString = `<h4 class="exclusive-heading">Arab Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
             <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row du-mt-2">` + insideLoopHTML + `</div>`;
             return outputHtmlString;
-        break;
+            break;
         case 'AR':
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="isl-fi-news-wrap du-col-sm-4"><a href="#" onClick="viewDuNewsPage('summaryPage', event);">
                 <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/111.png" alt=""><div class="clearfix du-mt-3">
                 <small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span>
@@ -276,7 +283,7 @@ function arabMarketNewsHTML(responseDataObj) {
             outputHtmlStringAr = `<h4 class="exclusive-heading">الأسواق العربية</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">اظهار الكل<img class="pr-1 rotate180" 
             src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row du-mt-2">` + insideLoopHTMLAr + `</div>`;
             return outputHtmlStringAr;
-        break;
+            break;
     }
 }
 
@@ -286,19 +293,19 @@ function internationalMarketHTML(responseDataObj) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="du-row"><div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage('summaryPage', event);">
                 <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/111.png"></div>
                 <div class="du-col-md-8 du-mt-4"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
-                <h5 class="title-img-description">` + data.title + `</h5><p>` + data.body + `</p></a></div></div><hr>`
+                <h5 class="title-img-description">` + data.title + `</h5><p>` + data.teaser + `</p></a></div></div><hr>`
             });
             outputHtmlString = `<h4 class="exclusive-heading">International Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all<img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTML;
             return outputHtmlString;
-        break;
+            break;
         case 'AR':
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-row"><div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage('summaryPage', event);">
                 <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/111.png">
                 </div><div class="du-col-md-8"><small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
@@ -309,8 +316,8 @@ function internationalMarketHTML(responseDataObj) {
             outputHtmlStringAr = `<h4 class="exclusive-heading">الأسواق العالمية</h4><a href="#" onClick="duListingNewsPage('summaryPage', event);" 
             class="view-all-text">اظهار الكل <img class="pr-1 rotate180" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTMLAr;
             return outputHtmlStringAr;
-        break;
-    }   
+            break;
+    }
 }
 
 /* Press Release DU */
@@ -319,7 +326,7 @@ function pressReleaseNewsHTML(responseDataObj) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTML += `<a href="#" onClick="viewDuNewsPage('summaryPage', event);"><div class="press-rel-news">
                 <small class="title-under-img">Markets - <span>10 minutes ago</span></small>
                 <h5 class="title-img-description mb-3">` + data.title + `</h5></div></a><hr>`
@@ -329,11 +336,11 @@ function pressReleaseNewsHTML(responseDataObj) {
             <div class="du-col-md-4"><img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/ccb89c0d02e8fdcc7cfdb45678d7395f.png"></div>
             <div class="du-col-md-8">` + insideLoopHTML + `</div></div>`;
             return outputHtmlString;
-        break;
+            break;
         case 'AR':
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<a href="#" onClick="viewDuNewsPage('summaryPage', event);"><div class="press-rel-news du-mt-3"><small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
                 <h5 class="title-img-description">متعامل يتابع أس الأسهم سوق الأسهم السعودية يرتفع بالختام بسيولة 4.4 مليار ريال بدعم القياديات</h5></div></a><hr>`
             });
@@ -341,8 +348,8 @@ function pressReleaseNewsHTML(responseDataObj) {
             src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row"><div class="du-col-md-4"><img class="du-img-fluid" 
             src="https://du-widget.herokuapp.com/assets/images/ccb89c0d02e8fdcc7cfdb45678d7395f.png"></div><div class="du-col-md-8">` + insideLoopHTMLAr + `</div></div>`;
             return outputHtmlStringAr;
-        break;
-    }  
+            break;
+    }
 }
 
 
@@ -354,12 +361,12 @@ function relatedViewNewsHTML(responseDataObj) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="du-row"><div class="du-col-sm-4 ml-5">
-                <a href="#" onClick="viewDuNewsPage('summaryPag1e', event);"><img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt="">
+                <a href="#" onClick="viewDuNewsPage('summaryPage', event);"><img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt="">
                 </div><div class="du-col-sm-8"><small>Markets - <span>10 minutes ago</span></small><br><br><h4 class="news-title">
                 <a href="#">` + data.title + `</a></h4>
-                <p>` + data.body + `</p></a></div></div><hr>`
+                <p>` + data.teaser + `</p></a></div></div><hr>`
             });
             outputHtmlString = `<h1>Egypt runs first return flight for workers stranded in Kuwait</h1>
             <img class="du-img-fluid du-mb-4 width-100" src="https://du-widget.herokuapp.com/assets/images/Group 1062.png" alt=""><div class="du-row"><div class="du-col-md-6">
@@ -384,11 +391,11 @@ function relatedViewNewsHTML(responseDataObj) {
             standpoint in the best position to preserve their long-term value proposition and return to their respective shareholders,” according 
             to Leila R Benali, Chief Economist, Head of Strategy, Energy Economics and Sustainability of APICORP.</p></div></div><h4>Related News</h4><hr>` + insideLoopHTML;
             return outputHtmlString;
-        break;
+            break;
         case 'AR':
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-row"><div class="du-col-sm-4"><a href="#" onClick="viewDuNewsPage('summaryPag1e', event);"><img class="img-fluid width-100" 
                 src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt=""></div><div class="du-col-sm-8 news-block"><small class="title-under-img">
                 محتوی الشریک - <span>قبل 3 ساعات</span></small><h4 class="title-news-description">متعامل يتابع أس الأسهم سوق الأسهم
@@ -438,7 +445,7 @@ function relatedViewNewsHTML(responseDataObj) {
                     <div class="du-col-sm-12 du-mt-4 du-mb-5 du-text-center"><a href="#" class="main-color ff-hel-b">تحميل المزيد <span><img 
                     src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div></div>`;
             return outputHtmlStringAr;
-        break;
+            break;
     }
 }
 
@@ -451,12 +458,12 @@ function newsListingViewNewsHTML(responseDataObj) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="du-row"><div class="du-col-sm-4">
                 <a href="#" onClick="viewDuNewsPage('listingPage', event);"><img class="du-img-fluid width-100" 
                 src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt="">
                 </div><div class="du-col-sm-8 du-mt-4"><small class="title-under-img">Markets - <span>10 minutes ago</span></small>
-                <h4 class="title-news-description">` + data.title + `</h4><p>` + data.body + `</p></div>
+                <h4 class="title-news-description">` + data.title + `</h4><p>` + data.teaser + `</p></div>
                 <div class="du-col-12"><hr></a></div></div>`
             });
             outputHtmlString = `<h1 class="main-news-title du-mt-4">Banking</h1><div class="du-row"><div class="du-col-sm-6">
@@ -468,11 +475,11 @@ function newsListingViewNewsHTML(responseDataObj) {
             <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
             <a class="title-img-description txt-black" href="#">Egypt runs first return flight for workers stranded in Kuwait</a></h3></div></div></div></div>` + insideLoopHTML;
             return outputHtmlString;
-        break;
+            break;
         case 'AR':
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
-            responseDataObj.articles.forEach(data => {
+            responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-row"><div class="du-col-sm-4">
                 <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt=""></div>
                 <div class="du-col-sm-8"><small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small><a href="#" onClick="viewDuNewsPage('listingPage', event);">
@@ -491,7 +498,7 @@ function newsListingViewNewsHTML(responseDataObj) {
             </div></div>` + insideLoopHTMLAr + `<div class="du-row"><div class="du-col-sm-12 mt-4 mb-5 du-text-center "><a href="#" class="main-color ff-hel-b">تحميل المزيد <span>
             <img src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div></div>`;
             return outputHtmlStringAr;
-        break;
+            break;
     }
 }
 
@@ -505,8 +512,9 @@ function duListingNewsPage(state, event) {
     var innerContent = document.getElementById("du_news_page");
     innerContent.innerHTML = "";
     innerContent.innerHTML = `<section class="banking du-mb-5"><div class="du-container-fluid container-section">
-    <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><a href="#" class="back-btn-du" onClick="duNewsBackState();">Back to Du News Summary</a>
-    <div id="du_news_view_container"></div></div></div></div></section>`
+    <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+    <a href="#" onClick="duNewsSummaryPage('summaryPage', event);">Home</a></li><li class="breadcrumb-item" aria-current="page" onClick="duNewsBackState();">
+    Back to Du News Summary</li></ol></nav><div id="du_news_view_container"></div></div></div></div></section>`
     var info_widgets_config_data = {
         "widgets": [
             {
@@ -515,7 +523,7 @@ function duListingNewsPage(state, event) {
                     { "htmlContainerId": "du_news_view_container" },
                     { "requestType": "GET" },
                     { "data": [{ "selected_country": "sa" }] },
-                    { "urlParam": "du_news_listing" },
+                    { "urlParam": "0/6" },
                     { "customeStyles": [] }
                 ]
             },
@@ -532,8 +540,10 @@ function viewDuNewsPage(state, event) {
     var innerContent = document.getElementById("du_news_page");
     innerContent.innerHTML = "";
     innerContent.innerHTML = `<div class="du-container-fluid">
-    <div class="du-row"><div class="du-col-md-12 news-left-col"><a href="#" class="back-btn-du" onClick="duNewsBackState();">Back to Du News Summary</a>
-    <div id="du_related_news_container"></div></div></div></div>`
+    <div class="du-row"><div class="du-col-md-12 news-left-col">
+    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="#" onClick="duNewsSummaryPage('summaryPage', event);">Home</a></li>
+    <li class="breadcrumb-item" aria-current="page" onClick="duNewsBackState();">Back to Du News Summary</li></ol></nav><div id="du_related_news_container"></div>
+    </div></div></div>`
     var info_widgets_config_data = {
         "widgets": [
             {
@@ -542,7 +552,7 @@ function viewDuNewsPage(state, event) {
                     { "htmlContainerId": "du_related_news_container" },
                     { "requestType": "GET" },
                     { "data": [{ "selected_country": "sa" }] },
-                    { "urlParam": "du_news_view" },
+                    { "urlParam": "0/6" },
                     { "customeStyles": [] }
                 ]
             }
@@ -573,7 +583,7 @@ function duNewsSummaryPage(state, event) {
                 { "htmlContainerId": "du_top_container_news" },
                 { "requestType": "GET" },
                 { "data": [{ "selected_country": "sa" }] },
-                { "urlParam": "du_news" },
+                { "urlParam": "0/6" },
                 { "customeStyles": [] }
             ]
         },
@@ -583,7 +593,7 @@ function duNewsSummaryPage(state, event) {
                 { "htmlContainerId": "du_most_read_container_news" },
                 { "requestType": "GET" },
                 { "data": [{ "selected_country": "sa" }] },
-                { "urlParam": "du_news" },
+                { "urlParam": "0/6" },
                 { "customeStyles": [] }
             ]
         },
@@ -593,7 +603,7 @@ function duNewsSummaryPage(state, event) {
                 { "htmlContainerId": "du_press_container_release" },
                 { "requestType": "GET" },
                 { "data": [{ "selected_country": "sa" }] },
-                { "urlParam": "du_news" },
+                { "urlParam": "0/6" },
                 { "customeStyles": [] }
             ]
         },
@@ -603,7 +613,7 @@ function duNewsSummaryPage(state, event) {
                 { "htmlContainerId": "du_international_market_container" },
                 { "requestType": "GET" },
                 { "data": [{ "selected_country": "sa" }] },
-                { "urlParam": "du_news" },
+                { "urlParam": "0/6" },
                 { "customeStyles": [] }
             ]
         },
@@ -613,7 +623,7 @@ function duNewsSummaryPage(state, event) {
                 { "htmlContainerId": "du_arab_market_container" },
                 { "requestType": "GET" },
                 { "data": [{ "selected_country": "sa" }] },
-                { "urlParam": "du_news" },
+                { "urlParam": "0/6" },
                 { "customeStyles": [] }
             ]
         },
@@ -623,7 +633,7 @@ function duNewsSummaryPage(state, event) {
                 { "htmlContainerId": "du_ismalic_finance_container" },
                 { "requestType": "GET" },
                 { "data": [{ "selected_country": "sa" }] },
-                { "urlParam": "du_news" },
+                { "urlParam": "0/6" },
                 { "customeStyles": [] }
             ]
         },
@@ -633,7 +643,27 @@ function duNewsSummaryPage(state, event) {
                 { "htmlContainerId": "du_exclusive_news_container" },
                 { "requestType": "GET" },
                 { "data": [{ "selected_country": "sa" }] },
-                { "urlParam": "du_news" },
+                { "urlParam": "0/6" },
+                { "customeStyles": [] }
+            ]
+        },
+        {
+            "widget_config": [
+                { "widgetSlug": "du_related_news" },
+                { "htmlContainerId": "du_related_news_container" },
+                { "requestType": "GET" },
+                { "data": [{ "selected_country": "sa" }] },
+                { "urlParam": "0/6" },
+                { "customeStyles": [] }
+            ]
+        },
+        {
+            "widget_config": [
+                { "widgetSlug": "du_news_view_listing" },
+                { "htmlContainerId": "du_news_view_container" },
+                { "requestType": "GET" },
+                { "data": [{ "selected_country": "sa" }] },
+                { "urlParam": "0/6" },
                 { "customeStyles": [] }
             ]
         },

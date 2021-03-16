@@ -2194,16 +2194,16 @@ main *:after {
     height: auto;
   }
   
-  .form-group {
+  .du-form-group {
     margin-bottom: 1rem;
   }
   
-  .form-text {
+  .du-form-text {
     display: block;
     margin-top: 0.25rem;
   }
   
-  .form-row {
+  .du-form-row {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
@@ -2212,34 +2212,34 @@ main *:after {
     margin-left: -5px;
   }
   
-  .form-row > .col,
-  .form-row > [class*="col-"] {
+  .du-form-row > .col,
+  .du-form-row > [class*="col-"] {
     padding-right: 5px;
     padding-left: 5px;
   }
   
-  .form-check {
+  .du-form-check {
     position: relative;
     display: block;
     padding-left: 1.25rem;
   }
   
-  .form-check-input {
+  .du-form-check-input {
     position: absolute;
     margin-top: 0.3rem;
     margin-left: -1.25rem;
   }
   
-  .form-check-input[disabled] ~ .form-check-label,
-  .form-check-input:disabled ~ .form-check-label {
+  .du-form-check-input[disabled] ~ .du-form-check-label,
+  .du-form-check-input:disabled ~ .du-form-check-label {
     color: #6c757d;
   }
   
-  .form-check-label {
+  .du-form-check-label {
     margin-bottom: 0;
   }
   
-  .form-check-inline {
+  .du-form-check-inline {
     display: -ms-inline-flexbox;
     display: inline-flex;
     -ms-flex-align: center;
@@ -2248,14 +2248,14 @@ main *:after {
     margin-right: 0.75rem;
   }
   
-  .form-check-inline .form-check-input {
+  .du-form-check-inline .du-form-check-input {
     position: static;
     margin-top: 0;
     margin-right: 0.3125rem;
     margin-left: 0;
   }
   
-  .valid-feedback {
+  .du-valid-feedback {
     display: none;
     width: 100%;
     margin-top: 0.25rem;
@@ -2263,7 +2263,7 @@ main *:after {
     color: #28a745;
   }
   
-  .valid-tooltip {
+  .du-valid-tooltip {
     position: absolute;
     top: 100%;
     z-index: 5;
@@ -2278,14 +2278,14 @@ main *:after {
     border-radius: 0.25rem;
   }
   
-  .was-validated :valid ~ .valid-feedback,
-  .was-validated :valid ~ .valid-tooltip,
-  .is-valid ~ .valid-feedback,
-  .is-valid ~ .valid-tooltip {
+  .du-was-validated :valid ~ .du-valid-feedback,
+  .du-was-validated :valid ~ .du-valid-tooltip,
+  .du-is-valid ~ .du-valid-feedback,
+  .du-is-valid ~ .du-valid-tooltip {
     display: block;
   }
   
-  .was-validated .du-form-control:valid, .du-form-control.is-valid {
+  .du-was-validated .du-form-control:valid, .du-form-control.du-is-valid {
     border-color: #28a745;
     padding-right: calc(1.5em + 0.75rem);
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
@@ -2294,68 +2294,68 @@ main *:after {
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
   }
   
-  .was-validated .du-form-control:valid:focus, .du-form-control.is-valid:focus {
+  .du-was-validated .du-form-control:valid:focus, .du-form-control.du-is-valid:focus {
     border-color: #28a745;
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
   }
   
-  .was-validated textarea.du-form-control:valid, textarea.du-form-control.is-valid {
+  .du-was-validated textarea.du-form-control:valid, textarea.du-form-control.du-is-valid {
     padding-right: calc(1.5em + 0.75rem);
     background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
   }
   
-  .was-validated .custom-select:valid, .custom-select.is-valid {
+  .du-was-validated .du-custom-select:valid, .du-custom-select.du-is-valid {
     border-color: #28a745;
     padding-right: calc(0.75em + 2.3125rem);
     background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
   }
   
-  .was-validated .custom-select:valid:focus, .custom-select.is-valid:focus {
+  .du-was-validated .du-custom-select:valid:focus, .du-custom-select.du-is-valid:focus {
     border-color: #28a745;
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
   }
   
-  .was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
+  .du-was-validated .du-form-check-input:valid ~ .du-form-check-label, .du-form-check-input.du-is-valid ~ .du-form-check-label {
     color: #28a745;
   }
   
-  .was-validated .form-check-input:valid ~ .valid-feedback,
-  .was-validated .form-check-input:valid ~ .valid-tooltip, .form-check-input.is-valid ~ .valid-feedback,
-  .form-check-input.is-valid ~ .valid-tooltip {
+  .du-was-validated .du-form-check-input:valid ~ .du-valid-feedback,
+  .du-was-validated .du-form-check-input:valid ~ .du-valid-tooltip, .du-form-check-input.du-is-valid ~ .du-valid-feedback,
+  .du-form-check-input.du-is-valid ~ .du-valid-tooltip {
     display: block;
   }
   
-  .was-validated .custom-control-input:valid ~ .custom-control-label, .custom-control-input.is-valid ~ .custom-control-label {
+  .du-was-validated .du-custom-control-input:valid ~ .du-custom-control-label, .du-custom-control-input.du-is-valid ~ .du-custom-control-label {
     color: #28a745;
   }
   
-  .was-validated .custom-control-input:valid ~ .custom-control-label::before, .custom-control-input.is-valid ~ .custom-control-label::before {
+  .du-was-validated .du-custom-control-input:valid ~ .du-custom-control-label::before, .du-custom-control-input.du-is-valid ~ .du-custom-control-label::before {
     border-color: #28a745;
   }
   
-  .was-validated .custom-control-input:valid:checked ~ .custom-control-label::before, .custom-control-input.is-valid:checked ~ .custom-control-label::before {
+  .du-was-validated .du-custom-control-input:valid:checked ~ .du-custom-control-label::before, .du-custom-control-input.du-is-valid:checked ~ .du-custom-control-label::before {
     border-color: #34ce57;
     background-color: #34ce57;
   }
   
-  .was-validated .custom-control-input:valid:focus ~ .custom-control-label::before, .custom-control-input.is-valid:focus ~ .custom-control-label::before {
+  .du-was-validated .du-custom-control-input:valid:focus ~ .du-custom-control-label::before, .du-custom-control-input.du-is-valid:focus ~ .du-custom-control-label::before {
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
   }
   
-  .was-validated .custom-control-input:valid:focus:not(:checked) ~ .custom-control-label::before, .custom-control-input.is-valid:focus:not(:checked) ~ .custom-control-label::before {
+  .du-was-validated .du-custom-control-input:valid:focus:not(:checked) ~ .du-custom-control-label::before, .du-custom-control-input.du-is-valid:focus:not(:checked) ~ .du-custom-control-label::before {
     border-color: #28a745;
   }
   
-  .was-validated .custom-file-input:valid ~ .custom-file-label, .custom-file-input.is-valid ~ .custom-file-label {
+  .du-was-validated .du-custom-file-input:valid ~ .du-custom-file-label, .du-custom-file-input.du-is-valid ~ .du-custom-file-label {
     border-color: #28a745;
   }
   
-  .was-validated .custom-file-input:valid:focus ~ .custom-file-label, .custom-file-input.is-valid:focus ~ .custom-file-label {
+  .du-was-validated .du-custom-file-input:valid:focus ~ .du-custom-file-label, .du-custom-file-input.du-is-valid:focus ~ .du-custom-file-label {
     border-color: #28a745;
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
   }
   
-  .invalid-feedback {
+  .du-invalid-feedback {
     display: none;
     width: 100%;
     margin-top: 0.25rem;
@@ -2363,7 +2363,7 @@ main *:after {
     color: #dc3545;
   }
   
-  .invalid-tooltip {
+  .du-invalid-tooltip {
     position: absolute;
     top: 100%;
     z-index: 5;
@@ -2378,14 +2378,14 @@ main *:after {
     border-radius: 0.25rem;
   }
   
-  .was-validated :invalid ~ .invalid-feedback,
-  .was-validated :invalid ~ .invalid-tooltip,
-  .is-invalid ~ .invalid-feedback,
-  .is-invalid ~ .invalid-tooltip {
+  .du-was-validated :invalid ~ .du-invalid-feedback,
+  .du-was-validated :invalid ~ .du-invalid-tooltip,
+  .du-is-invalid ~ .du-invalid-feedback,
+  .du-is-invalid ~ .du-invalid-tooltip {
     display: block;
   }
   
-  .was-validated .du-form-control:invalid, .du-form-control.is-invalid {
+  .du-was-validated .du-form-control:invalid, .du-form-control.du-is-invalid {
     border-color: #dc3545;
     padding-right: calc(1.5em + 0.75rem);
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
@@ -2394,68 +2394,68 @@ main *:after {
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
   }
   
-  .was-validated .du-form-control:invalid:focus, .du-form-control.is-invalid:focus {
+  .du-was-validated .du-form-control:invalid:focus, .du-form-control.du-is-invalid:focus {
     border-color: #dc3545;
     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
   }
   
-  .was-validated textarea.du-form-control:invalid, textarea.du-form-control.is-invalid {
+  .du-was-validated textarea.du-form-control:invalid, textarea.du-form-control.du-is-invalid {
     padding-right: calc(1.5em + 0.75rem);
     background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
   }
   
-  .was-validated .custom-select:invalid, .custom-select.is-invalid {
+  .du-was-validated .du-custom-select:invalid, .du-custom-select.du-is-invalid {
     border-color: #dc3545;
     padding-right: calc(0.75em + 2.3125rem);
     background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
   }
   
-  .was-validated .custom-select:invalid:focus, .custom-select.is-invalid:focus {
+  .du-was-validated .du-custom-select:invalid:focus, .du-custom-select.du-is-invalid:focus {
     border-color: #dc3545;
     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
   }
   
-  .was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label {
+  .du-was-validated .du-form-check-input:invalid ~ .du-form-check-label, .du-form-check-input.du-is-invalid ~ .du-form-check-label {
     color: #dc3545;
   }
   
-  .was-validated .form-check-input:invalid ~ .invalid-feedback,
-  .was-validated .form-check-input:invalid ~ .invalid-tooltip, .form-check-input.is-invalid ~ .invalid-feedback,
-  .form-check-input.is-invalid ~ .invalid-tooltip {
+  .du-was-validated .du-form-check-input:invalid ~ .du-invalid-feedback,
+  .du-was-validated .du-form-check-input:invalid ~ .du-invalid-tooltip, .du-form-check-input.du-is-invalid ~ .du-invalid-feedback,
+  .du-form-check-input.du-is-invalid ~ .du-invalid-tooltip {
     display: block;
   }
   
-  .was-validated .custom-control-input:invalid ~ .custom-control-label, .custom-control-input.is-invalid ~ .custom-control-label {
+  .du-was-validated .du-custom-control-input:invalid ~ .du-custom-control-label, .du-custom-control-input.du-is-invalid ~ .du-custom-control-label {
     color: #dc3545;
   }
   
-  .was-validated .custom-control-input:invalid ~ .custom-control-label::before, .custom-control-input.is-invalid ~ .custom-control-label::before {
+  .du-was-validated .du-custom-control-input:invalid ~ .du-custom-control-label::before, .du-custom-control-input.du-is-invalid ~ .du-custom-control-label::before {
     border-color: #dc3545;
   }
   
-  .was-validated .custom-control-input:invalid:checked ~ .custom-control-label::before, .custom-control-input.is-invalid:checked ~ .custom-control-label::before {
+  .du-was-validated .du-custom-control-input:invalid:checked ~ .du-custom-control-label::before, .du-custom-control-input.du-is-invalid:checked ~ .du-custom-control-label::before {
     border-color: #e4606d;
     background-color: #e4606d;
   }
   
-  .was-validated .custom-control-input:invalid:focus ~ .custom-control-label::before, .custom-control-input.is-invalid:focus ~ .custom-control-label::before {
+  .du-was-validated .du-custom-control-input:invalid:focus ~ .du-custom-control-label::before, .du-custom-control-input.du-is-invalid:focus ~ .du-custom-control-label::before {
     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
   }
   
-  .was-validated .custom-control-input:invalid:focus:not(:checked) ~ .custom-control-label::before, .custom-control-input.is-invalid:focus:not(:checked) ~ .custom-control-label::before {
+  .du-was-validated .du-custom-control-input:invalid:focus:not(:checked) ~ .du-custom-control-label::before, .du-custom-control-input.du-is-invalid:focus:not(:checked) ~ .du-custom-control-label::before {
     border-color: #dc3545;
   }
   
-  .was-validated .custom-file-input:invalid ~ .custom-file-label, .custom-file-input.is-invalid ~ .custom-file-label {
+  .du-was-validated .du-custom-file-input:invalid ~ .du-custom-file-label, .du-custom-file-input.du-is-invalid ~ .du-custom-file-label {
     border-color: #dc3545;
   }
   
-  .was-validated .custom-file-input:invalid:focus ~ .custom-file-label, .custom-file-input.is-invalid:focus ~ .custom-file-label {
+  .du-was-validated .du-custom-file-input:invalid:focus ~ .du-custom-file-label, .du-custom-file-input.du-is-invalid:focus ~ .du-custom-file-label {
     border-color: #dc3545;
     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
   }
   
-  .form-inline {
+  .du-form-inline {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-flow: row wrap;
@@ -2464,12 +2464,12 @@ main *:after {
     align-items: center;
   }
   
-  .form-inline .form-check {
+  .du-form-inline .du-form-check {
     width: 100%;
   }
   
   @media (min-width: 576px) {
-    .form-inline label {
+    .du-form-inline label {
       display: -ms-flexbox;
       display: flex;
       -ms-flex-align: center;
@@ -2478,7 +2478,7 @@ main *:after {
       justify-content: center;
       margin-bottom: 0;
     }
-    .form-inline .form-group {
+    .du-form-inline .du-form-group {
       display: -ms-flexbox;
       display: flex;
       -ms-flex: 0 0 auto;
@@ -2489,19 +2489,19 @@ main *:after {
       align-items: center;
       margin-bottom: 0;
     }
-    .form-inline .du-form-control {
+    .du-form-inline .du-form-control {
       display: inline-block;
       width: auto;
       vertical-align: middle;
     }
-    .form-inline .du-form-control-plaintext {
+    .du-form-inline .du-form-control-plaintext {
       display: inline-block;
     }
-    .form-inline .input-group,
-    .form-inline .custom-select {
+    .du-form-inline .du-input-group,
+    .du-form-inline .du-custom-select {
       width: auto;
     }
-    .form-inline .form-check {
+    .du-form-inline .du-form-check {
       display: -ms-flexbox;
       display: flex;
       -ms-flex-align: center;
@@ -2511,7 +2511,7 @@ main *:after {
       width: auto;
       padding-left: 0;
     }
-    .form-inline .form-check-input {
+    .du-form-inline .du-form-check-input {
       position: relative;
       -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -2519,18 +2519,18 @@ main *:after {
       margin-right: 0.25rem;
       margin-left: 0;
     }
-    .form-inline .custom-control {
+    .du-form-inline .du-custom-control {
       -ms-flex-align: center;
       align-items: center;
       -ms-flex-pack: center;
       justify-content: center;
     }
-    .form-inline .custom-control-label {
+    .du-form-inline .du-custom-control-label {
       margin-bottom: 0;
     }
   }
   
-  .btn {
+  .du-btn {
     display: inline-block;
     font-weight: 400;
     color: #212529;
@@ -2573,8 +2573,8 @@ main *:after {
     cursor: pointer;
   }
   
-  a.btn.disabled,
-  fieldset:disabled a.btn {
+  a.du-btn.disabled,
+  fieldset:disabled a.du-btn {
     pointer-events: none;
   }
   
@@ -3150,14 +3150,14 @@ main *:after {
     pointer-events: none;
   }
   
-  .du-btn-lg, .du-btn-group-lg > .btn {
+  .du-btn-lg, .du-btn-group-lg > .du-btn {
     padding: 0.5rem 1rem;
     font-size: 1.25rem;
     line-height: 1.5;
     border-radius: 0.3rem;
   }
   
-  .du-btn-sm, .du-btn-group-sm > .btn {
+  .du-btn-sm, .du-btn-group-sm > .du-btn {
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
     line-height: 1.5;
@@ -3211,7 +3211,7 @@ main *:after {
   }
   
   .dropup,
-  .dropright,
+  .du-dropright,
   .du-dropdown,
   .dropleft {
     position: relative;
@@ -3332,7 +3332,7 @@ main *:after {
     margin-left: 0;
   }
   
-  .dropright .du-dropdown-menu {
+  .du-dropright .du-dropdown-menu {
     top: 0;
     right: auto;
     left: 100%;
@@ -3340,7 +3340,7 @@ main *:after {
     margin-left: 0.125rem;
   }
   
-  .dropright .du-dropdown-toggle::after {
+  .du-dropright .du-dropdown-toggle::after {
     display: inline-block;
     margin-left: 0.255em;
     vertical-align: 0.255em;
@@ -3351,11 +3351,11 @@ main *:after {
     border-left: 0.3em solid;
   }
   
-  .dropright .du-dropdown-toggle:empty::after {
+  .du-dropright .du-dropdown-toggle:empty::after {
     margin-left: 0;
   }
   
-  .dropright .du-dropdown-toggle::after {
+  .du-dropright .du-dropdown-toggle::after {
     vertical-align: 0;
   }
   
@@ -3466,22 +3466,22 @@ main *:after {
     vertical-align: middle;
   }
   
-  .du-btn-group > .btn,
-  .du-btn-group-vertical > .btn {
+  .du-btn-group > .du-btn,
+  .du-btn-group-vertical > .du-btn {
     position: relative;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
   }
   
-  .du-btn-group > .btn:hover,
-  .du-btn-group-vertical > .btn:hover {
+  .du-btn-group > .du-btn:hover,
+  .du-btn-group-vertical > .du-btn:hover {
     z-index: 1;
   }
   
-  .du-btn-group > .btn:focus, .du-btn-group > .btn:active, .du-btn-group > .btn.active,
-  .du-btn-group-vertical > .btn:focus,
-  .du-btn-group-vertical > .btn:active,
-  .du-btn-group-vertical > .btn.active {
+  .du-btn-group > .du-btn:focus, .du-btn-group > .du-btn:active, .du-btn-group > .du-btn.active,
+  .du-btn-group-vertical > .du-btn:focus,
+  .du-btn-group-vertical > .du-btn:active,
+  .du-btn-group-vertical > .du-btn.active {
     z-index: 1;
   }
   
@@ -3494,23 +3494,23 @@ main *:after {
     justify-content: flex-start;
   }
   
-  .du-btn-toolbar .input-group {
+  .du-btn-toolbar .du-input-group {
     width: auto;
   }
   
-  .du-btn-group > .btn:not(:first-child),
+  .du-btn-group > .du-btn:not(:first-child),
   .du-btn-group > .du-btn-group:not(:first-child) {
     margin-left: -1px;
   }
   
-  .du-btn-group > .btn:not(:last-child):not(.du-dropdown-toggle),
-  .du-btn-group > .du-btn-group:not(:last-child) > .btn {
+  .du-btn-group > .du-btn:not(:last-child):not(.du-dropdown-toggle),
+  .du-btn-group > .du-btn-group:not(:last-child) > .du-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
   
-  .du-btn-group > .btn:not(:first-child),
-  .du-btn-group > .du-btn-group:not(:first-child) > .btn {
+  .du-btn-group > .du-btn:not(:first-child),
+  .du-btn-group > .du-btn-group:not(:first-child) > .du-btn {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -3522,7 +3522,7 @@ main *:after {
   
   .du-dropdown-toggle-split::after,
   .dropup .du-dropdown-toggle-split::after,
-  .dropright .du-dropdown-toggle-split::after {
+  .du-dropright .du-dropdown-toggle-split::after {
     margin-left: 0;
   }
   
@@ -3530,12 +3530,12 @@ main *:after {
     margin-right: 0;
   }
   
-  .du-btn-sm + .du-dropdown-toggle-split, .du-btn-group-sm > .btn + .du-dropdown-toggle-split {
+  .du-btn-sm + .du-dropdown-toggle-split, .du-btn-group-sm > .du-btn + .du-dropdown-toggle-split {
     padding-right: 0.375rem;
     padding-left: 0.375rem;
   }
   
-  .du-btn-lg + .du-dropdown-toggle-split, .du-btn-group-lg > .btn + .du-dropdown-toggle-split {
+  .du-btn-lg + .du-dropdown-toggle-split, .du-btn-group-lg > .du-btn + .du-dropdown-toggle-split {
     padding-right: 0.75rem;
     padding-left: 0.75rem;
   }
@@ -3549,43 +3549,43 @@ main *:after {
     justify-content: center;
   }
   
-  .du-btn-group-vertical > .btn,
+  .du-btn-group-vertical > .du-btn,
   .du-btn-group-vertical > .du-btn-group {
     width: 100%;
   }
   
-  .du-btn-group-vertical > .btn:not(:first-child),
+  .du-btn-group-vertical > .du-btn:not(:first-child),
   .du-btn-group-vertical > .du-btn-group:not(:first-child) {
     margin-top: -1px;
   }
   
-  .du-btn-group-vertical > .btn:not(:last-child):not(.du-dropdown-toggle),
-  .du-btn-group-vertical > .du-btn-group:not(:last-child) > .btn {
+  .du-btn-group-vertical > .du-btn:not(:last-child):not(.du-dropdown-toggle),
+  .du-btn-group-vertical > .du-btn-group:not(:last-child) > .du-btn {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
   
-  .du-btn-group-vertical > .btn:not(:first-child),
-  .du-btn-group-vertical > .du-btn-group:not(:first-child) > .btn {
+  .du-btn-group-vertical > .du-btn:not(:first-child),
+  .du-btn-group-vertical > .du-btn-group:not(:first-child) > .du-btn {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
   
-  .du-btn-group-toggle > .btn,
-  .du-btn-group-toggle > .du-btn-group > .btn {
+  .du-btn-group-toggle > .du-btn,
+  .du-btn-group-toggle > .du-btn-group > .du-btn {
     margin-bottom: 0;
   }
   
-  .du-btn-group-toggle > .btn input[type="radio"],
-  .du-btn-group-toggle > .btn input[type="checkbox"],
-  .du-btn-group-toggle > .du-btn-group > .btn input[type="radio"],
-  .du-btn-group-toggle > .du-btn-group > .btn input[type="checkbox"] {
+  .du-btn-group-toggle > .du-btn input[type="radio"],
+  .du-btn-group-toggle > .du-btn input[type="checkbox"],
+  .du-btn-group-toggle > .du-btn-group > .du-btn input[type="radio"],
+  .du-btn-group-toggle > .du-btn-group > .du-btn input[type="checkbox"] {
     position: absolute;
     clip: rect(0, 0, 0, 0);
     pointer-events: none;
   }
   
-  .input-group {
+  .du-input-group {
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -3596,10 +3596,10 @@ main *:after {
     width: 100%;
   }
   
-  .input-group > .du-form-control,
-  .input-group > .du-form-control-plaintext,
-  .input-group > .custom-select,
-  .input-group > .custom-file {
+  .du-input-group > .du-form-control,
+  .du-input-group > .du-form-control-plaintext,
+  .du-input-group > .du-custom-select,
+  .du-input-group > .du-custom-file {
     position: relative;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
@@ -3608,98 +3608,98 @@ main *:after {
     margin-bottom: 0;
   }
   
-  .input-group > .du-form-control + .du-form-control,
-  .input-group > .du-form-control + .custom-select,
-  .input-group > .du-form-control + .custom-file,
-  .input-group > .du-form-control-plaintext + .du-form-control,
-  .input-group > .du-form-control-plaintext + .custom-select,
-  .input-group > .du-form-control-plaintext + .custom-file,
-  .input-group > .custom-select + .du-form-control,
-  .input-group > .custom-select + .custom-select,
-  .input-group > .custom-select + .custom-file,
-  .input-group > .custom-file + .du-form-control,
-  .input-group > .custom-file + .custom-select,
-  .input-group > .custom-file + .custom-file {
+  .du-input-group > .du-form-control + .du-form-control,
+  .du-input-group > .du-form-control + .du-custom-select,
+  .du-input-group > .du-form-control + .du-custom-file,
+  .du-input-group > .du-form-control-plaintext + .du-form-control,
+  .du-input-group > .du-form-control-plaintext + .du-custom-select,
+  .du-input-group > .du-form-control-plaintext + .du-custom-file,
+  .du-input-group > .du-custom-select + .du-form-control,
+  .du-input-group > .du-custom-select + .du-custom-select,
+  .du-input-group > .du-custom-select + .du-custom-file,
+  .du-input-group > .du-custom-file + .du-form-control,
+  .du-input-group > .du-custom-file + .du-custom-select,
+  .du-input-group > .du-custom-file + .du-custom-file {
     margin-left: -1px;
   }
   
-  .input-group > .du-form-control:focus,
-  .input-group > .custom-select:focus,
-  .input-group > .custom-file .custom-file-input:focus ~ .custom-file-label {
+  .du-input-group > .du-form-control:focus,
+  .du-input-group > .du-custom-select:focus,
+  .du-input-group > .du-custom-file .du-custom-file-input:focus ~ .du-custom-file-label {
     z-index: 3;
   }
   
-  .input-group > .custom-file .custom-file-input:focus {
+  .du-input-group > .du-custom-file .du-custom-file-input:focus {
     z-index: 4;
   }
   
-  .input-group > .du-form-control:not(:last-child),
-  .input-group > .custom-select:not(:last-child) {
+  .du-input-group > .du-form-control:not(:last-child),
+  .du-input-group > .du-custom-select:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
   
-  .input-group > .du-form-control:not(:first-child),
-  .input-group > .custom-select:not(:first-child) {
+  .du-input-group > .du-form-control:not(:first-child),
+  .du-input-group > .du-custom-select:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
   
-  .input-group > .custom-file {
+  .du-input-group > .du-custom-file {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
     align-items: center;
   }
   
-  .input-group > .custom-file:not(:last-child) .custom-file-label,
-  .input-group > .custom-file:not(:last-child) .custom-file-label::after {
+  .du-input-group > .du-custom-file:not(:last-child) .du-custom-file-label,
+  .du-input-group > .du-custom-file:not(:last-child) .du-custom-file-label::after {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
   
-  .input-group > .custom-file:not(:first-child) .custom-file-label {
+  .du-input-group > .du-custom-file:not(:first-child) .du-custom-file-label {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
   
-  .input-group-prepend,
-  .input-group-append {
+  .du-input-group-prepend,
+  .du-input-group-append {
     display: -ms-flexbox;
     display: flex;
   }
   
-  .input-group-prepend .btn,
-  .input-group-append .btn {
+  .du-input-group-prepend .du-btn,
+  .du-input-group-append .du-btn {
     position: relative;
     z-index: 2;
   }
   
-  .input-group-prepend .btn:focus,
-  .input-group-append .btn:focus {
+  .du-input-group-prepend .du-btn:focus,
+  .du-input-group-append .du-btn:focus {
     z-index: 3;
   }
   
-  .input-group-prepend .btn + .btn,
-  .input-group-prepend .btn + .input-group-text,
-  .input-group-prepend .input-group-text + .input-group-text,
-  .input-group-prepend .input-group-text + .btn,
-  .input-group-append .btn + .btn,
-  .input-group-append .btn + .input-group-text,
-  .input-group-append .input-group-text + .input-group-text,
-  .input-group-append .input-group-text + .btn {
+  .du-input-group-prepend .du-btn + .du-btn,
+  .du-input-group-prepend .du-btn + .du-input-group-text,
+  .du-input-group-prepend .du-input-group-text + .du-input-group-text,
+  .du-input-group-prepend .du-input-group-text + .du-btn,
+  .du-input-group-append .du-btn + .du-btn,
+  .du-input-group-append .du-btn + .du-input-group-text,
+  .du-input-group-append .du-input-group-text + .du-input-group-text,
+  .du-input-group-append .du-input-group-text + .du-btn {
     margin-left: -1px;
   }
   
-  .input-group-prepend {
+  .du-input-group-prepend {
     margin-right: -1px;
   }
   
-  .input-group-append {
+  .du-input-group-append {
     margin-left: -1px;
   }
   
-  .input-group-text {
+  .du-input-group-text {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -3717,84 +3717,84 @@ main *:after {
     border-radius: 0.25rem;
   }
   
-  .input-group-text input[type="radio"],
-  .input-group-text input[type="checkbox"] {
+  .du-input-group-text input[type="radio"],
+  .du-input-group-text input[type="checkbox"] {
     margin-top: 0;
   }
   
-  .input-group-lg > .du-form-control:not(textarea),
-  .input-group-lg > .custom-select {
+  .du-input-group-lg > .du-form-control:not(textarea),
+  .du-input-group-lg > .du-custom-select {
     height: calc(1.5em + 1rem + 2px);
   }
   
-  .input-group-lg > .du-form-control,
-  .input-group-lg > .custom-select,
-  .input-group-lg > .input-group-prepend > .input-group-text,
-  .input-group-lg > .input-group-append > .input-group-text,
-  .input-group-lg > .input-group-prepend > .btn,
-  .input-group-lg > .input-group-append > .btn {
+  .du-input-group-lg > .du-form-control,
+  .du-input-group-lg > .du-custom-select,
+  .du-input-group-lg > .du-input-group-prepend > .du-input-group-text,
+  .du-input-group-lg > .du-input-group-append > .du-input-group-text,
+  .du-input-group-lg > .du-input-group-prepend > .du-btn,
+  .du-input-group-lg > .du-input-group-append > .du-btn {
     padding: 0.5rem 1rem;
     font-size: 1.25rem;
     line-height: 1.5;
     border-radius: 0.3rem;
   }
   
-  .input-group-sm > .du-form-control:not(textarea),
-  .input-group-sm > .custom-select {
+  .du-input-group-sm > .du-form-control:not(textarea),
+  .du-input-group-sm > .du-custom-select {
     height: calc(1.5em + 0.5rem + 2px);
   }
   
-  .input-group-sm > .du-form-control,
-  .input-group-sm > .custom-select,
-  .input-group-sm > .input-group-prepend > .input-group-text,
-  .input-group-sm > .input-group-append > .input-group-text,
-  .input-group-sm > .input-group-prepend > .btn,
-  .input-group-sm > .input-group-append > .btn {
+  .du-input-group-sm > .du-form-control,
+  .du-input-group-sm > .du-custom-select,
+  .du-input-group-sm > .du-input-group-prepend > .du-input-group-text,
+  .du-input-group-sm > .du-input-group-append > .du-input-group-text,
+  .du-input-group-sm > .du-input-group-prepend > .du-btn,
+  .du-input-group-sm > .du-input-group-append > .du-btn {
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
     line-height: 1.5;
     border-radius: 0.2rem;
   }
   
-  .input-group-lg > .custom-select,
-  .input-group-sm > .custom-select {
+  .du-input-group-lg > .du-custom-select,
+  .du-input-group-sm > .du-custom-select {
     padding-right: 1.75rem;
   }
   
-  .input-group > .input-group-prepend > .btn,
-  .input-group > .input-group-prepend > .input-group-text,
-  .input-group > .input-group-append:not(:last-child) > .btn,
-  .input-group > .input-group-append:not(:last-child) > .input-group-text,
-  .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.du-dropdown-toggle),
-  .input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
+  .du-input-group > .du-input-group-prepend > .du-btn,
+  .du-input-group > .du-input-group-prepend > .du-input-group-text,
+  .du-input-group > .du-input-group-append:not(:last-child) > .du-btn,
+  .du-input-group > .du-input-group-append:not(:last-child) > .du-input-group-text,
+  .du-input-group > .du-input-group-append:last-child > .du-btn:not(:last-child):not(.du-dropdown-toggle),
+  .du-input-group > .du-input-group-append:last-child > .du-input-group-text:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
   
-  .input-group > .input-group-append > .btn,
-  .input-group > .input-group-append > .input-group-text,
-  .input-group > .input-group-prepend:not(:first-child) > .btn,
-  .input-group > .input-group-prepend:not(:first-child) > .input-group-text,
-  .input-group > .input-group-prepend:first-child > .btn:not(:first-child),
-  .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
+  .du-input-group > .du-input-group-append > .du-btn,
+  .du-input-group > .du-input-group-append > .du-input-group-text,
+  .du-input-group > .du-input-group-prepend:not(:first-child) > .du-btn,
+  .du-input-group > .du-input-group-prepend:not(:first-child) > .du-input-group-text,
+  .du-input-group > .du-input-group-prepend:first-child > .du-btn:not(:first-child),
+  .du-input-group > .du-input-group-prepend:first-child > .du-input-group-text:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
   
-  .custom-control {
+  .du-custom-control {
     position: relative;
     display: block;
     min-height: 1.5rem;
     padding-left: 1.5rem;
   }
   
-  .custom-control-inline {
+  .du-custom-control-inline {
     display: -ms-inline-flexbox;
     display: inline-flex;
     margin-right: 1rem;
   }
   
-  .custom-control-input {
+  .du-custom-control-input {
     position: absolute;
     left: 0;
     z-index: -1;
@@ -3803,41 +3803,41 @@ main *:after {
     opacity: 0;
   }
   
-  .custom-control-input:checked ~ .custom-control-label::before {
+  .du-custom-control-input:checked ~ .du-custom-control-label::before {
     color: #fff;
     border-color: #007bff;
     background-color: #007bff;
   }
   
-  .custom-control-input:focus ~ .custom-control-label::before {
+  .du-custom-control-input:focus ~ .du-custom-control-label::before {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
   
-  .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+  .du-custom-control-input:focus:not(:checked) ~ .du-custom-control-label::before {
     border-color: #80bdff;
   }
   
-  .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+  .du-custom-control-input:not(:disabled):active ~ .du-custom-control-label::before {
     color: #fff;
     background-color: #b3d7ff;
     border-color: #b3d7ff;
   }
   
-  .custom-control-input[disabled] ~ .custom-control-label, .custom-control-input:disabled ~ .custom-control-label {
+  .du-custom-control-input[disabled] ~ .du-custom-control-label, .du-custom-control-input:disabled ~ .du-custom-control-label {
     color: #6c757d;
   }
   
-  .custom-control-input[disabled] ~ .custom-control-label::before, .custom-control-input:disabled ~ .custom-control-label::before {
+  .du-custom-control-input[disabled] ~ .du-custom-control-label::before, .du-custom-control-input:disabled ~ .du-custom-control-label::before {
     background-color: #e9ecef;
   }
   
-  .custom-control-label {
+  .du-custom-control-label {
     position: relative;
     margin-bottom: 0;
     vertical-align: top;
   }
   
-  .custom-control-label::before {
+  .du-custom-control-label::before {
     position: absolute;
     top: 0.25rem;
     left: -1.5rem;
@@ -3850,7 +3850,7 @@ main *:after {
     border: #adb5bd solid 1px;
   }
   
-  .custom-control-label::after {
+  .du-custom-control-label::after {
     position: absolute;
     top: 0.25rem;
     left: -1.5rem;
@@ -3861,55 +3861,55 @@ main *:after {
     background: no-repeat 50% / 50% 50%;
   }
   
-  .custom-checkbox .custom-control-label::before {
+  .du-custom-checkbox .du-custom-control-label::before {
     border-radius: 0.25rem;
   }
   
-  .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+  .du-custom-checkbox .du-custom-control-input:checked ~ .du-custom-control-label::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
   }
   
-  .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
+  .du-custom-checkbox .du-custom-control-input:indeterminate ~ .du-custom-control-label::before {
     border-color: #007bff;
     background-color: #007bff;
   }
   
-  .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
+  .du-custom-checkbox .du-custom-control-input:indeterminate ~ .du-custom-control-label::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e");
   }
   
-  .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
+  .du-custom-checkbox .du-custom-control-input:disabled:checked ~ .du-custom-control-label::before {
     background-color: rgba(0, 123, 255, 0.5);
   }
   
-  .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before {
+  .du-custom-checkbox .du-custom-control-input:disabled:indeterminate ~ .du-custom-control-label::before {
     background-color: rgba(0, 123, 255, 0.5);
   }
   
-  .custom-radio .custom-control-label::before {
+  .du-custom-radio .du-custom-control-label::before {
     border-radius: 50%;
   }
   
-  .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+  .du-custom-radio .du-custom-control-input:checked ~ .du-custom-control-label::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
   }
   
-  .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
+  .du-custom-radio .du-custom-control-input:disabled:checked ~ .du-custom-control-label::before {
     background-color: rgba(0, 123, 255, 0.5);
   }
   
-  .custom-switch {
+  .du-custom-switch {
     padding-left: 2.25rem;
   }
   
-  .custom-switch .custom-control-label::before {
+  .du-custom-switch .du-custom-control-label::before {
     left: -2.25rem;
     width: 1.75rem;
     pointer-events: all;
     border-radius: 0.5rem;
   }
   
-  .custom-switch .custom-control-label::after {
+  .du-custom-switch .du-custom-control-label::after {
     top: calc(0.25rem + 2px);
     left: calc(-2.25rem + 2px);
     width: calc(1rem - 4px);
@@ -3922,22 +3922,22 @@ main *:after {
   }
   
   @media (prefers-reduced-motion: reduce) {
-    .custom-switch .custom-control-label::after {
+    .du-custom-switch .du-custom-control-label::after {
       transition: none;
     }
   }
   
-  .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+  .du-custom-switch .du-custom-control-input:checked ~ .du-custom-control-label::after {
     background-color: #fff;
     -webkit-transform: translateX(0.75rem);
     transform: translateX(0.75rem);
   }
   
-  .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
+  .du-custom-switch .du-custom-control-input:disabled:checked ~ .du-custom-control-label::before {
     background-color: rgba(0, 123, 255, 0.5);
   }
   
-  .custom-select {
+  .du-custom-select {
     display: inline-block;
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);
@@ -3955,38 +3955,38 @@ main *:after {
     appearance: none;
   }
   
-  .custom-select:focus {
+  .du-custom-select:focus {
     border-color: #80bdff;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
   
-  .custom-select:focus::-ms-value {
+  .du-custom-select:focus::-ms-value {
     color: #495057;
     background-color: #fff;
   }
   
-  .custom-select[multiple], .custom-select[size]:not([size="1"]) {
+  .du-custom-select[multiple], .du-custom-select[size]:not([size="1"]) {
     height: auto;
     padding-right: 0.75rem;
     background-image: none;
   }
   
-  .custom-select:disabled {
+  .du-custom-select:disabled {
     color: #6c757d;
     background-color: #e9ecef;
   }
   
-  .custom-select::-ms-expand {
+  .du-custom-select::-ms-expand {
     display: none;
   }
   
-  .custom-select:-moz-focusring {
+  .du-custom-select:-moz-focusring {
     color: transparent;
     text-shadow: 0 0 0 #495057;
   }
   
-  .custom-select-sm {
+  .du-custom-select-sm {
     height: calc(1.5em + 0.5rem + 2px);
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
@@ -3994,7 +3994,7 @@ main *:after {
     font-size: 0.875rem;
   }
   
-  .custom-select-lg {
+  .du-custom-select-lg {
     height: calc(1.5em + 1rem + 2px);
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -4002,7 +4002,7 @@ main *:after {
     font-size: 1.25rem;
   }
   
-  .custom-file {
+  .du-custom-file {
     position: relative;
     display: inline-block;
     width: 100%;
@@ -4010,7 +4010,7 @@ main *:after {
     margin-bottom: 0;
   }
   
-  .custom-file-input {
+  .du-custom-file-input {
     position: relative;
     z-index: 2;
     width: 100%;
@@ -4019,25 +4019,25 @@ main *:after {
     opacity: 0;
   }
   
-  .custom-file-input:focus ~ .custom-file-label {
+  .du-custom-file-input:focus ~ .du-custom-file-label {
     border-color: #80bdff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
   
-  .custom-file-input[disabled] ~ .custom-file-label,
-  .custom-file-input:disabled ~ .custom-file-label {
+  .du-custom-file-input[disabled] ~ .du-custom-file-label,
+  .du-custom-file-input:disabled ~ .du-custom-file-label {
     background-color: #e9ecef;
   }
   
-  .custom-file-input:lang(en) ~ .custom-file-label::after {
+  .du-custom-file-input:lang(en) ~ .du-custom-file-label::after {
     content: "Browse";
   }
   
-  .custom-file-input ~ .custom-file-label[data-browse]::after {
+  .du-custom-file-input ~ .du-custom-file-label[data-browse]::after {
     content: attr(data-browse);
   }
   
-  .custom-file-label {
+  .du-custom-file-label {
     position: absolute;
     top: 0;
     right: 0;
@@ -4053,7 +4053,7 @@ main *:after {
     border-radius: 0.25rem;
   }
   
-  .custom-file-label::after {
+  .du-custom-file-label::after {
     position: absolute;
     top: 0;
     right: 0;
@@ -4070,7 +4070,7 @@ main *:after {
     border-radius: 0 0.25rem 0.25rem 0;
   }
   
-  .custom-range {
+  .du-custom-range {
     width: 100%;
     height: 1.4rem;
     padding: 0;
@@ -4080,27 +4080,27 @@ main *:after {
     appearance: none;
   }
   
-  .custom-range:focus {
+  .du-custom-range:focus {
     outline: none;
   }
   
-  .custom-range:focus::-webkit-slider-thumb {
+  .du-custom-range:focus::-webkit-slider-thumb {
     box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
   
-  .custom-range:focus::-moz-range-thumb {
+  .du-custom-range:focus::-moz-range-thumb {
     box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
   
-  .custom-range:focus::-ms-thumb {
+  .du-custom-range:focus::-ms-thumb {
     box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
   
-  .custom-range::-moz-focus-outer {
+  .du-custom-range::-moz-focus-outer {
     border: 0;
   }
   
-  .custom-range::-webkit-slider-thumb {
+  .du-custom-range::-webkit-slider-thumb {
     width: 1rem;
     height: 1rem;
     margin-top: -0.25rem;
@@ -4114,17 +4114,17 @@ main *:after {
   }
   
   @media (prefers-reduced-motion: reduce) {
-    .custom-range::-webkit-slider-thumb {
+    .du-custom-range::-webkit-slider-thumb {
       -webkit-transition: none;
       transition: none;
     }
   }
   
-  .custom-range::-webkit-slider-thumb:active {
+  .du-custom-range::-webkit-slider-thumb:active {
     background-color: #b3d7ff;
   }
   
-  .custom-range::-webkit-slider-runnable-track {
+  .du-custom-range::-webkit-slider-runnable-track {
     width: 100%;
     height: 0.5rem;
     color: transparent;
@@ -4134,7 +4134,7 @@ main *:after {
     border-radius: 1rem;
   }
   
-  .custom-range::-moz-range-thumb {
+  .du-custom-range::-moz-range-thumb {
     width: 1rem;
     height: 1rem;
     background-color: #007bff;
@@ -4147,17 +4147,17 @@ main *:after {
   }
   
   @media (prefers-reduced-motion: reduce) {
-    .custom-range::-moz-range-thumb {
+    .du-custom-range::-moz-range-thumb {
       -moz-transition: none;
       transition: none;
     }
   }
   
-  .custom-range::-moz-range-thumb:active {
+  .du-custom-range::-moz-range-thumb:active {
     background-color: #b3d7ff;
   }
   
-  .custom-range::-moz-range-track {
+  .du-custom-range::-moz-range-track {
     width: 100%;
     height: 0.5rem;
     color: transparent;
@@ -4167,7 +4167,7 @@ main *:after {
     border-radius: 1rem;
   }
   
-  .custom-range::-ms-thumb {
+  .du-custom-range::-ms-thumb {
     width: 1rem;
     height: 1rem;
     margin-top: 0;
@@ -4182,17 +4182,17 @@ main *:after {
   }
   
   @media (prefers-reduced-motion: reduce) {
-    .custom-range::-ms-thumb {
+    .du-custom-range::-ms-thumb {
       -ms-transition: none;
       transition: none;
     }
   }
   
-  .custom-range::-ms-thumb:active {
+  .du-custom-range::-ms-thumb:active {
     background-color: #b3d7ff;
   }
   
-  .custom-range::-ms-track {
+  .du-custom-range::-ms-track {
     width: 100%;
     height: 0.5rem;
     color: transparent;
@@ -4202,52 +4202,52 @@ main *:after {
     border-width: 0.5rem;
   }
   
-  .custom-range::-ms-fill-lower {
+  .du-custom-range::-ms-fill-lower {
     background-color: #dee2e6;
     border-radius: 1rem;
   }
   
-  .custom-range::-ms-fill-upper {
+  .du-custom-range::-ms-fill-upper {
     margin-right: 15px;
     background-color: #dee2e6;
     border-radius: 1rem;
   }
   
-  .custom-range:disabled::-webkit-slider-thumb {
+  .du-custom-range:disabled::-webkit-slider-thumb {
     background-color: #adb5bd;
   }
   
-  .custom-range:disabled::-webkit-slider-runnable-track {
+  .du-custom-range:disabled::-webkit-slider-runnable-track {
     cursor: default;
   }
   
-  .custom-range:disabled::-moz-range-thumb {
+  .du-custom-range:disabled::-moz-range-thumb {
     background-color: #adb5bd;
   }
   
-  .custom-range:disabled::-moz-range-track {
+  .du-custom-range:disabled::-moz-range-track {
     cursor: default;
   }
   
-  .custom-range:disabled::-ms-thumb {
+  .du-custom-range:disabled::-ms-thumb {
     background-color: #adb5bd;
   }
   
-  .custom-control-label::before,
-  .custom-file-label,
-  .custom-select {
+  .du-custom-control-label::before,
+  .du-custom-file-label,
+  .du-custom-select {
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
   
   @media (prefers-reduced-motion: reduce) {
-    .custom-control-label::before,
-    .custom-file-label,
-    .custom-select {
+    .du-custom-control-label::before,
+    .du-custom-file-label,
+    .du-custom-select {
       transition: none;
     }
   }
   
-  .nav {
+  .du-nav {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
@@ -5143,7 +5143,7 @@ main *:after {
     display: none;
   }
   
-  .btn .du-badge {
+  .du-btn .du-badge {
     position: relative;
     top: -1px;
   }
@@ -10211,7 +10211,7 @@ main *:after {
       text-shadow: none !important;
       box-shadow: none !important;
     }
-    a:not(.btn) {
+    a:not(.du-btn) {
       text-decoration: underline;
     }
     abbr[title]::after {
@@ -10288,3 +10288,38 @@ main *:after {
   .du-white-title{
     color: #ffffff;
   }
+
+
+  /* Du Loader */
+  .loader {
+    margin: 150px auto;
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  .du-loader-wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000000;
+    background: #fcfcfcc2;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+    /* Du Loader End */
