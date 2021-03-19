@@ -6,6 +6,7 @@
 }
 .payment-method {
     margin-top: 24px;
+    /* box-sizing: border-box; */
 }
 .payment-icons-wrap {
     padding: 7px;
@@ -31,18 +32,20 @@ a.complete-pay-btn {
 }
 .switch-txt.du-d-flex {
     margin-right: 20px;
+    margin-bottom: 0 !important;
 }
 .payment-method .du-form-group input {
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     padding: 14px 10px 10px;
-    margin-top: 20px;
+    margin-top: 0;
+    box-sizing: border-box;
 }
-.country-select, .country-select:focus {
+.du-country-select, .du-country-select:focus {
     border: 1px solid #DDDDDD;
 }
 .country-select {
-    background: url(../images/icon-arrow-down.svg) no-repeat 96%;
+    background: url(https://du-widget.herokuapp.com/assets/images/icon-arrow-down.svg) no-repeat 96%;
 }
 .payment-zip-postal-code {
     position: relative;
@@ -58,4 +61,17 @@ a.complete-pay-btn {
 }
 span.loader-gif img {
     width: 30px;
+}
+.payment-method .du-row div, .container-fluid-pd {
+    box-sizing: border-box;
+}
+.autorenewel-wrapper .switch-new .slider-new {
+    top: 0;
+    bottom: 0;
+}
+.autorenewel-wrapper .switch-new {
+    margin: 0;
+}
+.remembercar-label {
+    padding: 4px;
 }
