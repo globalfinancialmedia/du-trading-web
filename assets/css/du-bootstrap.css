@@ -5313,7 +5313,7 @@ main *:after {
     padding-right: 4rem;
   }
   
-  .du-alert-dismissible .close {
+  .du-alert-dismissible .du-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -5853,7 +5853,7 @@ main *:after {
     border-color: #1b1e21;
   }
   
-  .close {
+  .du-close {
     float: right;
     font-size: 1.5rem;
     font-weight: 700;
@@ -5863,22 +5863,22 @@ main *:after {
     opacity: .5;
   }
   
-  .close:hover {
+  .du-close:hover {
     color: #000;
     text-decoration: none;
   }
   
-  .close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
+  .du-close:not(:disabled):not(.disabled):hover, .du-close:not(:disabled):not(.disabled):focus {
     opacity: .75;
   }
   
-  button.close {
+  button.du-close {
     padding: 0;
     background-color: transparent;
     border: 0;
   }
   
-  a.close.disabled {
+  a.du-close.disabled {
     pointer-events: none;
   }
   
@@ -6081,7 +6081,7 @@ main *:after {
     border-top-right-radius: calc(0.3rem - 1px);
   }
   
-  .du-modal-header .close {
+  .du-modal-header .du-close {
     padding: 1rem 1rem;
     margin: -1rem -1rem -1rem auto;
   }

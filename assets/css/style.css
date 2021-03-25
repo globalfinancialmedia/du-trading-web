@@ -673,6 +673,11 @@ ul.navbar-nav li.nav-item > a {
     padding-bottom: 20px;
     font-family: 'HelveticaNeueW23foSKY-Bd';
 }
+.du-overflow-blocks{
+    height: 980px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 /* Custom End */
 
 
