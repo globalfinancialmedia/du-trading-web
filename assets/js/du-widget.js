@@ -1,11 +1,11 @@
 var info_mubasher_widget_urls = [
-    { "slug": "du_top_news", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
-    { "slug": "du_most_read", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
-    { "slug": "du_press_release", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
-    { "slug": "du_international_market", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
-    { "slug": "du_arab_market", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
-    { "slug": "du_islamic_finance", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
-    { "slug": "du_news_exclusive", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
+    { "slug": "du_top_news", "url": "http://5.79.47.21:80/2/" },
+    { "slug": "du_most_read", "url": "http://5.79.47.21:80/2/" },
+    { "slug": "du_press_release", "url": "http://5.79.47.21:80/2/" },
+    { "slug": "du_international_market", "url": "http://5.79.47.21:80/2/" },
+    { "slug": "du_arab_market", "url": "http://5.79.47.21:80/2/" },
+    { "slug": "du_islamic_finance", "url": "http://5.79.47.21:80/2/" },
+    { "slug": "du_news_exclusive", "url": "http://5.79.47.21:80/2/" },
 ];
 
 function loadInfoJsWidget(widget_data) {
@@ -624,8 +624,8 @@ function viewDuNewsPage(state, event) {
     };
     info_mubasher_widget_urls = [];
     info_mubasher_widget_urls = [
-        { "slug": "du_related_news_view", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/" },
-        { "slug": "du_related_news", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" }
+        { "slug": "du_related_news_view", "url": "http://5.79.47.21:80/" },
+        { "slug": "du_related_news", "url": "http://5.79.47.21:80/2/" }
     ];
     loadInfoJsWidget(info_widgets_config_data);
 };
@@ -657,7 +657,7 @@ function duListingNewsPage(state, event) {
     };
     info_mubasher_widget_urls = [];
     info_mubasher_widget_urls = [
-        { "slug": "du_news_view_listing", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" }
+        { "slug": "du_news_view_listing", "url": "http://5.79.47.21:80/2/" }
     ];
     loadInfoJsWidget(info_widgets_config_data);
 };
@@ -772,13 +772,13 @@ function duNewsSummaryPage(state, event) {
     };
     info_mubasher_widget_urls = [];
     info_mubasher_widget_urls = [
-        { "slug": "du_top_news", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
-        { "slug": "du_most_read", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
-        { "slug": "du_press_release", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
-        { "slug": "du_international_market", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
-        { "slug": "du_arab_market", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
-        { "slug": "du_islamic_finance", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
-        { "slug": "du_news_exclusive", "url": "http://a092e5f6a815.ngrok.io/api/v1/news/2/" },
+        { "slug": "du_top_news", "url": "http://5.79.47.21:80/2/" },
+        { "slug": "du_most_read", "url": "http://5.79.47.21:80/2/" },
+        { "slug": "du_press_release", "url": "http://5.79.47.21:80/2/" },
+        { "slug": "du_international_market", "url": "http://5.79.47.21:80/2/" },
+        { "slug": "du_arab_market", "url": "http://5.79.47.21:80/2/" },
+        { "slug": "du_islamic_finance", "url": "http://5.79.47.21:80/2/" },
+        { "slug": "du_news_exclusive", "url": "http://5.79.47.21:80/2/" },
     ];
     loadInfoJsWidget(info_widgets_config_data);
 };
