@@ -135,8 +135,8 @@ function detailCourseHTML(response) {
     <div class="du-col-md-7 du-pr-0"><img class="du-card-img-top" src=` + response.img + ` width="100%"></div>
     <div class="du-col-md-5 du-d-flex du-flex-wrap du-align-content-center"><div><h3 class="font25 du-black-title">` + response.title + `</h3><br><p class="opacity07 
     font19">` + response.description + `</p><p class="opacity07 du-mb-2">
-    <img class="img-fluid du-mr-2" src="assets/images/video-play.svg">` + response.duration + `</p><p><span class="font19">
-    ` + response.instructor + `</span></p><p class="du-mb-4 ff-hel-b"><span><img src="assets/images/icon-material-language.svg">
+    <img class="img-fluid du-mr-2" src="https://du-widget.herokuapp.com/assets/images/video-play.svg">` + response.duration + `</p><p><span class="font19">
+    ` + response.instructor + `</span></p><p class="du-mb-4 ff-hel-b"><span><img src="https://du-widget.herokuapp.com/assets/images/icon-material-language.svg">
     <span class="opacity07">` + response.language + `</span></span></p><a class="du-btn du-btn-default du-btn-block start-btn ff-hel-b main-bg du-text-white du-btn-course-start" onClick="viewListingCoursesPage(event, `+ response.id +`)">
     Start</a></div></div></div><div class="du-row du-mt-5 du-mb-5"><div class="du-col-md-12"></div></div>`;
     window.scrollTo({ top: 1000, behavior: 'smooth' });

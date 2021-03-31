@@ -193,7 +193,7 @@ function mostReadNewsHTML(responseDataObj) {
                 </div></div>`
             });
             outputHtmlString = `<h4 class="font26 du-black-title">Most Read</h4><hr>` + insideLoopHTML + `<div class="du-col-sm-12 du-text-center">
-            <a href="#" class="main-color ff-hel-b" onClick="paginateNews('du_most_read')">View More<span class="du-ml-1"><img src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div>`;
+            <a href="#" class="main-color ff-hel-b" onClick="paginateNews('du_most_read', event)">View More<span class="du-ml-1"><img src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div>`;
             return outputHtmlString;
             break;
         case 'AR':
@@ -206,7 +206,7 @@ function mostReadNewsHTML(responseDataObj) {
                 <div class="du-col-12"><hr class="sidebar-hr"></div></div>`
             });
             outputHtmlStringAr = `<div class="most-read-news-list"><h4 class="sidebar-readmore-title">الأخبار الأكثر</h4>` + insideLoopHTMLAr + `<div class="du-row">
-            <div class="du-col-sm-12 du-text-center du-mb-3"><a href="#" class="view-all-text main-color" onClick="paginateNews('du_most_read')">عرض الكل <img class="pr-1 rotate90" 
+            <div class="du-col-sm-12 du-text-center du-mb-3"><a href="#" class="view-all-text main-color" onClick="paginateNews('du_most_read', event)">عرض الكل <img class="pr-1 rotate90" 
             src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></a></div></div></div>`;
             return outputHtmlStringAr;
             break;
@@ -215,7 +215,8 @@ function mostReadNewsHTML(responseDataObj) {
 
 
 var paginationCounter = 10;
-function paginateNews(slug) {
+function paginateNews(slug, event) {
+    event.preventDefault();
     paginationCounter += 10;
     const paginateWidget = info_widgets_config_data.widgets.filter(x => x.widget_config[0].widgetSlug == slug);
     paginateWidget[0].widget_config[4].urlParam = '0/' + paginationCounter;
@@ -524,7 +525,7 @@ function relatedViewNewsHTML(responseDataObj) {
                 <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">` + data.title + `</a></h4>
                 <p>` + data.teaser + `</p></a></div></div><hr>`
             });
-            outputHtmlString = insideLoopHTML + `<div class="du-col-sm-12 du-text-center"><a href="#" class="main-color ff-hel-b" onclick="paginateNews('du_related_news')">
+            outputHtmlString = insideLoopHTML + `<div class="du-col-sm-12 du-text-center"><a href="#" class="main-color ff-hel-b" onclick="paginateNews('du_related_news', event)">
             View More<span class="du-ml-1"><img src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div>`;
             return outputHtmlString;
             break;
