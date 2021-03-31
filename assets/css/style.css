@@ -673,6 +673,12 @@ ul.navbar-nav li.nav-item > a {
     padding-bottom: 20px;
     font-family: 'HelveticaNeueW23foSKY-Bd';
 }
+#du_learn_page{
+    background-color: #FFFFFF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'HelveticaNeueW23foSKY-Bd';
+}
 .du-overflow-blocks{
     height: 980px;
     overflow-y: auto;
