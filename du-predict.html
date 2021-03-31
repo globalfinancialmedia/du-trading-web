@@ -1,0 +1,277 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+   <link rel="stylesheet" href="assets/css/du-bootstrap.css"> 
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" > 
+  <link rel=”stylesheet” href=”css/bootstrap-responsive.css”>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  
+  <style>
+    .table-even tr td:nth-child(2n){
+    text-align:right;
+    }
+    .table tr td{
+    border-top:none !important;
+    border-bottom:1px solid #ccc ;
+    }
+    .row,.dropdown{
+    margin-top:20px;
+    }
+    .mt-10{
+    margin-top:10%;
+    }
+    .table-right{
+    border:1px solid #ccc;
+    border-radius:30px;
+    
+    }
+    
+    
+    .table-right tr td,.table-right tr th{
+    text-align:center;
+   
+    }
+    .table-right thead th{
+      
+      color:#00AAC7;
+    }
+    .table-right tr td:first-child,.table-right tr th:first-child{
+    text-align:left;
+    }
+    
+
+    .mt-2{
+    margin-top:2%;
+    }
+    h2,.h2{
+      font-size: 2rem;
+      color:#00AAC7;
+
+    }
+    span{
+      color: #6F2C90;
+    }
+    i{
+      color: brown;
+    }
+    </style>
+    <script src="assets/js/du-predict-widget.js"></script>
+</head>
+<body>
+<div class="du-container">
+	<div class="du-row blog-row">
+		<div class="du-col-md-6">
+		<h1>Price Prediction Contest</h1>
+		<p>Participate by submitting your price and win $10 to $50.<a href="#">Learn More</a></p>
+			<div class="du-row">
+			<div class="du-col-md-8">
+			<h2>Symbol of the week</h2>
+			<p>Valid till Sunday 17 2020 at 4:00PM</p>
+			</div>
+		<div class="du-col-md-4-mt-3">
+		<div class="du-dropdown">
+			  <button class="du-btn-primary du-dropdown-toggle" type="button" data-toggle="du-dropdown">Symbol
+			  <span class="caret"></span></button>
+			  <ul class="du-dropdown-menu">
+				<li><a href="#">ETEL1</a></li>
+				<li><a href="#">ETEL2</a></li>
+				<li><a href="#">ETEL2</a></li>
+			  </ul>
+			</div>
+		</div>
+        <div class="du-col-md-8">
+            <img src="./assets/images/logo.png">
+        </div>
+        <div class="du-col-md-4">
+            <div class="du-dropdown">
+                <button class="du-btn btn-primary du-dropdown-toggle" type="button" data-toggle="du-dropdown">12.02
+                    <span class="caret"></span></button>
+            </div>
+        </div>
+			
+			</div>
+			<div class="du-row mt-5">
+			<div class="du-col-md-6 ">
+			<table class="du-table table-even table-hover">
+    <tbody>
+      <tr>
+        <td colspan="2">Open</td>
+        <td>12.09</td>
+      </tr>
+      <tr>
+        <td colspan="2">Previous Close</td>
+        <td>13.09</td>
+      </tr>
+      <tr>
+        <td colspan="2">High</td>
+        <td>13.11</td>
+      </tr>
+	  <tr>
+        <td colspan="2">Low</td>
+        <td>12.9</td>
+      </tr>
+    </tbody>
+  </table>
+			</div>
+		<div class="du-col-md-6">
+		<table class="du-table table-even table-hover">
+		 <thead>
+      <tr>
+        <th colspan="2">Stock Statistics</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Volume</td>
+        <td>1,376,699</td>
+      </tr>
+      <tr>
+        <td>Volume</td>
+        <td>1,376,699</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  <small>All the information is with 10 minutes delay</small>
+		</div>
+			
+			</div>
+			<div class="du-row">			
+			<div class="du-col-md-8">
+			 <input type="text" class="form-control" id="exampleInputPredication" aria-describedby="pr" placeholder="Enter Predication Price">
+			</div>
+		<div class="du-col-md-4">
+			  <button class="du-btn-primary" type="button">Make Predication</button>
+		</div>
+			
+			</div>
+		</div>
+		<div class="du-col-md-6 mt-10">
+		<div id="du_leader_board_container"></div>
+		</div>
+	</div>
+
+	
+	<div class="du-row">
+		<div class="du-col-md-12">
+		
+		<h2>Prediction List</h2>
+		 <div style="margin-bottom:20px;" class="du-row ">
+    <div class="du-col-md-2">
+	<label>Symbol</label>
+      <input type="text" class="form-control" placeholder="All">
+    </div>
+    <div class="du-col-md-2">
+	<label>Status</label>
+      <input type="text" class="form-control" placeholder="All">
+    </div>
+	 <div class="du-col-md-2">
+	<label>Date</label>
+      <input type="text" class="form-control" placeholder="Date">
+    </div>
+	
+	  <div class="col-md-4 mt-2">
+      <button class="du-btn btn-primary " type="button" data-toggle="dropdown">Filter</button>
+   </div>
+  </div>
+    
+  
+  
+		<table class="du-table table-right table-bordered">
+		 <thead>
+      <tr>
+		  <th></th>
+		  <th></th>
+        <th>Symbol</th>
+		<th>Status</th>
+		<th>Prediction</th>
+		<th>Price</th>
+		 <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> 
+
+            <a href="#">
+                <i class="fa fa-edit"></i>
+              
+              </a>
+            
+        </td>
+		<td>
+            <a href="#">
+                <i class="fa fa-trash"></i>
+                
+                
+              </a>
+        </td>
+		<td>FLSH(D)</td>
+		 <td>Canceled</td>
+		<td>4.0</td>
+		<td>4.0</td>
+        <td>08-03-2021</td>
+      </tr>
+      <tr>
+        <td></td>
+		<td></td>
+		<td>CLHD(D)</td>
+		 <td>Open</td>
+		<td>4.0</td>
+		<td>4.0</td>
+        <td>08-03-2021</td>
+      </tr>
+      <tr>
+        <td></td>
+		<td></td>
+		<td>ETEL(D)</td>
+		 <td>Expired</td>
+		<td>4.0</td>
+		<td>4.0</td>
+        <td>08-03-2021</td>
+      </tr>
+      <tr>
+        <td></td>
+		<td></td>
+		<td>MEPA(D)</td>
+		 <td>Amended</td>
+		<td>4.0</td>
+		<td>4.0</td>
+        <td>08-03-2021</td>
+      </tr>
+     
+      
+	  
+      
+    </tbody>
+  </table>
+		
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+        var info_widgets_config_data = {
+            "widgets": [{
+                "widget_config": [
+                    { "widgetSlug": "du_leader_board" },
+                    { "htmlContainerId": "du_leader_board_container" },
+                    { "requestType": "GET" },
+                    { "data": [{ "selected_country": "" }] },
+                    { "urlParam": "" },
+                    { "customeStyles": [] }
+                ]
+            },
+            ],
+            authToken:
+                "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+        };
+        window.onload = (event) => {
+            loadInfoJsWidget(info_widgets_config_data);
+        };
+    </script>                
+</body>
+</html>

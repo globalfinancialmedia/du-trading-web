@@ -1,0 +1,157 @@
+<html>
+<head leng="en">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <link rel="stylesheet" href="assets/css/du-bootstrap.css"> 
+  <script type="text/javascript" src="assets/js/du-predict-widget.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" > 
+  <link rel=”stylesheet” href=”css/bootstrap-responsive.css”>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  
+  
+  <style>
+    .table-even tr td:nth-child(2n){
+    text-align:right;
+    }
+    .table tr td{
+    border-top:none !important;
+    border-bottom:1px solid #ccc ;
+    }
+    .row,.dropdown{
+    margin-top:20px;
+    }
+    .mt-10{
+    margin-top:10%;
+    }
+    .table-right{
+    border:1px solid #ccc;
+    border-radius:30px;
+   }
+    
+   h1, .h1 {
+    font-size: 1.5rem;
+}
+    
+    
+    .table-right tr td,.table-right tr th{
+    text-align:center;
+   
+    }
+    .table-right thead th{
+      
+      color:#00AAC7;
+    }
+    .table-right tr td:first-child,.table-right tr th:first-child{
+    text-align:left;
+    }
+    
+
+    .mt-2{
+    margin-top:2%;
+    }
+    h2,.h2{
+      font-size: 1rem;
+      color:#00AAC7;
+
+    }
+    span{
+      color: #6F2C90;
+    }
+    i{
+      color: brown;
+    }
+   .btn .btn-primary{
+        width: 8rem;
+        height: 500px;
+
+
+
+    }
+    
+
+    </style>
+</head>
+
+
+<body>
+    <div class="du-container"> 
+      <section>
+        <div class="du-row">
+            <div class="du-col-md-4">
+                <div id="du_predict_symbols_week"></div>
+            </div>
+        </div>
+    </section>
+
+    </div>
+    <div class="du-container">
+      <section>
+        <div class="du-row">
+          <div class="du-col-md-4">
+        <div id="du_predict_symbols_list_container"></div>
+        </div>
+        </div>
+      </section>
+
+    </div>
+    <div class="du-container">
+    <section>
+      
+        <div class="du-row">
+          <div class="du-col-md-4">
+            <div id="du_predict_predication"></div>
+
+          </div>
+        </div>
+
+      
+    </section>
+    </div>  
+    
+ 
+    <script type="text/javascript">
+        var info_widgets_predict_config_data = {
+            "widgets": [{
+                "widget_config": [
+                    { "widgetSlug": "du_symbols_week" },
+                    { "htmlContainerId": "du_predict_symbols_week" },
+                    { "requestType": "GET" },
+                    { "data": [{ "selected_country": "sa" }] },
+                    { "urlParam": "" },
+                    { "customeStyles": [] }
+                ]
+            },
+            {
+            "widget_config": [
+                    { "widgetSlug": "du_predict_symbols_list" },
+                    { "htmlContainerId": "du_predict_symbols_list_container" },
+                    { "requestType": "GET" },
+                    { "data": [{ "selected_country": "sa" }] },
+                    { "urlParam": "" },
+                    { "customeStyles": [] }
+                ]
+            },
+            {
+            "widget_config": [
+                    { "widgetSlug": "du_make_predication" },
+                    { "htmlContainerId": "du_predict_predication" },
+                    { "requestType": "post" },
+                    { "data": [{ "selected_country": "sa" }] },
+                    { "urlParam": "" },
+                    { "customeStyles": [] }
+                ]
+            },
+            ],
+            authToken:
+                "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+        };
+        window.onload = (event) => {
+            
+            loadInfoJsWidget(info_widgets_predict_config_data);
+        };
+    </script>
+</body>
+
+</html>
