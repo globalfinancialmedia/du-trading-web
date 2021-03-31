@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mubasher Info</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="./assets/images/favicon-32x32.png" rel="icon" sizes="16x16" type="image/png" /> -->
+    <!-- <link rel="stylesheet" href="https://du-widget.herokuapp.com/assets/css/du-bootstrap.css"> -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/du-bootstrap.css">
+    <script src="assets/js/du-learn-widget.js"></script>
+</head>
+
+<body>
+    <main>
+        <div id="du_learn_page">
+            <div class="du-container-fluid container-fluid-pd">
+                <section>
+                    <div class="du-row">
+                        <div class="du-col-md-12">
+                            <div id="du_learn_container_courses"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="du-my-2">
+                    <div id="du_learn_course_view_container"></div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript">
+        var info_widgets_config_data = {
+            "widgets": [{
+                "widget_config": [
+                    { "widgetSlug": "du_learn_top_courses" },
+                    { "htmlContainerId": "du_learn_container_courses" },
+                    { "requestType": "GET" },
+                    { "data": [{ "selected_country": "sa" }] },
+                    { "urlParam": "" },
+                    { "customeStyles": [] }
+                ]
+            },
+            ],
+            authToken:
+                "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+        };
+        window.onload = (event) => {
+            loadInfoJsWidget(info_widgets_config_data);
+        };
+    </script>
+</body>
+
+</html>

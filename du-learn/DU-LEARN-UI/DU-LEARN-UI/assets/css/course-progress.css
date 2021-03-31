@@ -1,0 +1,82 @@
+.du-progess-bar {
+    position: relative;
+}
+.du-progess-bar:before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background: #ddd;
+    position: absolute;
+    bottom: 16px;
+}
+.du-progess-bar:after {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    bottom: 16px;
+}
+.du-progess-bar .progress-title {
+    padding-right: 30px;
+}
+.lecture-carousel .owl-nav {
+    text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-tabs.course-tabs {
+    border-bottom: 2px solid #888;
+}
+.nav-tabs.course-tabs .nav-item {
+    margin-bottom: 0;
+}
+.nav-tabs.course-tabs .nav-link {
+    padding: 0;
+    height: 100%;
+    margin: 0 94px 0 0;
+    border: none;
+}
+.nav-tabs.course-tabs .nav-link.active {
+    border: none;
+}
+.nav-tabs.course-tabs .nav-link.active:before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    display: inline-block;
+    background: #000;
+    position: absolute;
+    bottom: -2px;
+}
+
+#accordion .card:not(last-child) {
+    border-bottom: none;
+}
+#accordion .card {
+    border-radius: 0;
+}
+#accordion .card:first-child {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+#accordion .card-header {
+    padding: 1rem 1.25rem .5rem;
+}

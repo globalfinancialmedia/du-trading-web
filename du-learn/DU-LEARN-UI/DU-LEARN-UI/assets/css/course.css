@@ -1,0 +1,73 @@
+a.start-btn {
+    padding: 12px 10px 8px;
+    display: block;
+    text-align: center;
+    clear: both;
+    overflow: hidden;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 14px;
+}
+.du-course-items-list-bg {
+    background-color: #FAFAFA;
+    padding: 25px 0;
+}
+.du-course-items-list {
+    max-width: 850px;
+    margin: 0 auto;
+}
+.du-course-items-list ul li {
+    margin-bottom: 7px;
+    font-size: 23px;
+}
+span.du-list-icons {
+    width: 20px;
+    display: inline-block;
+    margin-right: 10px;
+}
+.du-nav-tabs.course-tabs {
+    border-bottom: 2px solid #888;
+}
+.du-nav-tabs.course-tabs .du-nav-item {
+    margin-bottom: 0;
+}
+.du-nav-tabs.course-tabs .du-nav-link {
+    padding: 0;
+    height: 100%;
+    margin: 0 94px 0 0;
+    border: none;
+}
+.du-nav-tabs.course-tabs .du-nav-link.active {
+    border: none;
+}
+.du-nav-tabs.course-tabs .du-nav-link.active:before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    display: inline-block;
+    background: #000;
+    position: absolute;
+    bottom: -2px;
+}
+.course-tabs-content {
+    margin-bottom: 40px;
+}
+.course-tabs-content p.font23 {
+    line-height: 41px;
+}
+#du-accordion .du-card:not(last-child) {
+    border-bottom: none;
+}
+#du-accordion .du-card {
+    border-radius: 0;
+}
+#du-accordion .du-card:first-child {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+#du-accordion .du-card-header {
+    padding: 1rem 1.25rem .5rem;
+}
+#accordion .card button img {
+    width: 14px;
+}

@@ -352,6 +352,10 @@ main *:after {
     cursor: pointer;
   }
   
+  .du-cursor-pointer{
+    cursor: pointer;
+  }
+  
   template {
     display: none;
   }
