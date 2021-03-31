@@ -133,7 +133,7 @@ function detailCourseHTML(response) {
     }
     outputHtmlString = ` <h3 class="main-color du-mb-3 du-mt-5">Courses Details</h3><div class="du-row du-justify-content-center">
     <div class="du-col-md-7 du-pr-0"><img class="du-card-img-top" src=` + response.img + ` width="100%"></div>
-    <div class="du-col-md-5 du-d-flex du-flex-wrap du-align-content-center"><div><h3 class="font25">` + response.title + `</h3><br><p class="opacity07 
+    <div class="du-col-md-5 du-d-flex du-flex-wrap du-align-content-center"><div><h3 class="font25 du-black-title">` + response.title + `</h3><br><p class="opacity07 
     font19">` + response.description + `</p><p class="opacity07 du-mb-2">
     <img class="img-fluid du-mr-2" src="assets/images/video-play.svg">` + response.duration + `</p><p><span class="font19">
     ` + response.instructor + `</span></p><p class="du-mb-4 ff-hel-b"><span><img src="assets/images/icon-material-language.svg">
@@ -156,7 +156,7 @@ function courseListingViewHTML(response) {
         <span>10 minutes ago</span></small> <h4 class="title-news-description du-mt-2">` + data.title + `</h4><p>` + data.description + `</p></div><div class="du-col-12"><hr>
         </a></div></div>`
     });
-    outputHtmlString = `<h3 class="main-news-title du-mt-5 main-color du-mb-4">Courses Listing</h3>` + insideLoopHTML;
+    outputHtmlString = `<h3 class="main-news-title du-mt-5 main-color du-mb-5">Courses Listing</h3>` + insideLoopHTML;
     return outputHtmlString;
 };
 
@@ -232,7 +232,7 @@ function viewListingCoursesPage(event, id) {
     innerContent.innerHTML = "";
     innerContent.innerHTML = `<section class="banking du-mb-5"><div class="du-container-fluid container-section">
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-    <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer" aria-current="page" onClick="duLearnTopCoursesPage(event);">
+    <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="duLearnTopCoursesPage(event);">
     Back to Top Courses</li></ol></nav><div id="du_learn_listing_view_container"></div></div></div></div></section>`;
     var info_widgets_config_data = {
         "widgets": [
@@ -263,7 +263,7 @@ function listingDetailCoursePage(event, id, courseId) {
     innerContent.innerHTML = "";
     innerContent.innerHTML = `<section class="banking du-mb-5"><div class="du-container-fluid container-section">
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-    <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer" aria-current="page" onClick="viewListingCoursesPage(event, `+ courseId +`);">
+    <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="viewListingCoursesPage(event, `+ courseId +`);">
     Back to Courses Listing</li></ol></nav><div id="du_learn_listing_detail_view_container"></div></div></div></div></section>`;
     var info_widgets_config_data = {
         "widgets": [
