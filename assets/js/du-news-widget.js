@@ -402,14 +402,14 @@ function newsListingViewNewsHTML(responseDataObj) {
                 <h4 class="title-news-description">` + data.title + `</h4><p>` + data.teaser + `</p></div>
                 <div class="du-col-12"><hr></a></div></div>`
             });
-            outputHtmlString = `<h1 class="main-news-title du-mt-4">Banking</h1><div class="du-row"><div class="du-col-sm-6">
+            outputHtmlString = `<h1 class="main-news-title du-mt-4">` + responseDataObj[0].title + `</h1><div class="du-row"><div class="du-col-sm-6">
             <div class="news-inner"><a href="#"><div class="bg-clr-fr-news d-flex flex-wrap align-content-center">
-            <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/Image%2056.png" alt=""></div></a><div class="clearfix du-mt-3">
+            <img class="du-img-fluid width-100" src=` + responseDataObj[0].image.primary + ` alt=""></div></a><div class="clearfix du-mt-3">
             <small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
-            <a class="title-img-description txt-black" href="#"> Egypt runs first return flight for workers stranded in Kuwait</a></h3></div></div></div>
-            <div class="du-col-sm-6"><div class="news-inner"><img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/Image%2056.png" alt="">
+            <a class="title-img-description txt-black" href="#">` + responseDataObj[0].teaser + `</a></h3></div></div></div>
+            <div class="du-col-sm-6"><div class="news-inner"><img class="du-img-fluid width-100" src=` + responseDataObj[1].image.primary + ` alt="">
             <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
-            <a class="title-img-description txt-black" href="#">Egypt runs first return flight for workers stranded in Kuwait</a></h3></div></div></div></div>` + insideLoopHTML;
+            <a class="title-img-description txt-black" href="#">` + responseDataObj[1].teaser + `</a></h3></div></div></div></div>` + insideLoopHTML;
             return outputHtmlString;
             break;
         case 'AR':
@@ -446,7 +446,7 @@ function viewNewsDetailHTML(responseDataObj) {
         default:
             let outputHtmlString = "";
             var srcImgSet = responseDataObj.image.srcset.split(',')[2];
-            outputHtmlString = `<h1>` + responseDataObj.title + `</h1>
+            outputHtmlString = `<h1 class="du-black-title">` + responseDataObj.title + `</h1>
             <img class="du-img-fluid du-mb-4 width-100" src=` + srcImgSet + ` alt=""><div class="du-row"><div class="du-col-md-6">
             <p class="du-mb-4">Committed investments in the GCC region increased by 2.3% </p></div><div class="du-col-md-6">
             <small class="pull-right">` + responseDataObj.source.name.stringEn + ` - <span>10 minutes ago</span></small></div></div><div class="du-row"><div class="du-col-sm-12">
@@ -597,7 +597,7 @@ function viewDuNewsPage(state, id, event) {
     innerContent.innerHTML = `<div class="du-container-fluid">
     <div class="du-row"><div class="du-col-md-12 news-left-col">
     <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="#" onClick="duNewsSummaryPage('summaryPage', event);">Home</a></li>
-    <li class="breadcrumb-item" aria-current="page" onClick="duNewsBackState();">Back to Du News Summary</li></ol></nav><div id="du_related_news_view_container"></div>
+    <li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="duNewsBackState();">Back to Du News Summary</li></ol></nav><div id="du_related_news_view_container"></div>
     <div id="du_related_news_container"></div>
     </div></div></div>`;
     var info_widgets_config_data = {
@@ -641,7 +641,7 @@ function duListingNewsPage(state, event) {
     innerContent.innerHTML = "";
     innerContent.innerHTML = `<section class="banking du-mb-5"><div class="du-container-fluid container-section">
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-    <a href="#" onClick="duNewsSummaryPage('summaryPage', event);">Home</a></li><li class="breadcrumb-item" aria-current="page" onClick="duNewsBackState();">
+    <a href="#" onClick="duNewsSummaryPage('summaryPage', event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="duNewsBackState();">
     Back to Du News Summary</li></ol></nav><div id="du_news_view_container"></div></div></div></div></section>`
     var info_widgets_config_data = {
         "widgets": [
