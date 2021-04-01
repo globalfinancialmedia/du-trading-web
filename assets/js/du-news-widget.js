@@ -406,10 +406,10 @@ function newsListingViewNewsHTML(responseDataObj) {
             <div class="news-inner"><a href="#"><div class="bg-clr-fr-news d-flex flex-wrap align-content-center">
             <img class="du-img-fluid width-100" src=` + responseDataObj[0].image.primary + ` alt=""></div></a><div class="clearfix du-mt-3">
             <small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
-            <a class="title-img-description txt-black" href="#">` + responseDataObj[0].teaser + `</a></h3></div></div></div>
+            <a class="title-img-description txt-black" href="#" onClick="viewDuNewsPage('listingPage',` + responseDataObj[0].id + `, event);">` + responseDataObj[0].title + `</a></h3></div></div></div>
             <div class="du-col-sm-6"><div class="news-inner"><img class="du-img-fluid width-100" src=` + responseDataObj[1].image.primary + ` alt="">
             <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
-            <a class="title-img-description txt-black" href="#">` + responseDataObj[1].teaser + `</a></h3></div></div></div></div>` + insideLoopHTML;
+            <a class="title-img-description txt-black" href="#" onClick="viewDuNewsPage('listingPage',` + responseDataObj[1].id + `, event);">` + responseDataObj[1].title + `</a></h3></div></div></div></div>` + insideLoopHTML;
             return outputHtmlString;
             break;
         case 'AR':
@@ -448,10 +448,9 @@ function viewNewsDetailHTML(responseDataObj) {
             var srcImgSet = responseDataObj.image.srcset.split(',')[2];
             outputHtmlString = `<h1 class="du-black-title">` + responseDataObj.title + `</h1>
             <img class="du-img-fluid du-mb-4 width-100" src=` + srcImgSet + ` alt=""><div class="du-row"><div class="du-col-md-6">
-            <p class="du-mb-4">Committed investments in the GCC region increased by 2.3% </p></div><div class="du-col-md-6">
-            <small class="pull-right">` + responseDataObj.source.name.stringEn + ` - <span>10 minutes ago</span></small></div></div><div class="du-row"><div class="du-col-sm-12">
-
-            <p>` + stripHTML(responseDataObj.data.description) + `</p></div></div><h4>Related News</h4><hr>`;
+            <p class="du-mb-4">` + responseDataObj.mainImageCaption + `</p></div><div class="du-col-md-6">
+            <small class="pull-right">` + responseDataObj.source.name.stringEn + ` - <span>10 minutes ago</span></small></div></div><div class="du-row">
+            <div class="du-col-sm-12"><p>` + stripHTML(responseDataObj.data.description) + `</p></div></div><h4>Related News</h4><hr>`;
             return outputHtmlString;
             break;
         case 'AR':

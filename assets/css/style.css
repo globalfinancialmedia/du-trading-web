@@ -679,6 +679,12 @@ ul.navbar-nav li.nav-item > a {
     padding-bottom: 20px;
     font-family: 'HelveticaNeueW23foSKY-Bd';
 }
+#du_predict_page{
+    background-color: #FFFFFF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'HelveticaNeueW23foSKY-Bd';
+}
 .du-overflow-blocks{
     height: 980px;
     overflow-y: auto;
@@ -690,6 +696,10 @@ ul.navbar-nav li.nav-item > a {
 }
 .du-btn-course-start:hover{
     color: white !important;
+}
+.du-predict-leader-overflow{
+    overflow-y: scroll;
+    height: 550px;
 }
 /* Custom End */
 

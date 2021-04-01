@@ -1,0 +1,10 @@
+.owl-carousel.paid-courses-carousel .star-rating, .owl-carousel.free-courses-carousel .star-rating,
+.owl-carousel.top-categories-carousel .star-rating {
+    width: 84px;
+}
+.owl-carousel.paid-courses-carousel .item .slide-text-wrap, .owl-carousel.free-courses-carousel .item .slide-text-wrap,
+.owl-carousel.top-categories-carousel .item .slide-text-wrap {
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 10px;
+    margin-bottom: 10px;
+}
