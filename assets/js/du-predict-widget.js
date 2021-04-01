@@ -1,4 +1,4 @@
-const info_mubasher_widget_urls = [
+const info_predict_widget_urls = [
     { "slug": "du_predict_symbol_list", "url": "https://jsonplaceholder.typicode.com/todos" },
     { "slug": "du_predict_time_zone", "url": "https://jsonplaceholder.typicode.com/todos/1" },
     { "slug": "du_make_prediction_widget", "url": "https://jsonplaceholder.typicode.com/todos/1" },
@@ -13,7 +13,7 @@ function loadInfoJsWidget(widget_data) {
         let info_req_headers = {};
         info_req_headers = Object.assign({ "Content-Type": "application/json;charset=UTF-8" }, info_req_headers);
         info_req_headers = Object.assign({ "authorization": widget_data.authToken }, info_req_headers);
-        let apiUrlObj = info_mubasher_widget_urls.find(
+        let apiUrlObj = info_predict_widget_urls.find(
             ({ slug }) => slug === widgetSlug
         );
         loader(config_data.widget_config[1].htmlContainerId);

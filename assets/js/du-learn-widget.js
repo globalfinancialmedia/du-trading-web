@@ -1,4 +1,4 @@
-var info_mubasher_widget_urls = [
+var info_learn_widget_urls = [
     { "slug": "du_learn_top_courses", "url": "http://52.31.246.107:4600/api/v1/learn/courses" }
 ];
 
@@ -8,7 +8,7 @@ function loadInfoJsWidget(widget_data) {
         let info_req_headers = {};
         info_req_headers = Object.assign({ "Content-Type": "application/json;charset=UTF-8" }, info_req_headers);
         info_req_headers = Object.assign({ "authorization": widget_data.authToken }, info_req_headers);
-        let apiUrlObj = info_mubasher_widget_urls.find(
+        let apiUrlObj = info_learn_widget_urls.find(
             ({ slug }) => slug === widgetSlug
         );
         loader(config_data.widget_config[1].htmlContainerId);
@@ -192,8 +192,8 @@ function duLearnTopCoursesPage(event) {
         authToken:
             "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
     };
-    info_mubasher_widget_urls = [];
-    info_mubasher_widget_urls = [
+    info_learn_widget_urls = [];
+    info_learn_widget_urls = [
         { "slug": "du_learn_top_courses", "url": "http://52.31.246.107:4600/api/v1/learn/courses" }
     ];
     loadInfoJsWidget(info_widgets_config_data);
@@ -221,8 +221,8 @@ function viewCourseDetailPage(event, id) {
             "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
     };
     var widget_slug_url = { "slug": "du_learn_course_detail", "url": "http://52.31.246.107:4600//api/v1/learn/courses/" + id };
-    info_mubasher_widget_urls.push(widget_slug_url);
-    info_mubasher_widget_urls.shift();
+    info_learn_widget_urls.push(widget_slug_url);
+    info_learn_widget_urls.shift();
     loadInfoJsWidget(info_widgets_config_data);
 };
 
@@ -250,8 +250,8 @@ function viewListingCoursesPage(event, id) {
         authToken:
             "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
     };
-    info_mubasher_widget_urls = [];
-    info_mubasher_widget_urls = [
+    info_learn_widget_urls = [];
+    info_learn_widget_urls = [
         { "slug": "du_learn_listing_view", "url": "http://52.31.246.107:4600/api/v1/learn/lectures/course/" + id }
     ];
     loadInfoJsWidget(info_widgets_config_data);
@@ -281,8 +281,8 @@ function listingDetailCoursePage(event, id, courseId) {
         authToken:
             "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
     };
-    info_mubasher_widget_urls = [];
-    info_mubasher_widget_urls = [
+    info_learn_widget_urls = [];
+    info_learn_widget_urls = [
         { "slug": "du_learn_listing_detail_view", "url": "http://52.31.246.107:4600/api/v1/learn/lectures/" + id }
     ];
     loadInfoJsWidget(info_widgets_config_data);

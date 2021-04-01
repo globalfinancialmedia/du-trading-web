@@ -2,7 +2,7 @@ var duLangState = 2;
 if(sessionStorage.getItem('duStateLanguage') == 'AR') {
     duLangState = 1;
 }
-var info_mubasher_widget_urls = [
+var info_news_widget_urls = [
     { "slug": "du_top_news", "url": "http://5.79.47.21:80/" + duLangState + "/" },
     { "slug": "du_most_read", "url": "http://5.79.47.21:80/" + duLangState + "/" },
     { "slug": "du_press_release", "url": "http://5.79.47.21:80/" + duLangState + "/" },
@@ -18,7 +18,7 @@ function loadInfoJsWidget(widget_data) {
         let info_req_headers = {};
         info_req_headers = Object.assign({ "Content-Type": "application/json;charset=UTF-8" }, info_req_headers);
         info_req_headers = Object.assign({ "authorization": widget_data.authToken }, info_req_headers);
-        let apiUrlObj = info_mubasher_widget_urls.find(
+        let apiUrlObj = info_news_widget_urls.find(
             ({ slug }) => slug === widgetSlug
         );
         loader(config_data.widget_config[1].htmlContainerId);
@@ -625,8 +625,8 @@ function viewDuNewsPage(state, id, event) {
         authToken:
             "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
     };
-    info_mubasher_widget_urls = [];
-    info_mubasher_widget_urls = [
+    info_news_widget_urls = [];
+    info_news_widget_urls = [
         { "slug": "du_related_news_view", "url": "http://5.79.47.21:80/" },
         { "slug": "du_related_news", "url": "http://5.79.47.21:80/2/" }
     ];
@@ -658,8 +658,8 @@ function duListingNewsPage(state, event) {
         authToken:
             "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
     };
-    info_mubasher_widget_urls = [];
-    info_mubasher_widget_urls = [
+    info_news_widget_urls = [];
+    info_news_widget_urls = [
         { "slug": "du_news_view_listing", "url": "http://5.79.47.21:80/2/" }
     ];
     loadInfoJsWidget(info_widgets_config_data);
@@ -773,8 +773,8 @@ function duNewsSummaryPage(state, event) {
         authToken:
             "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
     };
-    info_mubasher_widget_urls = [];
-    info_mubasher_widget_urls = [
+    info_news_widget_urls = [];
+    info_news_widget_urls = [
         { "slug": "du_top_news", "url": "http://5.79.47.21:80/2/" },
         { "slug": "du_most_read", "url": "http://5.79.47.21:80/2/" },
         { "slug": "du_press_release", "url": "http://5.79.47.21:80/2/" },
