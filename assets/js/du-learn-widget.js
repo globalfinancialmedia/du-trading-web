@@ -28,6 +28,7 @@ function loadInfoJsWidget(widget_data) {
 
 function loader(containerId) {
     var element = document.getElementById(containerId);
+    containerId.innerContent = "";
     element.classList.add("loader");
 };
 
@@ -108,17 +109,17 @@ function learnTopCoursesHTML(response) {
             data.price = data.duration;
         }
         if (data.paid === false) {
-            data.paid = 'Paid';
-        } else {
             data.paid = 'Free';
+        } else {
+            data.paid = 'Paid';
         }
         if (!data.img) {
             data.img = 'https://du-assets-bucket.s3-eu-west-1.amazonaws.com/Basics-and-Fundamentals-of-Stock-Markets/3_2_basicsandfundamentalsofstockmarkets.jpg'
         }
-        insideLoopHTML += `<div class="du-col-md-4"><div class="du-card du-top-course-card du-mb-3"><a href="" onClick="viewCourseDetailPage(event,` + data.id + `)"><img class="du-card-img-top" 
-        src=` + data.img + ` width="100%"></a>
-        <div class="du-card-body du-p-3"><a href="" onClick="viewCourseDetailPage(event,` + data.id + `)"><h5 class="du-card-title">` + data.title + `</h5></a><p class="du-card-text">
-        ` + data.source + `</p><span class="du-d-block slide-text-wrap"><span class="du-d-flex du-justify-content-between"><span class="course-price text-dark 
+        insideLoopHTML += `<div class="du-col-md-4"><div class="du-card du-top-course-card du-mb-3"><a href="" onClick="viewCourseDetailPage(event,` + data.id + `)">
+        <img class="du-card-img-top"  src=` + data.img + ` width="100%"></a>
+        <div class="du-card-body du-p-3"><a href="" onClick="viewCourseDetailPage(event,` + data.id + `)"><h5 class="du-card-title">` + data.title + `</h5></a>
+        <span class="du-d-block slide-text-wrap du-mt-4"><span class="du-d-flex du-justify-content-between"><span class="course-price text-dark 
         font15 ff-hel-b">` + data.price + `</span> <span class="main-color ff-hel-b">` + data.paid + `</span></span></span></div></div></div>`
     });
     outputHtmlString = `<h3 class="main-color du-mb-3">Top Courses</h3><div class="du-row">` + insideLoopHTML + `</div>`;
@@ -137,9 +138,8 @@ function detailCourseHTML(response) {
     font19">` + response.description + `</p><p class="opacity07 du-mb-2">
     <img class="img-fluid du-mr-2" src="https://du-widget.herokuapp.com/assets/images/video-play.svg">` + response.duration + `</p><p><span class="font19">
     ` + response.instructor + `</span></p><p class="du-mb-4 ff-hel-b"><span><img src="https://du-widget.herokuapp.com/assets/images/icon-material-language.svg">
-    <span class="opacity07">` + response.language + `</span></span></p><a class="du-btn du-btn-default du-btn-block start-btn ff-hel-b main-bg du-text-white du-btn-course-start" onClick="viewListingCoursesPage(event, `+ response.id +`)">
+    <span class="opacity07">` + response.language + `</span></span></p><a class="du-btn du-btn-default du-btn-block start-btn ff-hel-b main-bg du-btn-course-start du-text-white" onClick="viewListingCoursesPage(event, `+ response.id +`)">
     Start</a></div></div></div><div class="du-row du-mt-5 du-mb-5"><div class="du-col-md-12"></div></div>`;
-    window.scrollTo({ top: 1000, behavior: 'smooth' });
     return outputHtmlString;
 };
 
@@ -152,9 +152,8 @@ function courseListingViewHTML(response) {
             data.img = 'https://du-assets-bucket.s3-eu-west-1.amazonaws.com/Basics-and-Fundamentals-of-Stock-Markets/3_2_basicsandfundamentalsofstockmarkets.jpg'
         }
         insideLoopHTML += `<div class="du-row"><div class="du-col-sm-4"><a href="#" onClick="listingDetailCoursePage(event, ` + data.id + ` ,` + data.course.id + `)"><img class="du-img-fluid width-100" 
-        src=` + data.img + ` alt=""> </div><div class="du-col-sm-8 du-mt-4"><small class="title-under-img">` + data.source + ` - 
-        <span>10 minutes ago</span></small> <h4 class="title-news-description du-mt-2">` + data.title + `</h4><p>` + data.description + `</p></div><div class="du-col-12"><hr>
-        </a></div></div>`
+        src=` + data.img + ` alt=""></a> </div><div class="du-col-sm-8 du-mt-2"><a href="#" onClick="listingDetailCoursePage(event, ` + data.id + ` ,` + data.course.id + `)">
+        <h4 class="title-news-description du-mt-2">` + data.title + `</h4></a><p>` + data.description + `</p></div><div class="du-col-12"><hr></div></div>`
     });
     outputHtmlString = `<h3 class="main-news-title du-mt-5 main-color du-mb-5">Courses Listing</h3>` + insideLoopHTML;
     return outputHtmlString;
@@ -163,7 +162,7 @@ function courseListingViewHTML(response) {
 /* Listing Detail Course DU */
 function courseListingDetailHTML(response) {
     let outputHtmlString = "";
-    outputHtmlString = `<h3 class="main-news-title du-mt-4 du-mb-4 main-color">Courses Listing Detail</h3><hr>` + response.content;
+    outputHtmlString = `<h3 class="main-news-title du-mt-4 du-mb-4 main-color">Courses Detail</h3><hr>` + response.content;
     return outputHtmlString;
 };
 
@@ -201,9 +200,12 @@ function duLearnTopCoursesPage(event) {
 
 function viewCourseDetailPage(event, id) {
     event.preventDefault();
-    var innerContent = document.getElementById("du_learn_course_view_container");
+    var innerContent = document.getElementById("du_learn_page");
     innerContent.innerHTML = "";
-    innerContent.innerHTML = `<div id="du_learn_course_view_container"></div>`;
+    innerContent.innerHTML = `<section><div class="du-container-fluid container-section">
+    <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+    <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" 
+    onClick="duLearnTopCoursesPage(event);">Back to Top Courses</li></ol></nav><div id="du_learn_course_view_container"></div></div></div></div></section>`;
     var info_widgets_config_data = {
         "widgets": [
             {
@@ -230,7 +232,7 @@ function viewListingCoursesPage(event, id) {
     event.preventDefault();
     var innerContent = document.getElementById("du_learn_page");
     innerContent.innerHTML = "";
-    innerContent.innerHTML = `<section class="banking du-mb-5"><div class="du-container-fluid container-section">
+    innerContent.innerHTML = `<section><div class="du-container-fluid container-section">
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
     <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="duLearnTopCoursesPage(event);">
     Back to Top Courses</li></ol></nav><div id="du_learn_listing_view_container"></div></div></div></div></section>`;
@@ -261,7 +263,7 @@ function listingDetailCoursePage(event, id, courseId) {
     event.preventDefault();
     var innerContent = document.getElementById("du_learn_page");
     innerContent.innerHTML = "";
-    innerContent.innerHTML = `<section class="banking du-mb-5"><div class="du-container-fluid container-section">
+    innerContent.innerHTML = `<section"><div class="du-container-fluid container-section">
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
     <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="viewListingCoursesPage(event, `+ courseId +`);">
     Back to Courses Listing</li></ol></nav><div id="du_learn_listing_detail_view_container"></div></div></div></div></section>`;

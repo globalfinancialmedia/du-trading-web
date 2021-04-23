@@ -166,7 +166,7 @@ function topNewsHomeHTML(responseDataObj) {
                 <small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
                 <h5 class="title-img-description">متعامل يتابع أس الأسهم سوق الأسهم السعودية يرتفع بالختام بسيولة 4.4 مليار ريال بدعم القياديات</h5></a><hr></div>`
             });
-            outputHtmlStringAr = `<a href="news-view-arabic.html" class="lnd-tp-news"><img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png">
+            outputHtmlStringAr = `<a href="#" class="lnd-tp-news"><img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png">
             <span class="lnd-tp-news-title ff-hel-b du-text-white">متعامل يتابع أس الأسهم سوق الأسهم السعودية يرتفع بالختام بسيولة 4.4 مليار ريال بدعم القياديات</span>
             <span class="lnd-tp-news-time font14 du-text-white">قبل 3 ساعات</span></a><div class="du-row du-mt-3">` + insideLoopHTMLAr + `</div>`;
             return outputHtmlStringAr;

@@ -1,9 +1,9 @@
-const info_predict_widget_urls = [
-    { "slug": "du_predict_symbol_list", "url": "https://jsonplaceholder.typicode.com/todos" },
-    { "slug": "du_predict_time_zone", "url": "https://jsonplaceholder.typicode.com/todos/1" },
-    { "slug": "du_make_prediction_widget", "url": "https://jsonplaceholder.typicode.com/todos/1" },
-    { "slug": "du_predict_leader_board", "url": "https://jsonplaceholder.typicode.com/todos" },
-    { "slug": "du_predict_view_list", "url": "https://jsonplaceholder.typicode.com/todos" }
+var info_predict_widget_urls = [
+    { "slug": "du_predict_symbol_list", "url": "http://52.31.246.107:8086/du/api/du/symbols" },
+    { "slug": "du_predict_time_zone", "url": "http://52.31.246.107:8086/du/prediction/symbols/1" },
+    { "slug": "du_make_prediction_widget", "url": "http://52.31.246.107:8086/du/contest/postPrediction/120" },
+    { "slug": "du_predict_leader_board", "url": "http://52.31.246.107:8086/du/prediction/getLeaderBoard" },
+    { "slug": "du_predict_view_list", "url": "http://52.31.246.107:8086/du/prediction/getPredictionList" }
 ];
 
 
@@ -33,10 +33,12 @@ function loadInfoJsWidget(widget_data) {
 
 function loader(containerId) {
     var element = document.getElementById(containerId);
+    containerId.innerContent = "";
     element.classList.add("loader");
 };
 
 function infoSendRequest(req_headers, body, url, url_param, request_type, htmlContainerId, customeStyles, widgetSlug) {
+    console.log('body', body);
     if (url_param !== "") {
         url = url + url_param;
     }
@@ -75,6 +77,7 @@ function infoSendRequest(req_headers, body, url, url_param, request_type, htmlCo
         }
     })
         .then(response => {
+            console.log('response', response);
             let generatedHTML = createHTML(response, widgetSlug);
             var container = document.getElementById(htmlContainerId);
             container.classList.remove("loader");
@@ -108,24 +111,70 @@ function createHTML(reqDataObject, widgetSlug) {
 
 
 /* Symbol of the week DU predict */
-
 function predictSymbolListHTML(response) {
     let outputHtmlString = "";
-    outputHtmlString = `<h1>Price Prediction Contest</h1> <p>Participate by submitting your price and win $10 to $50.<a href="#">Learn More</a></p><div class="du-row"> <div class="du-col-md-8"> <h2>Symbol of the week</h2> <p>Valid till Sunday 17 2020 at 4:00PM</p></div>
-    <div class="du-col-md-4-du-mt-3"> <div class="du-dropdown"> <button class="du-btn-primary du-dropdown-toggle" type="button" data-toggle="du-dropdown">Symbol
-    <span class="caret"></span></button> <ul class="du-dropdown-menu"> <li><a href="#">ETEL1</a></li><li><a href="#">ETEL2</a></li><li><a href="#">ETEL2</a>
-    </li></ul> </div></div><div class="du-col-md-8"> <img src="./assets/images/du-predict-logo.png"> </div><div class="du-col-md-4"> <div class="du-dropdown">
-    <button class="du-btn btn-primary du-dropdown-toggle" type="button" data-toggle="du-dropdown">12.02 <span class="caret"></span></button> </div></div></div>`;
+    let insideLoopHTML = "";
+    let insideSelectorLoopHTML = "";
+    response.forEach(data => {
+        insideLoopHTML += `<option value=` + data.id + `>` + data.name + `</option>`
+    });
+    // response.forEach(data => {
+    //     insideSelectorLoopHTML += `<option value=` + data.id + `>` + data.code + `</option>`
+    // });
+    if(!response){
+        var img = '<img src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/dropdown-down-arrow.svg" class="du-predict-down-arrow">';
+    } else {
+        var img = '<img src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/dropdown-up-arrow.svg" class="du-predict-up-arrow">';
+    }
+    outputHtmlString = `<h3 class="main-color">Price Prediction Contest</h3> <p>Participate by submitting your price and win $10 to $50.<a href="#" class="main-color du-ml-2">Learn More</a></p>
+    <div class="du-row"><div class="du-col-md-8"> <h3 class="main-color">Symbol of the week</h3><p>Valid till Sunday 17 2020 at 4:00PM</p></div><div class="du-col-md-4 du-mt-2">
+    <select class="du-form-control du-form-control-sm" aria-label=".form-select-sm example" onChange="getPredictSymbolId(event)"> <option selected>Select Symbol</option>` + insideLoopHTML + `</select></div>
+    <div class="du-col-md-8"><img src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/du-predict-logo.png"> </div><div class="du-col-md-4">
+    <h5 class="du-d-inline">14.56</h5>` + img + `</div></div>`;
     return outputHtmlString;
 };
 
+/* Load the Symbols Based Statistics */
+function getPredictSymbolId(event) {
+    event.preventDefault();
+    var innerContent = document.getElementById("du_predict_time_container_zone");
+    innerContent.innerHTML = "";
+    innerContent.innerHTML = `<div id="du_predict_time_container_zone"></div>`;
+    var info_widgets_config_data = {
+        "widgets": [
+            {
+                "widget_config": [
+                    { "widgetSlug": "du_predict_time_zone" },
+                    { "htmlContainerId": "du_predict_time_container_zone" },
+                    { "requestType": "GET" },
+                    { "data": [{ "selected_country": "" }] },
+                    { "urlParam": "" },
+                    { "customeStyles": [] }
+                ]
+            },
+        ],
+        authToken:
+            "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+    };
+    info_predict_widget_urls = [];
+    info_predict_widget_urls = [
+        { "slug": "du_predict_time_zone", "url": "http://52.31.246.107:8086/du/prediction/symbols/" + event.target.value }
+    ];
+    loadInfoJsWidget(info_widgets_config_data);
+}
+
+/* Stock Statistics based on symbol selection */
 function predictTimeZoneHTML(response) {
+    var data = "";
+    if (response.response.docs[0]) {
+        var data = response.response.docs[0];
+    }
     let outputHtmlString = "";
     outputHtmlString = ` <div class="du-row du-mt-5"> <div class="du-col-md-6 "> <table class="du-table table-even table-hover"> <tbody> <tr> <td colspan="2">Open</td>
-    <td>12.09</td></tr><tr> <td colspan="2">Previous Close</td><td>13.09</td></tr><tr> <td colspan="2">High</td><td>13.11</td></tr><tr> <td colspan="2">Low</td>
-    <td>12.9</td></tr></tbody> </table> </div><div class="du-col-md-6"> <table class="du-table table-even table-hover"> <thead> <tr> <th colspan="2">Stock Statistics
-    </th> </tr></thead> <tbody> <tr> <td>Volume</td><td>1,376,699</td></tr><tr> <td>Volume</td><td>1,376,699</td></tr></tbody> </table> <small>
-    All the information is with 10 minutes delay</small> </div></div>`;
+    <td>` + data.OPEN_PRICE + `</td></tr><tr> <td colspan="2">Previous Close</td><td>` + data.PREV_CLOSED + `</td></tr><tr> <td colspan="2">High</td><td>` + data.HIGH_PRICE + `</td></tr><tr>
+    <td colspan="2">Low</td><td>` + data.LOW_PRICE + `</td></tr></tbody> </table> </div><div class="du-col-md-6"> <table class="du-table table-even table-hover"> <thead>
+    <tr> <th colspan="2">Stock Statistics</th> </tr></thead> <tbody> <tr> <td>Volume</td><td>` + data.VOLUME + `</td></tr><tr> <td>Key</td><td>` + data.KEY + `</td>
+    </tr></tbody> </table> <small>All the information is with 10 minutes delay</small> </div></div>`;
     return outputHtmlString;
 };
 
@@ -133,14 +182,14 @@ function predictListViewHTML(response) {
     let outputHtmlString = "";
     let insideLoopHTML = "";
     response.forEach(data => {
-        insideLoopHTML += ` <tr> <td> <a href="#"> <i class="fa fa-edit"></i> </a> </td><td> <a href="#"> <i class="fa fa-trash"></i></a>
-        </td><td>FLSH(D)</td><td>Canceled</td><td>4.0</td><td>4.0</td><td>08-03-2021</td></tr>`
+        insideLoopHTML += `<tr><td>` + data.symbol + `</td><td>` + data.status + `</td><td>` + data.prediction + `</td><td>` + data.price + `</td><td>` + data.date + `
+        </td><td> first </td><td> second</td></tr>`
     });
-    outputHtmlString = `<h2>Prediction List</h2> <div style="margin-bottom:20px;" class="du-row "> <div class="du-col-md-2"> <label>Symbol</label>
+    outputHtmlString = `<h2 class="main-color">Prediction List</h2> <div style="margin-bottom:20px;" class="du-row "> <div class="du-col-md-2"> <label>Symbol</label>
     <input type="text" class="du-form-control" placeholder="All"> </div><div class="du-col-md-2"> <label>Status</label> <input type="text" class="du-form-control" 
     placeholder="All"> </div><div class="du-col-md-2"> <label>Date</label> <input type="text" class="du-form-control" placeholder="Date"> </div><div class="col-md-4 du-mt-2">
-    <button class="du-btn btn-primary " type="button" data-toggle="dropdown">Filter</button> </div></div><div class="du-predict-leader-overflow"><table class="du-table 
-    table-right table-bordered"> <thead><tr> <th></th> <th></th> <th>Symbol</th> <th>Status</th> <th>Prediction</th> <th>Price</th> <th>Date</th> </tr></thead> 
+    <button class="du-btn du-btn-primary du-mt-3 du-pl-4 du-pr-4 du-pt-2" type="button" data-toggle="dropdown">Filter</button> </div></div><div class="du-predict-list-overflow"><table class="du-table du-table-bordered 
+    table-right du-table-hover"> <thead><tr><th>Symbol</th> <th>Status</th> <th>Prediction</th> <th>Price</th> <th>Date</th><th></th> <th></th> </tr></thead> 
     <tbody> ` + insideLoopHTML + ` </tbody> </table></div>`;
     return outputHtmlString;
 };
@@ -148,18 +197,59 @@ function predictListViewHTML(response) {
 function predictLeaderBoardHTML(response) {
     let outputHtmlString = "";
     let insideLoopHTML = "";
-    response.forEach(data => {
-        insideLoopHTML += `<tr> <td>1</td><td>Hamster Toad</td><td>12.01</td><td>Tue 15/03 13:00PM</td></tr>`
+    response.forEach((data, index) => {
+        insideLoopHTML += `<tr> <td>` + index + `</td><td>` + data.name + `</td><td>` + data.price + `</td><td>` + data.time + `</td></tr>`
     });
-    outputHtmlString = ` <h2>Leader Board <span>(ETEL)</span></h2><div class="du-predict-leader-overflow"><table class="du-table table-right table-hover"> <thead> <tr> <th>Rank</th>
+    outputHtmlString = ` <h3 class="main-color">Leader Board <span>(ETEL)</span></h3><div class="du-predict-leader-overflow"><table class="du-table du-table-bordered table-right du-table-hover"> <thead> <tr> <th>Rank</th>
     <th>Name</th> <th>Price</th> <th>Rank</th> </tr></thead> <tbody> ` + insideLoopHTML + ` </tbody> </table></div>`;
     return outputHtmlString;
 };
 
 function makePredictionListHTML(response) {
     let outputHtmlString = "";
-    outputHtmlString = `<div class="du-row"> <div class="du-col-md-8"> <input type="text" class="du-form-control" id="exampleInputPredication" 
-    aria-describedby="pr" placeholder="Enter Predication Price"> </div><div class="du-col-md-4"> <button class="du-btn-primary" type="button">Make 
-    Predication</button> </div></div>`;
+    outputHtmlString = `<div class="du-row du-mb-4"> <div class="du-col-md-7"> <input type="text" class="du-form-control" id="exampleInputPredication" 
+    aria-describedby="pr" placeholder="Enter Predication Price"> </div><div class="du-col-md-5"><button class="du-btn du-btn-primary du-pt-2" type="button" onClick="getPost(event)">
+    Submit Your Prediction</button> </div></div>`;
     return outputHtmlString;
 };
+
+
+function getPost(event) {
+    event.preventDefault();
+    var getPredictionVal = document.getElementById("exampleInputPredication").value;
+    var innerContent = document.getElementById("du_make_prediction_container_widget");
+    innerContent.innerHTML = "";
+    var info_widgets_config_data = {
+        "widgets": [
+            {
+                "widget_config": [
+                    { "widgetSlug": "du_make_prediction_widget" },
+                    { "htmlContainerId": "du_make_prediction_container_widget" },
+                    { "requestType": "POST" },
+                    {
+                        "data": [
+                            {
+                                "id": 23,
+                                "from_date": "2021-02-20T00:00:00.000+00:00",
+                                "to_date": "2021-02-27T00:00:00.000+00:00",
+                                "result_date": "2021-03-01T00:00:00.000+00:00",
+                                "symbol": {
+                                    "id": 2
+                                }
+                            }
+                        ]
+                    },
+                    { "urlParam": "" },
+                    { "customeStyles": [] }
+                ]
+            },
+        ],
+        authToken:
+            "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+    };
+    info_predict_widget_urls = [];
+    info_predict_widget_urls = [
+        { "slug": "du_make_prediction_widget", "url": "http://52.31.246.107:8086/du/contest/postPrediction/120" },
+    ];
+    loadInfoJsWidget(info_widgets_config_data);
+}

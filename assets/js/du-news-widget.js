@@ -38,6 +38,7 @@ function loadInfoJsWidget(widget_data) {
 
 function loader(containerId) {
     var element = document.getElementById(containerId);
+    containerId.innerContent = "";
     element.classList.add("loader");
 };
 
@@ -150,7 +151,7 @@ function topNewsHomeHTML(responseDataObj) {
             let insideLoopHTML = "";
             var srcImgSet = responseDataObj[0].image.srcset.split(',')[2];
             responseDataObj.forEach(data => {
-                insideLoopHTML += `<div class="du-col-md-6"><a href="#" id="helloThere" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
+                insideLoopHTML += `<div class="du-col-md-6"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
                 <small class="title-under-img">Markets - <span>10 minutes ago</span></small><h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
             });
             outputHtmlString = `<a href="#" class="lnd-tp-news lnd-tp-news-des">
@@ -166,12 +167,13 @@ function topNewsHomeHTML(responseDataObj) {
         case 'AR':
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
+            var srcImgSet = responseDataObj[0].image.srcset.split(',')[2];
             responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-col-md-6"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
                 <small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
                 <h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
             });
-            outputHtmlStringAr = `<a href="news-view-arabic.html" class="lnd-tp-news"><img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png">
+            outputHtmlStringAr = `<a href="#" class="lnd-tp-news"><img class="du-img-fluid" src=` + srcImgSet + `>
             <span class="lnd-tp-news-title ff-hel-b du-text-white">متعامل يتابع أس الأسهم سوق الأسهم السعودية يرتفع بالختام بسيولة 4.4 مليار ريال بدعم القياديات</span>
             <span class="lnd-tp-news-time font14 du-text-white">قبل 3 ساعات</span></a><div class="du-row du-mt-3">` + insideLoopHTMLAr + `</div>`;
             return outputHtmlStringAr;
@@ -188,8 +190,9 @@ function mostReadNewsHTML(responseDataObj) {
             responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="du-row">
                 <div class="du-row ml-1"><div class="du-col-sm-4 col-3 pr-0 d-flex flex-wrap align-content-center">
-                <img class="du-img-fluid" src=` + data.image.primary + `></div><div class="du-col-sm-8 col-9">
-                <p class="most-read-news-title">` + data.title + `</p></div><div class="du-col-12"><hr></div>
+                <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><img class="du-img-fluid" src=` + data.image.primary + `></a>
+                </div><div class="du-col-sm-8 col-9"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
+                <p class="most-read-news-title">` + data.title + `</p></a></div><div class="du-col-12"><hr></div>
                 </div></div>`
             });
             outputHtmlString = `<h4 class="font26 du-black-title">Most Read</h4><hr>` + insideLoopHTML + `<div class="du-col-sm-12 du-text-center">
@@ -201,9 +204,9 @@ function mostReadNewsHTML(responseDataObj) {
             let insideLoopHTMLAr = "";
             responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-row"><div class="du-col-4">
-                <img class="du-img-fluid width-100" src=` + data.image.primary + `>
-                </div><div class="du-col-8"><div class="sidebar-readmore-description txt-black">` + data.title + `</div></div>
-                <div class="du-col-12"><hr class="sidebar-hr"></div></div>`
+                <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><img class="du-img-fluid width-100" src=` + data.image.primary + `></a>
+                </div><div class="du-col-8"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><div class="sidebar-readmore-description txt-black">`
+                 + data.title + `</div></a></div><div class="du-col-12"><hr class="sidebar-hr"></div></div>`
             });
             outputHtmlStringAr = `<div class="most-read-news-list"><h4 class="sidebar-readmore-title">الأخبار الأكثر</h4>` + insideLoopHTMLAr + `<div class="du-row">
             <div class="du-col-sm-12 du-text-center du-mb-3"><a href="#" class="view-all-text main-color" onClick="paginateNews('du_most_read', event)">عرض الكل <img class="pr-1 rotate90" 
@@ -218,7 +221,7 @@ var paginationCounter = 10;
 function paginateNews(slug, event) {
     event.preventDefault();
     paginationCounter += 10;
-    const paginateWidget = info_widgets_config_data.widgets.filter(x => x.widget_config[0].widgetSlug == slug);
+    const paginateWidget = info_widgets_config_data.widgets.filter(x => { return x.widget_config[0].widgetSlug === slug });
     paginateWidget[0].widget_config[4].urlParam = '0/' + paginationCounter;
     var innerContent = document.getElementById(paginateWidget[0].widget_config[1].htmlContainerId);
     innerContent.innerHTML = "";
@@ -234,8 +237,8 @@ function exclusiveNewsHomeHTML(responseDataObj) {
             let insideLoopHTML = "";
             responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
-                <img class="du-img-fluid" src=` + data.image.primary + `><small class="title-under-img">` + data.source.name.stringEn + ` - <span>10 minutes ago</span></small>
-                <h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
+                <img class="du-img-fluid" src=` + data.image.primary + `><small class="title-under-img du-black-title"></a>` + data.source.name.stringEn + ` - <span>10 minutes ago</span>
+                </small><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
             });
             outputHtmlString = `<h4 class="exclusive-heading mt70">Mubasher Exclusive</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
             <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row">` + insideLoopHTML + `</div>`;
@@ -265,9 +268,9 @@ function islamicFinanceNewsHTML(responseDataObj) {
             let insideLoopHTML = "";
             responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="isl-fi-news-wrap du-col-sm-4" style="margin-bottom:25px;"><div class="du-row"><div class="du-col-sm-4">
-                <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><img class="du-img-fluid du-w-100" src=` + data.image.primary + `>
+                <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><img class="du-img-fluid du-w-100" src=` + data.image.primary + `></a>
                 </div><div class="du-col-sm-8"><small>` + data.source.name.stringEn + ` - <span>10 minutes ago</span></small>
-                <h6>` + data.title + `</h6></a></div></div></div>`
+                <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><h6>` + data.title + `</h6></a></div></div></div>`
             });
             outputHtmlString = `<h4 class="exclusive-heading">Islamic Finance</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
             <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><hr><div class="du-row">` + insideLoopHTML + `<div class="du-col-12"><hr></div></div>`;
@@ -297,9 +300,9 @@ function arabMarketNewsHTML(responseDataObj) {
             let insideLoopHTML = "";
             responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="isl-fi-news-wrap du-col-sm-4"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
-                <img class="du-img-fluid width-100" src=` + data.image.primary + `>
-                <div class="clearfix du-mt-3"><small class="title-under-img">` + data.source.name.stringEn + ` - <span>10 minutes ago</span></small>
-                <h6 class="title-img-description">` + data.title + `</h6></div></a><hr></div>`
+                <img class="du-img-fluid width-100" src=` + data.image.primary + `></a>
+                <div class="clearfix du-mt-3"><small class="title-under-img du-black-title">` + data.source.name.stringEn + ` - <span>10 minutes ago</span></small>
+                <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><h6 class="title-img-description">` + data.title + `</h6></a></div><hr></div>`
             });
             outputHtmlString = `<h4 class="exclusive-heading">Arab Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
             <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg"></a><div class="du-row du-mt-2">` + insideLoopHTML + `</div>`;
@@ -311,7 +314,7 @@ function arabMarketNewsHTML(responseDataObj) {
             responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="isl-fi-news-wrap du-col-sm-4"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
                 <img class="du-img-fluid width-100" src=` + data.image.primary + `><div class="clearfix du-mt-3">
-                <small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span>
+                <small class="title-under-img du-black-title">محتوی الشریک - <span>قبل 3 ساعات</span>
                 </small><h6 class="title-img-description">` + data.title + `</h6>
                 </div></a><hr></div>`
             });
@@ -330,9 +333,9 @@ function internationalMarketHTML(responseDataObj) {
             let insideLoopHTML = "";
             responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="du-row"><div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
-                <img class="du-img-fluid width-100" src=` + data.image.primary + `></div>
-                <div class="du-col-md-8 du-mt-4"><small class="title-under-img">` + data.source.name.stringEn + ` - <span>10 minutes ago</span></small>
-                <h5 class="title-img-description">` + data.title + `</h5><p>` + data.teaser + `</p></a></div></div><hr>`
+                <img class="du-img-fluid width-100" src=` + data.image.primary + `></a></div>
+                <div class="du-col-md-8 du-mt-4"><small class="title-under-img du-black-title">` + data.source.name.stringEn + ` - <span>10 minutes ago</span></small>
+                <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><h5 class="title-img-description">` + data.title + `</h5></a><p>` + data.teaser + `</p></div></div><hr>`
             });
             outputHtmlString = `<h4 class="exclusive-heading">International Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all<img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTML;
             return outputHtmlString;
@@ -343,7 +346,7 @@ function internationalMarketHTML(responseDataObj) {
             responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-row"><div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
                 <img class="du-img-fluid width-100" src=` + data.image.primary + `>
-                </div><div class="du-col-md-8"><small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
+                </div><div class="du-col-md-8"><small class="title-under-img du-black-title">محتوی الشریک - <span>قبل 3 ساعات</span></small>
                 <h5 class="title-img-description">` + data.title + `</h5>
                 <p>` + data.teaser + `</p></a></div></div><hr>`
             });
@@ -362,9 +365,8 @@ function pressReleaseNewsHTML(responseDataObj) {
             let insideLoopHTML = "";
             var srcImgSet = responseDataObj[0].image.srcset.split(',')[2];
             responseDataObj.forEach(data => {
-                insideLoopHTML += `<a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><div class="press-rel-news">
-                <small class="title-under-img">` + data.source.name.stringEn + ` - <span>10 minutes ago</span></small>
-                <h5 class="title-img-description mb-3">` + data.title + `</h5></div></a><hr>`
+                insideLoopHTML += `<div class="press-rel-news"><small class="title-under-img du-black-title">` + data.source.name.stringEn + ` - <span>10 minutes ago</span></small>
+                <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><h5 class="title-img-description mb-3">` + data.title + `</h5></a></div><hr>`
             });
             outputHtmlString = `<h4 class="exclusive-heading">Press Release</h4><div class="du-row">
             <div class="du-col-md-4"><img class="du-img-fluid du-mt-3" src=` + srcImgSet + `></div>
@@ -374,13 +376,14 @@ function pressReleaseNewsHTML(responseDataObj) {
         case 'AR':
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
+            var srcImgSet = responseDataObj[0].image.srcset.split(',')[2];
             responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><div class="press-rel-news du-mt-3"><small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
                 <h5 class="title-img-description">` + data.title + `</h5></div></a><hr>`
             });
             outputHtmlStringAr = `<h4 class="exclusive-heading">بيانات صحفية</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">اظهار الكل<img class="pr-1 rotate180" 
             src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row"><div class="du-col-md-4"><img class="du-img-fluid" 
-            src="https://du-widget.herokuapp.com/assets/images/ccb89c0d02e8fdcc7cfdb45678d7395f.png"></div><div class="du-col-md-8">` + insideLoopHTMLAr + `</div></div>`;
+            src=` + srcImgSet + `></div><div class="du-col-md-8">` + insideLoopHTMLAr + `</div></div>`;
             return outputHtmlStringAr;
             break;
     }
@@ -397,18 +400,17 @@ function newsListingViewNewsHTML(responseDataObj) {
             responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="du-row"><div class="du-col-sm-4">
                 <a href="#" onClick="viewDuNewsPage('listingPage',` + data.id + `, event);"><img class="du-img-fluid width-100" 
-                src=` + data.image.primary + ` alt="">
-                </div><div class="du-col-sm-8 du-mt-4"><small class="title-under-img">` + data.source.name.stringEn + ` - <span>10 minutes ago</span></small>
-                <h4 class="title-news-description">` + data.title + `</h4><p>` + data.teaser + `</p></div>
-                <div class="du-col-12"><hr></a></div></div>`
+                src=` + data.image.primary + ` alt=""></a></div><div class="du-col-sm-8 du-mt-4"><small class="title-under-img du-black-title">` + data.source.name.stringEn + ` - 
+                <span>10 minutes ago</span></small><a href="#" onClick="viewDuNewsPage('listingPage',` + data.id + `, event);"><h4 class="title-news-description">` 
+                + data.title + `</h4></a><p>` + data.teaser + `</p></div><div class="du-col-12"><hr></div></div>`
             });
-            outputHtmlString = `<h1 class="main-news-title du-mt-4">` + responseDataObj[0].title + `</h1><div class="du-row"><div class="du-col-sm-6">
+            outputHtmlString = `<h1 class="main-news-title du-mt-4 du-black-title">` + responseDataObj[0].title + `</h1><div class="du-row"><div class="du-col-sm-6">
             <div class="news-inner"><a href="#"><div class="bg-clr-fr-news d-flex flex-wrap align-content-center">
             <img class="du-img-fluid width-100" src=` + responseDataObj[0].image.primary + ` alt=""></div></a><div class="clearfix du-mt-3">
-            <small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
+            <small class="title-under-img du-black-title">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
             <a class="title-img-description txt-black" href="#" onClick="viewDuNewsPage('listingPage',` + responseDataObj[0].id + `, event);">` + responseDataObj[0].title + `</a></h3></div></div></div>
             <div class="du-col-sm-6"><div class="news-inner"><img class="du-img-fluid width-100" src=` + responseDataObj[1].image.primary + ` alt="">
-            <div class="clearfix du-mt-3"><small class="title-under-img">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
+            <div class="clearfix du-mt-3"><small class="title-under-img du-black-title">Markets - <span>10 minutes ago</span></small><h3 class="title-img-description">
             <a class="title-img-description txt-black" href="#" onClick="viewDuNewsPage('listingPage',` + responseDataObj[1].id + `, event);">` + responseDataObj[1].title + `</a></h3></div></div></div></div>` + insideLoopHTML;
             return outputHtmlString;
             break;
@@ -417,20 +419,17 @@ function newsListingViewNewsHTML(responseDataObj) {
             let insideLoopHTMLAr = "";
             responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-row"><div class="du-col-sm-4">
-                <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt=""></div>
-                <div class="du-col-sm-8"><small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small><a href="#" onClick="viewDuNewsPage('listingPage',` + data.id + `, event);">
-                <h4 class="title-news-description">متعامل يتابع أس الأسهم سوق الأسهم السعودية يرتفع بالختام بسيولة 4.4 مليار ريال بدعم القياديات</h4></a>
-                <p>هو السيناريو الأكثر قسوة على المملكة ودول العالم، وهي أن تتخذ السعودية قراراً بإلغاء موسم الحج لهذا العام،
-                 خوفاً من تكوين بؤرة جديدة لانتشار فيروس كورونا في واحدة من أكبر التجمعات البشرية سنوياً في العالم، خاصة بعدما تخطت</p></div>
-                 <div class="du-col-12"><hr></div></div>`
+                <img class="du-img-fluid width-100" src=` + data.image.primary + ` alt=""></div>
+                <div class="du-col-sm-8"><small class="title-under-img">` + data.source.name.stringEn + ` - <span>قبل 3 ساعات</span></small><a href="#" onClick="viewDuNewsPage('listingPage',` + data.id + `, event);">
+                <h4 class="title-news-description">`+ data.title + `</h4></a><p>` + data.teaser + `</p></div><div class="du-col-12"><hr></div></div>`
             });
-            outputHtmlStringAr = `<h1 class="main-news-title mt-4">أخبار عالمية</h1><div class="du-row"><div class="du-col-sm-6"><div class="news-inner">
-            <img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/01abf890bdc6ddfff8451fe7d54057f0.png" alt=""><div class="clearfix mt-3">
+            outputHtmlStringAr = `<h1 class="main-news-title mt-4">` + responseDataObj[0].title + `</h1><div class="du-row"><div class="du-col-sm-6">
+            <div class="news-inner"><img class="du-img-fluid width-100" src=` + responseDataObj[0].image.primary + `  alt=""><div class="clearfix mt-3">
             <small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
-            <h3 class="title-img-description">متعامل يتابع أس الأسهم سوق الأسهم السعودية يرتفع بالختام بسيولة 4.4 مليار ريال</h3></div></div></div>
-            <div class="du-col-sm-6"><div class="news-inner"><img class="du-img-fluid width-100" src="https://du-widget.herokuapp.com/assets/images/01abf890bdc6ddfff8451fe7d54057f0.png" alt="">
+            <h3 class="title-img-description">` + responseDataObj[0].title + `</h3></div></div></div>
+            <div class="du-col-sm-6"><div class="news-inner"><img class="du-img-fluid width-100" src=` + responseDataObj[1].image.primary + ` alt="">
             <div class="clearfix mt-3"><small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
-            <h3 class="title-img-description">متعامل يتابع أس الأسهم سوق الأسهم السعودية يرتفع بالختام بسيولة 4.4 مليار ريال بدعم القياديات</h3></div></div>
+            <h3 class="title-img-description">`+ responseDataObj[1].title +`</h3></div></div>
             </div></div>` + insideLoopHTMLAr + `<div class="du-row"><div class="du-col-sm-12 mt-4 mb-5 du-text-center "><a href="#" class="main-color ff-hel-b">تحميل المزيد <span>
             <img src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div></div>`;
             return outputHtmlStringAr;
@@ -450,61 +449,16 @@ function viewNewsDetailHTML(responseDataObj) {
             <img class="du-img-fluid du-mb-4 width-100" src=` + srcImgSet + ` alt=""><div class="du-row"><div class="du-col-md-6">
             <p class="du-mb-4">` + responseDataObj.mainImageCaption + `</p></div><div class="du-col-md-6">
             <small class="pull-right">` + responseDataObj.source.name.stringEn + ` - <span>10 minutes ago</span></small></div></div><div class="du-row">
-            <div class="du-col-sm-12"><p>` + stripHTML(responseDataObj.data.description) + `</p></div></div><h4>Related News</h4><hr>`;
+            <div class="du-col-sm-12"><p>` + stripHTML(responseDataObj.data.description) + `</p></div></div><h4 class="exclusive-heading du-mt-3">Related News</h4><hr>`;
             return outputHtmlString;
             break;
         case 'AR':
             let outputHtmlStringAr = "";
-            let insideLoopHTMLAr = "";
-            responseDataObj.forEach(data => {
-                insideLoopHTMLAr += `<div class="du-row"><div class="du-col-sm-4"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><img class="img-fluid width-100" 
-                src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt=""></div><div class="du-col-sm-8 news-block"><small class="title-under-img">
-                محتوی الشریک - <span>قبل 3 ساعات</span></small><h4 class="title-news-description">متعامل يتابع أس الأسهم سوق الأسهم
-                 السعودية يرتفع بالختام بسيولة 4.4 مليار ريال</h4><p>هو السيناريو الأكثر قسوة على المملكة ودول العالم، وهي أن تتخذ السعودية
-                  قراراً بإلغاء موسم الحج لهذا العام، خوفاً من تكوين بؤرة جديدة لانتشار فيروس كورونا
-                  في واحدة من أكبر التجمعات البشرية سنوياً في العالم، خاصة بعدما تخطت</p></div><div class="du-col-12"></a><hr></div></div>`
-            });
-            outputHtmlStringAr = `<h1 class="news-main-heading">لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار النشوة وتمجيد الألم</h1>
+            var srcImgSet = responseDataObj.image.srcset.split(',')[2];
+            outputHtmlStringAr = `<h1 class="news-main-heading">` + responseDataObj.title + `</h1>
             <small class="news-under-title-description">محتوی الشریک - <span>قبل 3 ساعات</span></small><img class="img-fluid du-mb-3 du-mt-2 width-100" 
-            src="https://du-widget.herokuapp.com/assets/images/Group 1062.png" alt=""><p class="du-mb-5 commit-text">لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار </p>
-            <div class="du-row"><div class="du-col-md-12"><p class="mubasher-news-description">لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار النشوة وتمجيد الألم نشأت بالفعل،
-             وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية،
-             فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء</p><br><p class="mubasher-news-description"> الأشخاص الذين لا يدركون بأن السعادة لا بد أن نستشعرها
-              بصورة أكثر عقلانية ومنطقية فيعرضهم هذا لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من
-                    يرغب في الحب ونيل المنال ويتلذذ بالآلام، الألم هو الألم ولكن نتيجة لظروف ما قد تكمن السعاده فيما نتحمله من كد وأسي.</p><br><p class="mubasher-news-description"> و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني شاق إلا
-                    من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر بالسعادة
-                    التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض المتعة ؟</p>
-                <br><p class="mubasher-news-description"> علي الجانب الآخر نشجب ونستنكر هؤلاء الرجال المفتونون بنشوة اللحظة الهائمون في رغباتهم
-                 فلا يدركون ما يعقبها من الألم والأسي المحتم، واللوم كذلك يشمل هؤلاء الذين أخفقوا</p><br>
-                 <img class="img-fluid du-mb-3 du-d-block du-mx-auto" src="https://du-widget.herokuapp.com/assets/images/image-49.png" alt="">
-                 <p class="mubasher-news-description">لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول
-                    استنكار النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك
-                    السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص
-                    الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا
-                    لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من يرغب في الحب ونيل المنال ويتلذذ بالآلام،
-                    الألم هو الألم ولكن نتيجة لظروف ما قد تكمن السعاده فيما نتحمله من كد وأسي.</p><br>
-                    <p class="mubasher-news-description du-mb-0">و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني
-                    شاق إلا من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر
-                    بالسعادة التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض
-                    المتعة ؟</p><p class="mubasher-news-description">علي الجانب الآخر نشجب ونستنكر هؤلاء الرجال المفتونون
-                    بنشوة اللحظة الهائمون في رغباتهم فلا يدركون ما يعقبها من الألم والأسي المحتم، واللوم
-                    كذلك يشمل هؤلاء الذين أخفقوا في واجباتهم نتيجة لضعف إرادتهم فيتساوي مع هؤلاء الذين
-                    يتجنبون وينأون عن تحمل الكدح والألم .</p><br><p class="mubasher-news-description">لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول
-                    استنكار النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك
-                    السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص
-                    الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا
-                    لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من يرغب في الحب ونيل المنال ويتلذذ بالآلام،
-                    الألم هو الألم ولكن نتيجة لظروف ما قد تكمن السعاده فيما نتحمله من كد وأسي.</p><br>
-                    <p class="mubasher-news-description du-mb-0">و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني
-                    شاق إلا من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر
-                    بالسعادة التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض
-                    المتعة ؟</p><p class="mubasher-news-description">علي الجانب الآخر نشجب ونستنكر هؤلاء الرجال المفتونون
-                    بنشوة اللحظة الهائمون في رغباتهم فلا يدركون ما يعقبها من الألم والأسي المحتم، واللوم
-                    كذلك يشمل هؤلاء الذين أخفقوا في واجباتهم نتيجة لضعف إرادتهم فيتساوي مع هؤلاء الذين
-                    يتجنبون وينأون عن تحمل الكدح والألم .</p></div></div><div class="du-row du-mt-5"><div class="du-col-12">
-                    <h4 class="exclusive-heading">أخبار ذات صلة</h4><div class="du-col-12"><hr></div></div></div>` + insideLoopHTMLAr + `<div class="du-row">
-                    <div class="du-col-sm-12 du-mt-4 du-mb-5 du-text-center"><a href="#" class="main-color ff-hel-b">تحميل المزيد <span><img 
-                    src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div></div>`;
+            src=` + srcImgSet + ` alt=""><p class="commit-text">` + responseDataObj.mainImageCaption + `</p>
+            <div class="du-row"><div class="du-col-md-12"><p class="mubasher-news-description">` + stripHTML(responseDataObj.data.description) + `</p><br></div></div>`;
             return outputHtmlStringAr;
             break;
     }
@@ -519,10 +473,9 @@ function relatedViewNewsHTML(responseDataObj) {
             let insideLoopHTML = "";
             responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="du-row"><div class="du-col-sm-4 ml-5">
-                <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><img class="du-img-fluid width-100" src=` + data.image.primary + ` alt="">
-                </div><div class="du-col-sm-8"><small>Markets - <span>10 minutes ago</span></small><br><br><h4 class="news-title">
-                <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">` + data.title + `</a></h4>
-                <p>` + data.teaser + `</p></a></div></div><hr>`
+                <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><img class="du-img-fluid width-100" src=` + data.image.primary + ` alt=""></a>
+                </div><div class="du-col-sm-8"><small class="du-black-title">Markets - <span>10 minutes ago</span></small><br><br><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
+                <h4 class="news-title">` + data.title + `</h4></a><p>` + data.teaser + `</p></div></div><hr>`
             });
             outputHtmlString = insideLoopHTML + `<div class="du-col-sm-12 du-text-center"><a href="#" class="main-color ff-hel-b" onclick="paginateNews('du_related_news', event)">
             View More<span class="du-ml-1"><img src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div>`;
@@ -532,53 +485,14 @@ function relatedViewNewsHTML(responseDataObj) {
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
             responseDataObj.forEach(data => {
-                insideLoopHTMLAr += `<div class="du-row"><div class="du-col-sm-4"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><img class="img-fluid width-100" 
-                src="https://du-widget.herokuapp.com/assets/images/ae4c4d011de2d059445e75a1dd74280e-1.png" alt=""></div><div class="du-col-sm-8 news-block"><small class="title-under-img">
-                محتوی الشریک - <span>قبل 3 ساعات</span></small><h4 class="title-news-description">متعامل يتابع أس الأسهم سوق الأسهم
-                 السعودية يرتفع بالختام بسيولة 4.4 مليار ريال</h4><p>هو السيناريو الأكثر قسوة على المملكة ودول العالم، وهي أن تتخذ السعودية
-                  قراراً بإلغاء موسم الحج لهذا العام، خوفاً من تكوين بؤرة جديدة لانتشار فيروس كورونا
-                  في واحدة من أكبر التجمعات البشرية سنوياً في العالم، خاصة بعدما تخطت</p></div><div class="du-col-12"></a><hr></div></div>`
+                insideLoopHTMLAr += `<div class="du-row"><div class="du-col-sm-4"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
+                <img class="img-fluid width-100" src=` + data.image.primary + ` alt=""></div><div class="du-col-sm-8 news-block"><small class="title-under-img">
+                محتوی الشریک - <span>قبل 3 ساعات</span></small><h4 class="title-news-description">` + data.title + `</h4><p>` + data.teaser + `</p></div>
+                <div class="du-col-12"></a><hr></div></div>`
             });
-            outputHtmlStringAr = `<h1 class="news-main-heading">لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار النشوة وتمجيد الألم</h1>
-            <small class="news-under-title-description">محتوی الشریک - <span>قبل 3 ساعات</span></small><img class="img-fluid du-mb-3 du-mt-2 width-100" 
-            src="https://du-widget.herokuapp.com/assets/images/Group 1062.png" alt=""><p class="du-mb-5 commit-text">لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار </p>
-            <div class="du-row"><div class="du-col-md-12"><p class="mubasher-news-description">لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار النشوة وتمجيد الألم نشأت بالفعل،
-             وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية،
-             فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء</p><br><p class="mubasher-news-description"> الأشخاص الذين لا يدركون بأن السعادة لا بد أن نستشعرها
-              بصورة أكثر عقلانية ومنطقية فيعرضهم هذا لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من
-                    يرغب في الحب ونيل المنال ويتلذذ بالآلام، الألم هو الألم ولكن نتيجة لظروف ما قد تكمن السعاده فيما نتحمله من كد وأسي.</p><br><p class="mubasher-news-description"> و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني شاق إلا
-                    من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر بالسعادة
-                    التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض المتعة ؟</p>
-                <br><p class="mubasher-news-description"> علي الجانب الآخر نشجب ونستنكر هؤلاء الرجال المفتونون بنشوة اللحظة الهائمون في رغباتهم
-                 فلا يدركون ما يعقبها من الألم والأسي المحتم، واللوم كذلك يشمل هؤلاء الذين أخفقوا</p><br>
-                 <img class="img-fluid du-mb-3 du-d-block du-mx-auto" src="https://du-widget.herokuapp.com/assets/images/image-49.png" alt="">
-                 <p class="mubasher-news-description">لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول
-                    استنكار النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك
-                    السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص
-                    الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا
-                    لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من يرغب في الحب ونيل المنال ويتلذذ بالآلام،
-                    الألم هو الألم ولكن نتيجة لظروف ما قد تكمن السعاده فيما نتحمله من كد وأسي.</p><br>
-                    <p class="mubasher-news-description du-mb-0">و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني
-                    شاق إلا من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر
-                    بالسعادة التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض
-                    المتعة ؟</p><p class="mubasher-news-description">علي الجانب الآخر نشجب ونستنكر هؤلاء الرجال المفتونون
-                    بنشوة اللحظة الهائمون في رغباتهم فلا يدركون ما يعقبها من الألم والأسي المحتم، واللوم
-                    كذلك يشمل هؤلاء الذين أخفقوا في واجباتهم نتيجة لضعف إرادتهم فيتساوي مع هؤلاء الذين
-                    يتجنبون وينأون عن تحمل الكدح والألم .</p><br><p class="mubasher-news-description">لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول
-                    استنكار النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك
-                    السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص
-                    الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا
-                    لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من يرغب في الحب ونيل المنال ويتلذذ بالآلام،
-                    الألم هو الألم ولكن نتيجة لظروف ما قد تكمن السعاده فيما نتحمله من كد وأسي.</p><br>
-                    <p class="mubasher-news-description du-mb-0">و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني
-                    شاق إلا من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر
-                    بالسعادة التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض
-                    المتعة ؟</p><p class="mubasher-news-description">علي الجانب الآخر نشجب ونستنكر هؤلاء الرجال المفتونون
-                    بنشوة اللحظة الهائمون في رغباتهم فلا يدركون ما يعقبها من الألم والأسي المحتم، واللوم
-                    كذلك يشمل هؤلاء الذين أخفقوا في واجباتهم نتيجة لضعف إرادتهم فيتساوي مع هؤلاء الذين
-                    يتجنبون وينأون عن تحمل الكدح والألم .</p></div></div><div class="du-row du-mt-5"><div class="du-col-12">
+            outputHtmlStringAr = `<div class="du-row du-mt-5"><div class="du-col-12">
                     <h4 class="exclusive-heading">أخبار ذات صلة</h4><div class="du-col-12"><hr></div></div></div>` + insideLoopHTMLAr + `<div class="du-row">
-                    <div class="du-col-sm-12 du-mt-4 du-mb-5 du-text-center"><a href="#" class="main-color ff-hel-b">تحميل المزيد <span><img 
+                    <div class="du-col-sm-12 du-text-center"><a href="#" class="main-color ff-hel-b" onclick="paginateNews('du_related_news', event)">تحميل المزيد <span><img 
                     src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div></div>`;
             return outputHtmlStringAr;
             break;
@@ -628,7 +542,7 @@ function viewDuNewsPage(state, id, event) {
     info_news_widget_urls = [];
     info_news_widget_urls = [
         { "slug": "du_related_news_view", "url": "http://5.79.47.21:80/" },
-        { "slug": "du_related_news", "url": "http://5.79.47.21:80/2/" }
+        { "slug": "du_related_news", "url": "http://5.79.47.21:80/" + duLangState + "/" }
     ];
     loadInfoJsWidget(info_widgets_config_data);
 };
@@ -660,7 +574,7 @@ function duListingNewsPage(state, event) {
     };
     info_news_widget_urls = [];
     info_news_widget_urls = [
-        { "slug": "du_news_view_listing", "url": "http://5.79.47.21:80/2/" }
+        { "slug": "du_news_view_listing", "url": "http://5.79.47.21:80/" + duLangState + "/"  }
     ];
     loadInfoJsWidget(info_widgets_config_data);
 };
@@ -705,7 +619,7 @@ function duNewsSummaryPage(state, event) {
                 { "htmlContainerId": "du_press_container_release" },
                 { "requestType": "GET" },
                 { "data": [{ "selected_country": "sa" }] },
-                { "urlParam": "0/10" },
+                { "urlParam": "0/4" },
                 { "customeStyles": [] }
             ]
         },

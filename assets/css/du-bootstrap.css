@@ -4,7 +4,7 @@
  * Licensed under MUbasher
  */
  :root {
-    --blue: #007bff;
+    --blue: #00AAC7;
     --indigo: #6610f2;
     --purple: #6f42c1;
     --pink: #e83e8c;
@@ -17,7 +17,7 @@
     --white: #fff;
     --gray: #6c757d;
     --gray-dark: #343a40;
-    --primary: #007bff;
+    --primary: #00AAC7;
     --secondary: #6c757d;
     --success: #28a745;
     --info: #17a2b8;
@@ -159,8 +159,8 @@ main *:after {
     top: -.5em;
   }
   
-  a {
-    color: #000000 !important;
+  /* a {
+    color: #000000;
     text-decoration: none;
     background-color: transparent;
   }
@@ -178,7 +178,7 @@ main *:after {
   a:not([href]):hover {
     color: inherit;
     text-decoration: none;
-  }
+  } */
   
   pre,
   code,
@@ -2079,9 +2079,9 @@ main *:after {
   .du-form-control:focus {
     color: #495057;
     background-color: #fff;
-    border-color: #80bdff;
+    border-color: #00AAC7;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    /* box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); */
   }
   
   .du-form-control::-webkit-input-placeholder {
@@ -2584,8 +2584,8 @@ main *:after {
   
   .du-btn-primary {
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #00AAC7;
+    border-color: #00AAC7;
   }
   
   .du-btn-primary:hover {
@@ -2603,8 +2603,8 @@ main *:after {
   
   .du-btn-primary.disabled, .du-btn-primary:disabled {
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #00AAC7;
+    border-color: #00AAC7;
   }
   
   .du-btn-primary:not(:disabled):not(.disabled):active, .du-btn-primary:not(:disabled):not(.disabled).active,
@@ -2879,14 +2879,14 @@ main *:after {
   }
   
   .du-btn-outline-primary {
-    color: #007bff;
-    border-color: #007bff;
+    color: #00AAC7;
+    border-color: #00AAC7;
   }
   
   .du-btn-outline-primary:hover {
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #00AAC7;
+    border-color: #00AAC7;
   }
   
   .du-btn-outline-primary:focus, .du-btn-outline-primary.focus {
@@ -2894,15 +2894,15 @@ main *:after {
   }
   
   .du-btn-outline-primary.disabled, .du-btn-outline-primary:disabled {
-    color: #007bff;
+    color: #00AAC7;
     background-color: transparent;
   }
   
   .du-btn-outline-primary:not(:disabled):not(.disabled):active, .du-btn-outline-primary:not(:disabled):not(.disabled).active,
   .show > .du-btn-outline-primary.du-dropdown-toggle {
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #00AAC7;
+    border-color: #00AAC7;
   }
   
   .du-btn-outline-primary:not(:disabled):not(.disabled):active:focus, .du-btn-outline-primary:not(:disabled):not(.disabled).active:focus,
@@ -3136,7 +3136,7 @@ main *:after {
   
   .du-btn-link {
     font-weight: 400;
-    color: #007bff;
+    color: #00AAC7;
     text-decoration: none;
   }
   
@@ -3434,7 +3434,7 @@ main *:after {
   .du-dropdown-item.active, .du-dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #007bff;
+    background-color: #00AAC7;
   }
   
   .du-dropdown-item.disabled, .du-dropdown-item:disabled {
@@ -3809,8 +3809,8 @@ main *:after {
   
   .du-custom-control-input:checked ~ .du-custom-control-label::before {
     color: #fff;
-    border-color: #007bff;
-    background-color: #007bff;
+    border-color: #00AAC7;
+    background-color: #00AAC7;
   }
   
   .du-custom-control-input:focus ~ .du-custom-control-label::before {
@@ -3818,7 +3818,7 @@ main *:after {
   }
   
   .du-custom-control-input:focus:not(:checked) ~ .du-custom-control-label::before {
-    border-color: #80bdff;
+    border-color: #00AAC7;
   }
   
   .du-custom-control-input:not(:disabled):active ~ .du-custom-control-label::before {
@@ -3874,8 +3874,8 @@ main *:after {
   }
   
   .du-custom-checkbox .du-custom-control-input:indeterminate ~ .du-custom-control-label::before {
-    border-color: #007bff;
-    background-color: #007bff;
+    border-color: #00AAC7;
+    background-color: #00AAC7;
   }
   
   .du-custom-checkbox .du-custom-control-input:indeterminate ~ .du-custom-control-label::after {
@@ -3960,7 +3960,7 @@ main *:after {
   }
   
   .du-custom-select:focus {
-    border-color: #80bdff;
+    border-color: #00AAC7;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
@@ -4024,7 +4024,7 @@ main *:after {
   }
   
   .du-custom-file-input:focus ~ .du-custom-file-label {
-    border-color: #80bdff;
+    border-color: #00AAC7;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
   
@@ -4108,7 +4108,7 @@ main *:after {
     width: 1rem;
     height: 1rem;
     margin-top: -0.25rem;
-    background-color: #007bff;
+    background-color: #00AAC7;
     border: 0;
     border-radius: 1rem;
     -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -4141,7 +4141,7 @@ main *:after {
   .du-custom-range::-moz-range-thumb {
     width: 1rem;
     height: 1rem;
-    background-color: #007bff;
+    background-color: #00AAC7;
     border: 0;
     border-radius: 1rem;
     -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -4177,7 +4177,7 @@ main *:after {
     margin-top: 0;
     margin-right: 0.2rem;
     margin-left: 0.2rem;
-    background-color: #007bff;
+    background-color: #00AAC7;
     border: 0;
     border-radius: 1rem;
     -ms-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -4320,7 +4320,7 @@ main *:after {
   .du-nav-pills .du-nav-link.active,
   .du-nav-pills .show > .du-nav-link {
     color: #fff;
-    background-color: #007bff;
+    background-color: #00AAC7;
   }
   
   .du-nav-fill .du-nav-item {
@@ -5043,7 +5043,7 @@ main *:after {
     padding: 0.5rem 0.75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #007bff;
+    color: #00AAC7;
     background-color: #fff;
     border: 1px solid #dee2e6;
   }
@@ -5076,8 +5076,8 @@ main *:after {
   .du-page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #00AAC7;
+    border-color: #00AAC7;
   }
   
   .du-page-item.disabled .page-link {
@@ -5160,7 +5160,7 @@ main *:after {
   
   .du-badge-primary {
     color: #fff;
-    background-color: #007bff;
+    background-color: #00AAC7;
   }
   
   a.du-badge-primary:hover, a.du-badge-primary:focus {
@@ -5477,7 +5477,7 @@ main *:after {
     color: #fff;
     text-align: center;
     white-space: nowrap;
-    background-color: #007bff;
+    background-color: #00AAC7;
     transition: width 0.6s ease;
   }
   
@@ -5571,8 +5571,8 @@ main *:after {
   .du-list-group-item.active {
     z-index: 2;
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #00AAC7;
+    border-color: #00AAC7;
   }
   
   .du-list-group-item + .du-list-group-item {
@@ -6738,7 +6738,7 @@ main *:after {
   }
   
   .du-bg-primary {
-    background-color: #007bff !important;
+    background-color: #00AAC7 !important;
   }
   
   a.du-bg-primary:hover, a.du-bg-primary:focus,
@@ -6866,7 +6866,7 @@ main *:after {
   }
   
   .du-border-primary {
-    border-color: #007bff !important;
+    border-color: #00AAC7 !important;
   }
   
   .du-border-secondary {
@@ -10101,7 +10101,7 @@ main *:after {
   }
   
   .du-text-primary {
-    color: #007bff !important;
+    color: #00AAC7 !important;
   }
   
   a.du-text-primary:hover, a.du-text-primary:focus {
