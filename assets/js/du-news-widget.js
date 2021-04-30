@@ -1,5 +1,214 @@
+var duStateLanguage = sessionStorage.getItem('duStateLanguage');
 var duLangState = 2;
-if(sessionStorage.getItem('duStateLanguage') == 'AR') {
+window.addEventListener('storage', function (e) {
+    if (e.storageArea.duStateLanguage === 'AR' && e.key === 'duStateLanguage') {
+        duStateLanguage = "AR";
+        duLangState = 1;
+        // var info_widgets_config_data = {
+        //     "widgets": [{
+        //         "widget_config": [
+        //             { "widgetSlug": "du_top_news" },
+        //             { "htmlContainerId": "du_top_container_news" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_most_read" },
+        //             { "htmlContainerId": "du_most_read_container_news" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_press_release" },
+        //             { "htmlContainerId": "du_press_container_release" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/4" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_international_market" },
+        //             { "htmlContainerId": "du_international_market_container" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_arab_market" },
+        //             { "htmlContainerId": "du_arab_market_container" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_islamic_finance" },
+        //             { "htmlContainerId": "du_ismalic_finance_container" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_news_exclusive" },
+        //             { "htmlContainerId": "du_exclusive_news_container" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_related_news" },
+        //             { "htmlContainerId": "du_related_news_container" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_news_view_listing" },
+        //             { "htmlContainerId": "du_news_view_container" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     ],
+        //     authToken:
+        //         "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+        // };
+        // loadInfoJsWidget(info_widgets_config_data);
+        console.log('hello changed ar', e.storageArea.duStateLanguage);
+    } else {
+        duStateLanguage = "";
+        duLangState = 2;
+        this.duNewsSummaryPage('summaryPage', event);
+        // var info_widgets_config_data = {
+        //     "widgets": [{
+        //         "widget_config": [
+        //             { "widgetSlug": "du_top_news" },
+        //             { "htmlContainerId": "du_top_container_news" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_most_read" },
+        //             { "htmlContainerId": "du_most_read_container_news" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_press_release" },
+        //             { "htmlContainerId": "du_press_container_release" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/4" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_international_market" },
+        //             { "htmlContainerId": "du_international_market_container" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_arab_market" },
+        //             { "htmlContainerId": "du_arab_market_container" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_islamic_finance" },
+        //             { "htmlContainerId": "du_ismalic_finance_container" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_news_exclusive" },
+        //             { "htmlContainerId": "du_exclusive_news_container" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_related_news" },
+        //             { "htmlContainerId": "du_related_news_container" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     {
+        //         "widget_config": [
+        //             { "widgetSlug": "du_news_view_listing" },
+        //             { "htmlContainerId": "du_news_view_container" },
+        //             { "requestType": "GET" },
+        //             { "data": [{ "selected_country": "sa" }] },
+        //             { "urlParam": "0/10" },
+        //             { "customeStyles": [] }
+        //         ]
+        //     },
+        //     ],
+        //     authToken:
+        //         "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+        // };
+        // loadInfoJsWidget(info_widgets_config_data);
+        console.log('hello changed en', e.storageArea.duStateLanguage);
+    }
+});
+
+
+
+
+if (duStateLanguage === "AR") {
     duLangState = 1;
 }
 var info_news_widget_urls = [
@@ -145,7 +354,7 @@ function stripHTML(string) {
 
 /* Top News DU */
 function topNewsHomeHTML(responseDataObj) {
-    switch (sessionStorage.getItem('duStateLanguage')) {
+    switch (duStateLanguage) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
@@ -154,7 +363,7 @@ function topNewsHomeHTML(responseDataObj) {
                 insideLoopHTML += `<div class="du-col-md-6"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
                 <small class="title-under-img">Markets - <span>10 minutes ago</span></small><h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
             });
-            outputHtmlString = `<a href="#" class="lnd-tp-news lnd-tp-news-des">
+            outputHtmlString = `<a href="#" onClick="viewDuNewsPage('summaryPage',` + responseDataObj[0].id + `, event);" class="lnd-tp-news lnd-tp-news-des">
                 <img class="du-img-fluid" src=` + srcImgSet + `><span class="lnd-tp-news-title font35 ff-hel-b 
                 du-text-white">` + responseDataObj[0].title + `</span>
                 <span class="lnd-tp-news-time font14 du-text-white">` + responseDataObj[0].source.name.stringEn + ` - 10 minutes ago</span></a><div class="du-row du-mt-3">
@@ -183,7 +392,7 @@ function topNewsHomeHTML(responseDataObj) {
 
 /* Most Read News DU */
 function mostReadNewsHTML(responseDataObj) {
-    switch (sessionStorage.getItem('duStateLanguage')) {
+    switch (duStateLanguage) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
@@ -206,7 +415,7 @@ function mostReadNewsHTML(responseDataObj) {
                 insideLoopHTMLAr += `<div class="du-row"><div class="du-col-4">
                 <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><img class="du-img-fluid width-100" src=` + data.image.primary + `></a>
                 </div><div class="du-col-8"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><div class="sidebar-readmore-description txt-black">`
-                 + data.title + `</div></a></div><div class="du-col-12"><hr class="sidebar-hr"></div></div>`
+                    + data.title + `</div></a></div><div class="du-col-12"><hr class="sidebar-hr"></div></div>`
             });
             outputHtmlStringAr = `<div class="most-read-news-list"><h4 class="sidebar-readmore-title">الأخبار الأكثر</h4>` + insideLoopHTMLAr + `<div class="du-row">
             <div class="du-col-sm-12 du-text-center du-mb-3"><a href="#" class="view-all-text main-color" onClick="paginateNews('du_most_read', event)">عرض الكل <img class="pr-1 rotate90" 
@@ -221,7 +430,8 @@ var paginationCounter = 10;
 function paginateNews(slug, event) {
     event.preventDefault();
     paginationCounter += 10;
-    const paginateWidget = info_widgets_config_data.widgets.filter(x => { return x.widget_config[0].widgetSlug === slug });
+    var paginateWidget = [];
+    paginateWidget.push(info_widgets_config_data.widgets.find(x => { return x.widget_config[0].widgetSlug === slug }));
     paginateWidget[0].widget_config[4].urlParam = '0/' + paginationCounter;
     var innerContent = document.getElementById(paginateWidget[0].widget_config[1].htmlContainerId);
     innerContent.innerHTML = "";
@@ -231,7 +441,7 @@ function paginateNews(slug, event) {
 
 /* Exclusive News DU */
 function exclusiveNewsHomeHTML(responseDataObj) {
-    switch (sessionStorage.getItem('duStateLanguage')) {
+    switch (duStateLanguage) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
@@ -262,7 +472,7 @@ function exclusiveNewsHomeHTML(responseDataObj) {
 
 /* Islamic Finance News DU */
 function islamicFinanceNewsHTML(responseDataObj) {
-    switch (sessionStorage.getItem('duStateLanguage')) {
+    switch (duStateLanguage) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
@@ -294,7 +504,7 @@ function islamicFinanceNewsHTML(responseDataObj) {
 
 /* Arab Market News DU */
 function arabMarketNewsHTML(responseDataObj) {
-    switch (sessionStorage.getItem('duStateLanguage')) {
+    switch (duStateLanguage) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
@@ -327,7 +537,7 @@ function arabMarketNewsHTML(responseDataObj) {
 
 /* International Market News DU */
 function internationalMarketHTML(responseDataObj) {
-    switch (sessionStorage.getItem('duStateLanguage')) {
+    switch (duStateLanguage) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
@@ -359,7 +569,7 @@ function internationalMarketHTML(responseDataObj) {
 
 /* Press Release DU */
 function pressReleaseNewsHTML(responseDataObj) {
-    switch (sessionStorage.getItem('duStateLanguage')) {
+    switch (duStateLanguage) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
@@ -393,7 +603,7 @@ function pressReleaseNewsHTML(responseDataObj) {
 
 /* Listing View News DU */
 function newsListingViewNewsHTML(responseDataObj) {
-    switch (sessionStorage.getItem('duStateLanguage')) {
+    switch (duStateLanguage) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
@@ -401,8 +611,8 @@ function newsListingViewNewsHTML(responseDataObj) {
                 insideLoopHTML += `<div class="du-row"><div class="du-col-sm-4">
                 <a href="#" onClick="viewDuNewsPage('listingPage',` + data.id + `, event);"><img class="du-img-fluid width-100" 
                 src=` + data.image.primary + ` alt=""></a></div><div class="du-col-sm-8 du-mt-4"><small class="title-under-img du-black-title">` + data.source.name.stringEn + ` - 
-                <span>10 minutes ago</span></small><a href="#" onClick="viewDuNewsPage('listingPage',` + data.id + `, event);"><h4 class="title-news-description">` 
-                + data.title + `</h4></a><p>` + data.teaser + `</p></div><div class="du-col-12"><hr></div></div>`
+                <span>10 minutes ago</span></small><a href="#" onClick="viewDuNewsPage('listingPage',` + data.id + `, event);"><h4 class="title-news-description">`
+                    + data.title + `</h4></a><p>` + data.teaser + `</p></div><div class="du-col-12"><hr></div></div>`
             });
             outputHtmlString = `<h1 class="main-news-title du-mt-4 du-black-title">` + responseDataObj[0].title + `</h1><div class="du-row"><div class="du-col-sm-6">
             <div class="news-inner"><a href="#"><div class="bg-clr-fr-news d-flex flex-wrap align-content-center">
@@ -429,7 +639,7 @@ function newsListingViewNewsHTML(responseDataObj) {
             <h3 class="title-img-description">` + responseDataObj[0].title + `</h3></div></div></div>
             <div class="du-col-sm-6"><div class="news-inner"><img class="du-img-fluid width-100" src=` + responseDataObj[1].image.primary + ` alt="">
             <div class="clearfix mt-3"><small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
-            <h3 class="title-img-description">`+ responseDataObj[1].title +`</h3></div></div>
+            <h3 class="title-img-description">`+ responseDataObj[1].title + `</h3></div></div>
             </div></div>` + insideLoopHTMLAr + `<div class="du-row"><div class="du-col-sm-12 mt-4 mb-5 du-text-center "><a href="#" class="main-color ff-hel-b">تحميل المزيد <span>
             <img src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div></div>`;
             return outputHtmlStringAr;
@@ -441,7 +651,7 @@ function newsListingViewNewsHTML(responseDataObj) {
 
 /* View News DU Detail */
 function viewNewsDetailHTML(responseDataObj) {
-    switch (sessionStorage.getItem('duStateLanguage')) {
+    switch (duStateLanguage) {
         default:
             let outputHtmlString = "";
             var srcImgSet = responseDataObj.image.srcset.split(',')[2];
@@ -467,7 +677,7 @@ function viewNewsDetailHTML(responseDataObj) {
 
 /* Related News DU View */
 function relatedViewNewsHTML(responseDataObj) {
-    switch (sessionStorage.getItem('duStateLanguage')) {
+    switch (duStateLanguage) {
         default:
             let outputHtmlString = "";
             let insideLoopHTML = "";
@@ -513,7 +723,7 @@ function viewDuNewsPage(state, id, event) {
     <li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="duNewsBackState();">Back to Du News Summary</li></ol></nav><div id="du_related_news_view_container"></div>
     <div id="du_related_news_container"></div>
     </div></div></div>`;
-    var info_widgets_config_data = {
+    info_widgets_config_data = {
         "widgets": [
             {
                 "widget_config": [
@@ -556,7 +766,7 @@ function duListingNewsPage(state, event) {
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
     <a href="#" onClick="duNewsSummaryPage('summaryPage', event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="duNewsBackState();">
     Back to Du News Summary</li></ol></nav><div id="du_news_view_container"></div></div></div></div></section>`
-    var info_widgets_config_data = {
+    info_widgets_config_data = {
         "widgets": [
             {
                 "widget_config": [
@@ -574,7 +784,7 @@ function duListingNewsPage(state, event) {
     };
     info_news_widget_urls = [];
     info_news_widget_urls = [
-        { "slug": "du_news_view_listing", "url": "http://5.79.47.21:80/" + duLangState + "/"  }
+        { "slug": "du_news_view_listing", "url": "http://5.79.47.21:80/" + duLangState + "/" }
     ];
     loadInfoJsWidget(info_widgets_config_data);
 };
@@ -592,7 +802,7 @@ function duNewsSummaryPage(state, event) {
     <div id="du_arab_market_container"></div></div></div></section><section><div class="du-row mt70"><div class="du-col-md-12">
     <div id="du_international_market_container"></div></div></div></section><section><div class="du-row mt70 du-mb-5"><div class="du-col-md-12">
     <div id="du_press_container_release"></div></div></div></section></div>`
-    var info_widgets_config_data = {
+    info_widgets_config_data = {
         "widgets": [{
             "widget_config": [
                 { "widgetSlug": "du_top_news" },
@@ -689,13 +899,13 @@ function duNewsSummaryPage(state, event) {
     };
     info_news_widget_urls = [];
     info_news_widget_urls = [
-        { "slug": "du_top_news", "url": "http://5.79.47.21:80/2/" },
-        { "slug": "du_most_read", "url": "http://5.79.47.21:80/2/" },
-        { "slug": "du_press_release", "url": "http://5.79.47.21:80/2/" },
-        { "slug": "du_international_market", "url": "http://5.79.47.21:80/2/" },
-        { "slug": "du_arab_market", "url": "http://5.79.47.21:80/2/" },
-        { "slug": "du_islamic_finance", "url": "http://5.79.47.21:80/2/" },
-        { "slug": "du_news_exclusive", "url": "http://5.79.47.21:80/2/" },
+        { "slug": "du_top_news", "url": "http://5.79.47.21:80/" + duLangState + "/" },
+        { "slug": "du_most_read", "url": "http://5.79.47.21:80/" + duLangState + "/" },
+        { "slug": "du_press_release", "url": "http://5.79.47.21:80/" + duLangState + "/" },
+        { "slug": "du_international_market", "url": "http://5.79.47.21:80/" + duLangState + "/" },
+        { "slug": "du_arab_market", "url": "http://5.79.47.21:80/" + duLangState + "/" },
+        { "slug": "du_islamic_finance", "url": "http://5.79.47.21:80/" + duLangState + "/" },
+        { "slug": "du_news_exclusive", "url": "http://5.79.47.21:80/" + duLangState + "/" },
     ];
     loadInfoJsWidget(info_widgets_config_data);
 };

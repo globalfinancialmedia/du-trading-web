@@ -176,7 +176,7 @@ function duLearnTopCoursesPage(event) {
     innerContent.innerHTML = "";
     innerContent.innerHTML = `<div class="du-container-fluid container-fluid-pd"><section><div class="du-row"> <div class="du-col-md-12">
     <div id="du_learn_container_courses"></div></div></div></section><section class="du-my-2"><div id="du_learn_course_view_container"></div></section></div>`;
-    var info_widgets_config_data = {
+    info_widgets_config_data = {
         "widgets": [{
             "widget_config": [
                 { "widgetSlug": "du_learn_top_courses" },
@@ -206,7 +206,7 @@ function viewCourseDetailPage(event, id) {
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
     <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" 
     onClick="duLearnTopCoursesPage(event);">Back to Top Courses</li></ol></nav><div id="du_learn_course_view_container"></div></div></div></div></section>`;
-    var info_widgets_config_data = {
+    info_widgets_config_data = {
         "widgets": [
             {
                 "widget_config": [
@@ -236,7 +236,7 @@ function viewListingCoursesPage(event, id) {
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
     <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="duLearnTopCoursesPage(event);">
     Back to Top Courses</li></ol></nav><div id="du_learn_listing_view_container"></div></div></div></div></section>`;
-    var info_widgets_config_data = {
+    info_widgets_config_data = {
         "widgets": [
             {
                 "widget_config": [
@@ -267,7 +267,7 @@ function listingDetailCoursePage(event, id, courseId) {
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
     <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="viewListingCoursesPage(event, `+ courseId +`);">
     Back to Courses Listing</li></ol></nav><div id="du_learn_listing_detail_view_container"></div></div></div></div></section>`;
-    var info_widgets_config_data = {
+    info_widgets_config_data = {
         "widgets": [
             {
                 "widget_config": [

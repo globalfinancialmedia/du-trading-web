@@ -707,6 +707,26 @@ ul.navbar-nav li.nav-item > a {
     overflow-y: scroll;
     height: 350px;
 }
+.du-predict-leader-btn-paginate{
+    float: right !important;
+    background: white !important;
+    color: black !important;
+    border-color: black !important;
+    border-radius: 50% !important;
+}
+.du-predict-leader-btn-paginate:focus{
+    box-shadow: none !important;
+}
+.predictStatusView{
+    text-align: center;
+    color: white;
+    text-transform: capitalize;
+}
+#prediction-list-table .du-table th, .du-table td{
+    padding: 8px 15px !important;
+    font-size: 15px !important;
+}
+
 /* Global Custom */
 #du_learn_page p, #du_news_page p, #du_predict_page p{
     font-family: 'Hind', sans-serif !important;
