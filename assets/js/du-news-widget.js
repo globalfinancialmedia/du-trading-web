@@ -1,209 +1,30 @@
 var duStateLanguage = sessionStorage.getItem('duStateLanguage');
 var duLangState = 2;
-window.addEventListener('storage', function (e) {
-    if (e.storageArea.duStateLanguage === 'AR' && e.key === 'duStateLanguage') {
-        duStateLanguage = "AR";
-        duLangState = 1;
-        // var info_widgets_config_data = {
-        //     "widgets": [{
-        //         "widget_config": [
-        //             { "widgetSlug": "du_top_news" },
-        //             { "htmlContainerId": "du_top_container_news" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_most_read" },
-        //             { "htmlContainerId": "du_most_read_container_news" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_press_release" },
-        //             { "htmlContainerId": "du_press_container_release" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/4" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_international_market" },
-        //             { "htmlContainerId": "du_international_market_container" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_arab_market" },
-        //             { "htmlContainerId": "du_arab_market_container" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_islamic_finance" },
-        //             { "htmlContainerId": "du_ismalic_finance_container" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_news_exclusive" },
-        //             { "htmlContainerId": "du_exclusive_news_container" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_related_news" },
-        //             { "htmlContainerId": "du_related_news_container" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_news_view_listing" },
-        //             { "htmlContainerId": "du_news_view_container" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     ],
-        //     authToken:
-        //         "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
-        // };
-        // loadInfoJsWidget(info_widgets_config_data);
-        console.log('hello changed ar', e.storageArea.duStateLanguage);
-    } else {
-        duStateLanguage = "";
-        duLangState = 2;
-        this.duNewsSummaryPage('summaryPage', event);
-        // var info_widgets_config_data = {
-        //     "widgets": [{
-        //         "widget_config": [
-        //             { "widgetSlug": "du_top_news" },
-        //             { "htmlContainerId": "du_top_container_news" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_most_read" },
-        //             { "htmlContainerId": "du_most_read_container_news" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_press_release" },
-        //             { "htmlContainerId": "du_press_container_release" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/4" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_international_market" },
-        //             { "htmlContainerId": "du_international_market_container" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_arab_market" },
-        //             { "htmlContainerId": "du_arab_market_container" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_islamic_finance" },
-        //             { "htmlContainerId": "du_ismalic_finance_container" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_news_exclusive" },
-        //             { "htmlContainerId": "du_exclusive_news_container" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_related_news" },
-        //             { "htmlContainerId": "du_related_news_container" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     {
-        //         "widget_config": [
-        //             { "widgetSlug": "du_news_view_listing" },
-        //             { "htmlContainerId": "du_news_view_container" },
-        //             { "requestType": "GET" },
-        //             { "data": [{ "selected_country": "sa" }] },
-        //             { "urlParam": "0/10" },
-        //             { "customeStyles": [] }
-        //         ]
-        //     },
-        //     ],
-        //     authToken:
-        //         "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
-        // };
-        // loadInfoJsWidget(info_widgets_config_data);
-        console.log('hello changed en', e.storageArea.duStateLanguage);
-    }
-});
+// window.addEventListener('storage', function (e) {
+//     console.log('storage session check', e);
+//     if (e.storageArea.duStateLanguage === 'AR' && e.key === 'duStateLanguage') {
+//         duStateLanguage = "AR";
+//         duLangState = 1;
+//         this.duNewsSummaryPage('summaryPage', event);
+//     } else {
+//         duStateLanguage = "";
+//         duLangState = 2;
+//         this.duNewsSummaryPage('summaryPage', event);
+//     }
+// });
+// window.addEventListener('storage', function (e) {
+//     console.log('hello arham', e);
+// });
+// var originalSetItem = localStorage.setItem; 
+// localStorage.setItem = function(){
+//     document.createEvent('Event').initEvent('itemInserted', true, true);
+//     originalSetItem.apply(this, arguments);
+// }
+
+// window.addEventListener("storage", function (e) { alert("storage event was fired"); });
+// var event = document.createEvent("Event");
+// event.initEvent("storage", true, true);
+// window.dispatchEvent(event);
 
 
 
