@@ -235,7 +235,7 @@ function mostReadNewsHTML(responseDataObj) {
             responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-row"><div class="du-col-4">
                 <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><img class="du-img-fluid width-100" src=` + data.image.primary + `></a>
-                </div><div class="du-col-8"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><div class="sidebar-readmore-description txt-black">`
+                </div><div class="du-col-8"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><div class="sidebar-readmore-description txt-black font15">`
                     + data.title + `</div></a></div><div class="du-col-12"><hr class="sidebar-hr"></div></div>`
             });
             outputHtmlStringAr = `<div class="most-read-news-list"><h4 class="sidebar-readmore-title">الأخبار الأكثر</h4>` + insideLoopHTMLAr + `<div class="du-row">
@@ -486,7 +486,7 @@ function viewNewsDetailHTML(responseDataObj) {
         case 'AR':
             let outputHtmlStringAr = "";
             var srcImgSet = responseDataObj.image.srcset.split(',')[2];
-            outputHtmlStringAr = `<h1 class="news-main-heading">` + responseDataObj.title + `</h1>
+            outputHtmlStringAr = `<h1 class="news-main-heading du-black-title">` + responseDataObj.title + `</h1>
             <small class="news-under-title-description">محتوی الشریک - <span>قبل 3 ساعات</span></small><img class="img-fluid du-mb-3 du-mt-2 width-100" 
             src=` + srcImgSet + ` alt=""><p class="commit-text">` + responseDataObj.mainImageCaption + `</p>
             <div class="du-row"><div class="du-col-md-12"><p class="mubasher-news-description">` + stripHTML(responseDataObj.data.description) + `</p><br></div></div>`;
