@@ -68,7 +68,9 @@ function loadInfoJsWidget(widget_data) {
 
 function loader(containerId) {
     var element = document.getElementById(containerId);
-    containerId.innerContent = "";
+    console.log('hello loadre here', element);
+    console.log('hello loadre here123', containerId);
+    containerId.innerHTML = "";
     element.classList.add("loader");
 };
 
@@ -616,7 +618,7 @@ function duNewsSummaryPage(state, event) {
     var innerContent = document.getElementById("du_news_page");
     innerContent.innerHTML = "";
     innerContent.innerHTML = `<div class="du-container-fluid container-fluid-pd"><section>
-    <div class="du-row"><div class="du-col-md-9"><div id="du_top_container_news"></div></div><div class="du-col-md-3 stocks-sidebar">
+    <div class="du-row"><div class="du-col-md-9"><div id="du_top_container_news"></div></div><div class="du-col-md-3 stocks-sidebar du-overflow-blocks">
     <div id="du_most_read_container_news"></div></div></div></section><section><div class="du-row"><div class="du-col-md-12">
     <div id="du_exclusive_news_container"></div></div></div></section><section><div class="du-row du-mt-5"><div class="du-col-md-12">
     <div id="du_ismalic_finance_container"></div></div></div></section><section><div class="du-row du-mt-5"><div class="du-col-md-12">
