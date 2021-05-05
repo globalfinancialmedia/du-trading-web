@@ -70,7 +70,7 @@ function loader(containerId) {
     var element = document.getElementById(containerId);
     console.log('hello loadre here', element);
     console.log('hello loadre here123', containerId);
-    containerId.innerHTML = "";
+    containerId.innerContent = "";
     element.classList.add("loader");
 };
 
