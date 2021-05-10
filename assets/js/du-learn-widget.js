@@ -6,7 +6,7 @@ if (duStateLanguage === "AR") {
 }
 
 var info_learn_widget_urls = [
-    { "slug": "du_learn_top_courses", "url": "http://52.31.246.107:4600/api/v1/learn/courses/" + duLangState + "/0/10" }
+    { "slug": "du_learn_top_courses", "url": "http://52.31.246.107:4600/api/v1/learn/courses/" + duLangState }
 ];
 
 function loadInfoJsWidget(widget_data) {
