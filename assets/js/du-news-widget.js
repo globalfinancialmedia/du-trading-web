@@ -1,33 +1,5 @@
 var duStateLanguage = sessionStorage.getItem('duStateLanguage');
 var duLangState = 2;
-// window.addEventListener('storage', function (e) {
-//     console.log('storage session check', e);
-//     if (e.storageArea.duStateLanguage === 'AR' && e.key === 'duStateLanguage') {
-//         duStateLanguage = "AR";
-//         duLangState = 1;
-//         this.duNewsSummaryPage('summaryPage', event);
-//     } else {
-//         duStateLanguage = "";
-//         duLangState = 2;
-//         this.duNewsSummaryPage('summaryPage', event);
-//     }
-// });
-// window.addEventListener('storage', function (e) {
-//     console.log('hello arham', e);
-// });
-// var originalSetItem = localStorage.setItem; 
-// localStorage.setItem = function(){
-//     document.createEvent('Event').initEvent('itemInserted', true, true);
-//     originalSetItem.apply(this, arguments);
-// }
-
-// window.addEventListener("storage", function (e) { alert("storage event was fired"); });
-// var event = document.createEvent("Event");
-// event.initEvent("storage", true, true);
-// window.dispatchEvent(event);
-
-
-
 
 if (duStateLanguage === "AR") {
     duLangState = 1;
@@ -68,8 +40,6 @@ function loadInfoJsWidget(widget_data) {
 
 function loader(containerId) {
     var element = document.getElementById(containerId);
-    console.log('hello loadre here', element);
-    console.log('hello loadre here123', containerId);
     containerId.innerContent = "";
     element.classList.add("loader");
 };
