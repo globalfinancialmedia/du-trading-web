@@ -84,9 +84,9 @@ function infoSendRequest(req_headers, body, url, url_param, request_type, htmlCo
     })
         .then(response => {
             console.log('response', response);
-            let generatedHTML = createHTML(response, widgetSlug);
             var container = document.getElementById(htmlContainerId);
             container.classList.remove("loader");
+            let generatedHTML = createHTML(response, widgetSlug);          
             if (typeof container === "object") {
                 container.innerHTML = generatedHTML;
             } else {
