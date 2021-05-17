@@ -18,6 +18,10 @@ var info_news_widget_urls = [
 function loadInfoJsWidget(widget_data) {
     widget_data.widgets.forEach((config_data) => {
         let widgetSlug = config_data.widget_config[0].widgetSlug;
+        if(widgetSlug === 'du_top_news' || widgetSlug === 'du_most_read' || widgetSlug === 'du_press_release' || widgetSlug === 'du_international_market' 
+        || widgetSlug === 'du_arab_market' || widgetSlug === 'du_islamic_finance' || widgetSlug === 'du_news_exclusive') {
+            this.reloadWidgets();
+        }
         let info_req_headers = {};
         info_req_headers = Object.assign({ "Content-Type": "application/json;charset=UTF-8" }, info_req_headers);
         info_req_headers = Object.assign({ "authorization": widget_data.authToken }, info_req_headers);
@@ -39,11 +43,22 @@ function loadInfoJsWidget(widget_data) {
     });
 };
 
+function reloadWidgets() {
+    var innerContent = document.getElementById("du_news_page");
+    innerContent.innerHTML = "";
+    innerContent.innerHTML = `<div class="du-container-fluid container-fluid-pd"><section>
+    <div class="du-row"><div class="du-col-md-9"><div id="du_top_container_news"></div></div><div class="du-col-md-3 stocks-sidebar du-overflow-blocks">
+    <div id="du_most_read_container_news"></div></div></div></section><section><div class="du-row"><div class="du-col-md-12">
+    <div id="du_exclusive_news_container"></div></div></div></section><section><div class="du-row du-mt-5"><div class="du-col-md-12">
+    <div id="du_ismalic_finance_container"></div></div></div></section><section><div class="du-row du-mt-5"><div class="du-col-md-12">
+    <div id="du_arab_market_container"></div></div></div></section><section><div class="du-row mt70"><div class="du-col-md-12">
+    <div id="du_international_market_container"></div></div></div></section><section><div class="du-row mt70 du-mb-5"><div class="du-col-md-12">
+    <div id="du_press_container_release"></div></div></div></section></div>`
+}
+
 function loader(containerId) {
     var element = document.getElementById(containerId);
-    console.log('1', element);
     containerId.innerHTML = "";
-    console.log('2', containerId);
     element.classList.add("loader");
 };
 
