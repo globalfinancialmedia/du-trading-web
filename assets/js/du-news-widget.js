@@ -41,7 +41,9 @@ function loadInfoJsWidget(widget_data) {
 
 function loader(containerId) {
     var element = document.getElementById(containerId);
-    containerId.innerContent = "";
+    console.log('1', element);
+    containerId.innerHTML = "";
+    console.log('2', containerId);
     element.classList.add("loader");
 };
 
@@ -86,6 +88,7 @@ function infoSendRequest(req_headers, body, url, url_param, request_type, htmlCo
         .then(response => {
             console.log('response', response);
             var container = document.getElementById(htmlContainerId);
+            console.log('container loader', container);
             container.classList.remove("loader");
             let generatedHTML = createHTML(response, widgetSlug);          
             if (typeof container === "object") {
