@@ -1,3 +1,4 @@
+// test
 var duStateLanguage = sessionStorage.getItem('duStateLanguage');
 var duLangState = 2;
 
