@@ -12,6 +12,9 @@ var info_learn_widget_urls = [
 function loadInfoJsWidget(widget_data) {
     widget_data.widgets.forEach((config_data) => {
         let widgetSlug = config_data.widget_config[0].widgetSlug;
+        if(widgetSlug === 'du_learn_top_courses') {
+            this.reloadWidgets();
+        }
         let info_req_headers = {};
         info_req_headers = Object.assign({ "Content-Type": "application/json;charset=UTF-8" }, info_req_headers);
         info_req_headers = Object.assign({ "authorization": widget_data.authToken }, info_req_headers);
@@ -31,6 +34,13 @@ function loadInfoJsWidget(widget_data) {
             );
         }
     });
+};
+
+function reloadWidgets() {
+    var innerContent = document.getElementById("du_learn_page");
+    innerContent.innerHTML = "";
+    innerContent.innerHTML = `<div class="du-container-fluid container-fluid-pd"><section><div class="du-row"> <div class="du-col-md-12">
+    <div id="du_learn_container_courses"></div></div></div></section><section class="du-my-2"><div id="du_learn_course_view_container"></div></section></div>`;
 };
 
 function loader(containerId) {
@@ -79,9 +89,9 @@ function infoSendRequest(req_headers, body, url, url_param, request_type, htmlCo
     })
         .then(response => {
             console.log('response', response);
-            let generatedHTML = createHTML(response, widgetSlug);
             var container = document.getElementById(htmlContainerId);
             container.classList.remove("loader");
+            let generatedHTML = createHTML(response, widgetSlug);
             if (typeof container === "object") {
                 container.innerHTML = generatedHTML;
             } else {
@@ -179,8 +189,8 @@ function detailCourseHTML(response) {
             <div class="du-col-md-7 du-pr-0"><img class="du-card-img-top" src=` + response.img + ` width="100%"></div>
             <div class="du-col-md-5 du-d-flex du-flex-wrap du-align-content-center"><div><h3 class="font25 du-black-title">` + response.title + `</h3><br><p class="opacity07 
             font19">` + response.description + `</p><p class="opacity07 du-mb-2">
-            <img class="img-fluid du-mr-2" src="https://du-widget.herokuapp.com/assets/images/video-play.svg">` + response.duration + `</p><p><span class="font19">
-            ` + response.instructor + `</span></p><p class="du-mb-4 ff-hel-b"><span><img src="https://du-widget.herokuapp.com/assets/images/icon-material-language.svg">
+            <img class="img-fluid du-mr-2" src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/video-play.svg">` + response.duration + `</p><p><span class="font19">
+            ` + response.instructor + `</span></p><p class="du-mb-4 ff-hel-b"><span><img src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/icon-material-language.svg">
             <span class="opacity07">` + response.language + `</span></span></p><a class="du-btn du-btn-default du-btn-block start-btn ff-hel-b main-bg du-btn-course-start du-text-white" onClick="viewListingCoursesPage(event, ` + response.id + `)">
             Start</a></div></div></div><div class="du-row du-mt-5 du-mb-5"><div class="du-col-md-12"></div></div>`;
             return outputHtmlString;
@@ -197,9 +207,9 @@ function detailCourseHTML(response) {
             }
             outputHtmlStringAr = ` <h3 class="main-color du-mb-3 du-mt-5 du-text-right">تفاصيل الدورات</h3><div class="du-row du-justify-content-center">
             <div class="du-col-md-5 du-flex-wrap du-align-content-center"><h3 class="font25 du-black-title du-text-right du-mt-4">` + response.title + `</h3><br><p class="opacity07 
-            font19 du-text-right">` + response.description + `</p><p class="opacity07 du-mb-2 du-text-right"><img class="img-fluid du-mr-2" src="https://du-widget.herokuapp.com/assets/images/video-play.svg">` + 
+            font19 du-text-right">` + response.description + `</p><p class="opacity07 du-mb-2 du-text-right"><img class="img-fluid du-mr-2" src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/video-play.svg">` + 
             response.duration + `</p><p class="du-text-right"><span class="font19">` + response.instructor + `</span></p><p class="du-mb-4 ff-hel-b du-text-right">
-            <span><img src="https://du-widget.herokuapp.com/assets/images/icon-material-language.svg"><span class="opacity07">` + response.language + `</span></span>
+            <span><img src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/icon-material-language.svg"><span class="opacity07">` + response.language + `</span></span>
             </p><a class="du-btn du-btn-default du-btn-block start-btn ff-hel-b main-bg du-btn-course-start du-text-white" onClick="viewListingCoursesPage(event, ` + 
             response.id + `)">بداية</a></div><div class="du-col-md-7 du-pr-0"><img class="du-card-img-top" src=` + response.img + ` width="100%"></div></div>
             <div class="du-row du-mt-5 du-mb-5"><div class="du-col-md-12"></div></div>`;

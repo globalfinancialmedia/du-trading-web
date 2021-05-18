@@ -1,4 +1,3 @@
-// test
 var duStateLanguage = sessionStorage.getItem('duStateLanguage');
 var duLangState = 2;
 
@@ -103,9 +102,8 @@ function infoSendRequest(req_headers, body, url, url_param, request_type, htmlCo
         .then(response => {
             console.log('response', response);
             var container = document.getElementById(htmlContainerId);
-            console.log('container loader', container);
             container.classList.remove("loader");
-            let generatedHTML = createHTML(response, widgetSlug);          
+            let generatedHTML = createHTML(response, widgetSlug);       
             if (typeof container === "object") {
                 container.innerHTML = generatedHTML;
             } else {
@@ -182,7 +180,7 @@ function topNewsHomeHTML(responseDataObj) {
                 <a href="#" class="lnd-tp-news lnd-tp-news-mob">
                 <span class="lnd-tp-news-title font35 ff-hel-b du-text-white">Egypt runs first return flight for workers stranded in Kuwait</span>
                 <span class="lnd-tp-news-time font14 du-text-white">Markets - 10 minutes ago</span>
-                <img class="du-img-fluid" src="https://du-widget.herokuapp.com/assets/images/left-main-banner.png"></a>` + insideLoopHTML + `</div>`;
+                <img class="du-img-fluid" src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/left-main-banner.png"></a>` + insideLoopHTML + `</div>`;
             return outputHtmlString;
             break;
         case 'AR':
@@ -217,7 +215,7 @@ function mostReadNewsHTML(responseDataObj) {
                 </div></div>`
             });
             outputHtmlString = `<h4 class="font26 du-black-title">Most Read</h4><hr>` + insideLoopHTML + `<div class="du-col-sm-12 du-text-center">
-            <a href="#" class="main-color ff-hel-b" onClick="paginateNews('du_most_read', event)">View More<span class="du-ml-1"><img src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div>`;
+            <a href="#" class="main-color ff-hel-b" onClick="paginateNews('du_most_read', event)">View More<span class="du-ml-1"><img src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-392.svg" alt=""></span></a></div>`;
             return outputHtmlString;
             break;
         case 'AR':
@@ -231,7 +229,7 @@ function mostReadNewsHTML(responseDataObj) {
             });
             outputHtmlStringAr = `<div class="most-read-news-list"><h4 class="sidebar-readmore-title">الأخبار الأكثر</h4>` + insideLoopHTMLAr + `<div class="du-row">
             <div class="du-col-sm-12 du-text-center du-mb-3"><a href="#" class="view-all-text main-color" onClick="paginateNews('du_most_read', event)">عرض الكل <img class="pr-1 rotate90" 
-            src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></a></div></div></div>`;
+            src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-392.svg" alt=""></a></div></div></div>`;
             return outputHtmlStringAr;
             break;
     }
@@ -263,7 +261,7 @@ function exclusiveNewsHomeHTML(responseDataObj) {
                 </small><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
             });
             outputHtmlString = `<h4 class="exclusive-heading mt70">Mubasher Exclusive</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
-            <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row">` + insideLoopHTML + `</div>`;
+            <img class="pl-1" src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-487.svg" alt=""></a><div class="du-row">` + insideLoopHTML + `</div>`;
             return outputHtmlString;
             break;
         case 'AR':
@@ -276,7 +274,7 @@ function exclusiveNewsHomeHTML(responseDataObj) {
                 <h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
             });
             outputHtmlStringAr = `<h4 class="exclusive-heading mt70">حصرياً مباشر</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">اظهار الكل <img class="pr-1 rotate180" 
-            src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row du-mt-3 du-mb-5">` + insideLoopHTMLAr + `</div>`;
+            src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-487.svg" alt=""></a><div class="du-row du-mt-3 du-mb-5">` + insideLoopHTMLAr + `</div>`;
             return outputHtmlStringAr;
             break;
     }
@@ -295,7 +293,7 @@ function islamicFinanceNewsHTML(responseDataObj) {
                 <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><h6>` + data.title + `</h6></a></div></div></div>`
             });
             outputHtmlString = `<h4 class="exclusive-heading">Islamic Finance</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
-            <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><hr><div class="du-row">` + insideLoopHTML + `<div class="du-col-12"><hr></div></div>`;
+            <img class="pl-1" src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-487.svg" alt=""></a><hr><div class="du-row">` + insideLoopHTML + `<div class="du-col-12"><hr></div></div>`;
             return outputHtmlString;
             break;
         case 'AR':
@@ -308,7 +306,7 @@ function islamicFinanceNewsHTML(responseDataObj) {
                 <h6 class="title-img-description">` + data.title + `</h6></a></div></div></div>`
             });
             outputHtmlStringAr = `<h4 class="exclusive-heading">اقتصاد إسلامي</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">اظهار الكل<img class="pr-1 rotate180" 
-            src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><hr><div class="du-row">` + insideLoopHTMLAr + `<div class="du-col-12"><hr></div></div>`;
+            src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-487.svg" alt=""></a><hr><div class="du-row">` + insideLoopHTMLAr + `<div class="du-col-12"><hr></div></div>`;
             return outputHtmlStringAr;
             break;
     }
@@ -327,7 +325,7 @@ function arabMarketNewsHTML(responseDataObj) {
                 <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><h6 class="title-img-description">` + data.title + `</h6></a></div><hr></div>`
             });
             outputHtmlString = `<h4 class="exclusive-heading">Arab Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
-            <img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg"></a><div class="du-row du-mt-2">` + insideLoopHTML + `</div>`;
+            <img class="pl-1" src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-487.svg"></a><div class="du-row du-mt-2">` + insideLoopHTML + `</div>`;
             return outputHtmlString;
             break;
         case 'AR':
@@ -341,7 +339,7 @@ function arabMarketNewsHTML(responseDataObj) {
                 </div></a><hr></div>`
             });
             outputHtmlStringAr = `<h4 class="exclusive-heading">الأسواق العربية</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">اظهار الكل<img class="pr-1 rotate180" 
-            src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row du-mt-2">` + insideLoopHTMLAr + `</div>`;
+            src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-487.svg" alt=""></a><div class="du-row du-mt-2">` + insideLoopHTMLAr + `</div>`;
             return outputHtmlStringAr;
             break;
     }
@@ -359,7 +357,7 @@ function internationalMarketHTML(responseDataObj) {
                 <div class="du-col-md-8 du-mt-4"><small class="title-under-img du-black-title">` + data.source.name.stringEn + ` - <span>10 minutes ago</span></small>
                 <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><h5 class="title-img-description">` + data.title + `</h5></a><p>` + data.teaser + `</p></div></div><hr>`
             });
-            outputHtmlString = `<h4 class="exclusive-heading">International Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all<img class="pl-1" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTML;
+            outputHtmlString = `<h4 class="exclusive-heading">International Market</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all<img class="pl-1" src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-487.svg" alt=""></a>` + insideLoopHTML;
             return outputHtmlString;
             break;
         case 'AR':
@@ -373,7 +371,7 @@ function internationalMarketHTML(responseDataObj) {
                 <p>` + data.teaser + `</p></a></div></div><hr>`
             });
             outputHtmlStringAr = `<h4 class="exclusive-heading">الأسواق العالمية</h4><a href="#" onClick="duListingNewsPage('summaryPage', event);" 
-            class="view-all-text">اظهار الكل <img class="pr-1 rotate180" src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a>` + insideLoopHTMLAr;
+            class="view-all-text">اظهار الكل <img class="pr-1 rotate180" src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-487.svg" alt=""></a>` + insideLoopHTMLAr;
             return outputHtmlStringAr;
             break;
     }
@@ -404,7 +402,7 @@ function pressReleaseNewsHTML(responseDataObj) {
                 <h5 class="title-img-description">` + data.title + `</h5></div></a><hr>`
             });
             outputHtmlStringAr = `<h4 class="exclusive-heading">بيانات صحفية</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">اظهار الكل<img class="pr-1 rotate180" 
-            src="https://du-widget.herokuapp.com/assets/images/path-487.svg" alt=""></a><div class="du-row"><div class="du-col-md-4"><img class="du-img-fluid" 
+            src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-487.svg" alt=""></a><div class="du-row"><div class="du-col-md-4"><img class="du-img-fluid" 
             src=` + srcImgSet + `></div><div class="du-col-md-8">` + insideLoopHTMLAr + `</div></div>`;
             return outputHtmlStringAr;
             break;
@@ -453,7 +451,7 @@ function newsListingViewNewsHTML(responseDataObj) {
             <div class="clearfix mt-3"><small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
             <h3 class="title-img-description">`+ responseDataObj[1].title + `</h3></div></div>
             </div></div>` + insideLoopHTMLAr + `<div class="du-row"><div class="du-col-sm-12 mt-4 mb-5 du-text-center "><a href="#" class="main-color ff-hel-b">تحميل المزيد <span>
-            <img src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div></div>`;
+            <img src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-392.svg" alt=""></span></a></div></div>`;
             return outputHtmlStringAr;
             break;
     }
@@ -500,7 +498,7 @@ function relatedViewNewsHTML(responseDataObj) {
                 <h4 class="news-title">` + data.title + `</h4></a><p>` + data.teaser + `</p></div></div><hr>`
             });
             outputHtmlString = insideLoopHTML + `<div class="du-col-sm-12 du-text-center"><a href="#" class="main-color ff-hel-b" onclick="paginateNews('du_related_news', event)">
-            View More<span class="du-ml-1"><img src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div>`;
+            View More<span class="du-ml-1"><img src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-392.svg" alt=""></span></a></div>`;
             return outputHtmlString;
             break;
         case 'AR':
@@ -515,7 +513,7 @@ function relatedViewNewsHTML(responseDataObj) {
             outputHtmlStringAr = `<div class="du-row du-mt-5"><div class="du-col-12">
                     <h4 class="exclusive-heading">أخبار ذات صلة</h4><div class="du-col-12"><hr></div></div></div>` + insideLoopHTMLAr + `<div class="du-row">
                     <div class="du-col-sm-12 du-text-center"><a href="#" class="main-color ff-hel-b" onclick="paginateNews('du_related_news', event)">تحميل المزيد <span><img 
-                    src="https://du-widget.herokuapp.com/assets/images/path-392.svg" alt=""></span></a></div></div>`;
+                    src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-392.svg" alt=""></span></a></div></div>`;
             return outputHtmlStringAr;
             break;
     }
