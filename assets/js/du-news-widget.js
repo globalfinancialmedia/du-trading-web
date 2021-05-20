@@ -68,9 +68,6 @@ function loader(containerId) {
     element.appendChild(arham);
 
 
-
-
-    console.log('innerloader arham', arham);
     console.log('innerloader element', element);
     console.log('innerloader element2', element.appendChild(arham));
     // element.classList.add("loader");
