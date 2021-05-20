@@ -59,6 +59,8 @@ function reloadWidgets() {
 function loader(containerId) {
     var element = document.getElementById(containerId);
     containerId.innerHTML = "";
+    console.log('innerloader containerId', containerId);
+    console.log('innerloader element', element);
     element.classList.add("loader");
 };
 
