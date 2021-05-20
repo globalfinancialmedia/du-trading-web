@@ -60,10 +60,20 @@ function reloadWidgets() {
 
 function loader(containerId) {
     var element = document.getElementById(containerId);
+    // element.style.position = "relative";
     containerId.innerHTML = "";
-    console.log('innerloader containerId', containerId);
+
+    var arham = document.createElement('div');
+    arham.classList.add("loader");
+    element.appendChild(arham);
+
+
+
+
+    console.log('innerloader arham', arham);
     console.log('innerloader element', element);
-    element.classList.add("loader");
+    console.log('innerloader element2', element.appendChild(arham));
+    // element.classList.add("loader");
 };
 
 function infoSendRequest(req_headers, body, url, url_param, request_type, htmlContainerId, customeStyles, widgetSlug) {
