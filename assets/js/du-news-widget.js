@@ -43,6 +43,7 @@ function loadInfoJsWidget(widget_data) {
 };
 
 function reloadWidgets() {
+    console.log('reload recalls');
     var innerContent = document.getElementById("du_news_page");
     innerContent.innerHTML = "";
     innerContent.innerHTML = `<div class="du-container-fluid container-fluid-pd"><section>
