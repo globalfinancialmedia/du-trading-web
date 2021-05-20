@@ -17,6 +17,8 @@ var info_news_widget_urls = [
 function loadInfoJsWidget(widget_data) {
     widget_data.widgets.forEach((config_data) => {
         let widgetSlug = config_data.widget_config[0].widgetSlug;
+
+        console.log('check inside widget slug', widgetSlug);
         if(widgetSlug === 'du_top_news' && widgetSlug === 'du_most_read' && widgetSlug === 'du_press_release' && widgetSlug === 'du_international_market' 
         && widgetSlug === 'du_arab_market' && widgetSlug === 'du_islamic_finance' && widgetSlug === 'du_news_exclusive') {
             this.reloadWidgets();
