@@ -43,11 +43,11 @@ function reloadWidgets() {
     <div id="du_learn_container_courses"></div></div></div></section><section class="du-my-2"><div id="du_learn_course_view_container"></div></section></div>`;
 };
 
-function loader(containerId) {
-    var element = document.getElementById(containerId);
-    containerId.innerContent = "";
-    element.classList.add("loader");
-};
+// function loader(containerId) {
+//     var element = document.getElementById(containerId);
+//     containerId.innerContent = "";
+//     element.classList.add("loader");
+// };
 
 function infoSendRequest(req_headers, body, url, url_param, request_type, htmlContainerId, customeStyles, widgetSlug) {
     if (url_param !== "") {
@@ -90,7 +90,7 @@ function infoSendRequest(req_headers, body, url, url_param, request_type, htmlCo
         .then(response => {
             console.log('response', response);
             var container = document.getElementById(htmlContainerId);
-            container.classList.remove("loader");
+            // container.classList.remove("loader");
             let generatedHTML = createHTML(response, widgetSlug);
             if (typeof container === "object") {
                 container.innerHTML = generatedHTML;

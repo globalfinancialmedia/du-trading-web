@@ -17,8 +17,6 @@ var info_news_widget_urls = [
 function loadInfoJsWidget(widget_data) {
     widget_data.widgets.forEach((config_data) => {
         let widgetSlug = config_data.widget_config[0].widgetSlug;
-
-        console.log('check inside widget slug', widgetSlug);
         if(widgetSlug === 'du_top_news' && widgetSlug === 'du_most_read' && widgetSlug === 'du_press_release' && widgetSlug === 'du_international_market' 
         && widgetSlug === 'du_arab_market' && widgetSlug === 'du_islamic_finance' && widgetSlug === 'du_news_exclusive') {
             this.reloadWidgets();
@@ -29,7 +27,7 @@ function loadInfoJsWidget(widget_data) {
         let apiUrlObj = info_news_widget_urls.find(
             ({ slug }) => slug === widgetSlug
         );
-        loader(config_data.widget_config[1].htmlContainerId);
+        // loader(config_data.widget_config[1].htmlContainerId);
         if ((apiUrlObj.url != "" && apiUrlObj.url !== undefined)) {
             infoSendRequest(info_req_headers,
                 config_data.widget_config[3].data[0], //body
@@ -58,20 +56,22 @@ function reloadWidgets() {
     <div id="du_press_container_release"></div></div></div></section></div>`
 }
 
-function loader(containerId) {
-    var element = document.getElementById(containerId);
-    // element.style.position = "relative";
-    containerId.innerHTML = "";
+// function loader(containerId) {
+//     var element = document.getElementById(containerId);
+//     // element.style.position = "relative";
+//     // element.style.width = "100%";
+//     containerId.innerHTML = "";
+//     element.innerHTML = "";
 
-    var arham = document.createElement('div');
-    arham.classList.add("loader");
-    element.appendChild(arham);
+//     // var arham = document.createElement('div');
+//     element.classList.add("loader");
+//     // element.appendChild(arham);
 
 
-    console.log('innerloader element', element);
-    console.log('innerloader element2', element.appendChild(arham));
-    // element.classList.add("loader");
-};
+//     // console.log('innerloader element', element);
+//     // console.log('innerloader element2', element.appendChild(arham));
+//     // element.classList.add("loader");
+// };
 
 function infoSendRequest(req_headers, body, url, url_param, request_type, htmlContainerId, customeStyles, widgetSlug) {
     if (url_param !== "") {
@@ -114,7 +114,7 @@ function infoSendRequest(req_headers, body, url, url_param, request_type, htmlCo
         .then(response => {
             console.log('response', response);
             var container = document.getElementById(htmlContainerId);
-            container.classList.remove("loader");
+            // container.classList.remove("loader");
             let generatedHTML = createHTML(response, widgetSlug);       
             if (typeof container === "object") {
                 container.innerHTML = generatedHTML;
@@ -269,7 +269,7 @@ function exclusiveNewsHomeHTML(responseDataObj) {
             let insideLoopHTML = "";
             responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
-                <img class="du-img-fluid" src=` + data.image.primary + `><small class="title-under-img du-black-title"></a>` + data.source.name.stringEn + ` - <span>10 minutes ago</span>
+                <img class="du-img-fluid img-width-100" src=` + data.image.primary + `><small class="title-under-img du-black-title"></a>` + data.source.name.stringEn + ` - <span>10 minutes ago</span>
                 </small><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
             });
             outputHtmlString = `<h4 class="exclusive-heading mt70">Mubasher Exclusive</h4><a href="#" class="view-all-text" onClick="duListingNewsPage('summaryPage', event);">See all
@@ -281,7 +281,7 @@ function exclusiveNewsHomeHTML(responseDataObj) {
             let insideLoopHTMLAr = "";
             responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="du-col-md-4"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
-                <img class="du-img-fluid" src=` + data.image.primary + `>
+                <img class="du-img-fluid img-width-100" src=` + data.image.primary + `>
                 <small class="title-under-img">محتوی الشریک - <span>قبل 3 ساعات</span></small>
                 <h5 class="title-img-description">` + data.title + `</h5></a><hr></div>`
             });
@@ -332,7 +332,7 @@ function arabMarketNewsHTML(responseDataObj) {
             let insideLoopHTML = "";
             responseDataObj.forEach(data => {
                 insideLoopHTML += `<div class="isl-fi-news-wrap du-col-sm-4"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
-                <img class="du-img-fluid width-100" src=` + data.image.primary + `></a>
+                <img class="du-img-fluid width-100 img-width-100" src=` + data.image.primary + `></a>
                 <div class="clearfix du-mt-3"><small class="title-under-img du-black-title">` + data.source.name.stringEn + ` - <span>10 minutes ago</span></small>
                 <a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><h6 class="title-img-description">` + data.title + `</h6></a></div><hr></div>`
             });
@@ -345,7 +345,7 @@ function arabMarketNewsHTML(responseDataObj) {
             let insideLoopHTMLAr = "";
             responseDataObj.forEach(data => {
                 insideLoopHTMLAr += `<div class="isl-fi-news-wrap du-col-sm-4"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);">
-                <img class="du-img-fluid width-100" src=` + data.image.primary + `><div class="clearfix du-mt-3">
+                <img class="du-img-fluid width-100 img-width-100" src=` + data.image.primary + `><div class="clearfix du-mt-3">
                 <small class="title-under-img du-black-title">محتوی الشریک - <span>قبل 3 ساعات</span>
                 </small><h6 class="title-img-description">` + data.title + `</h6>
                 </div></a><hr></div>`
