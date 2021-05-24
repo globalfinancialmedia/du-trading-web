@@ -21,7 +21,7 @@ function loadInfoJsWidget(widget_data) {
         let apiUrlObj = info_learn_widget_urls.find(
             ({ slug }) => slug === widgetSlug
         );
-        loader(config_data.widget_config[1].htmlContainerId);
+        // loader(config_data.widget_config[1].htmlContainerId);
         if ((apiUrlObj.url != "" && apiUrlObj.url !== undefined)) {
             infoSendRequest(info_req_headers,
                 config_data.widget_config[3].data[0], //body
