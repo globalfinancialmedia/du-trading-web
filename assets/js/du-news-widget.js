@@ -23,8 +23,8 @@ console.log("info_news_widget_urls", info_news_widget_urls);
 function loadInfoJsWidget(widget_data) {
     widget_data.widgets.forEach((config_data) => {
         let widgetSlug = config_data.widget_config[0].widgetSlug;
-        if(widgetSlug === 'du_top_news' && widgetSlug === 'du_most_read' && widgetSlug === 'du_press_release' && widgetSlug === 'du_international_market' 
-        && widgetSlug === 'du_arab_market' && widgetSlug === 'du_islamic_finance' && widgetSlug === 'du_news_exclusive') {
+        if (widgetSlug === 'du_top_news' && widgetSlug === 'du_most_read' && widgetSlug === 'du_press_release' && widgetSlug === 'du_international_market'
+            && widgetSlug === 'du_arab_market' && widgetSlug === 'du_islamic_finance' && widgetSlug === 'du_news_exclusive') {
             this.reloadWidgets();
         }
         let info_req_headers = {};
@@ -121,7 +121,7 @@ function infoSendRequest(req_headers, body, url, url_param, request_type, htmlCo
             console.log('response', response);
             var container = document.getElementById(htmlContainerId);
             // container.classList.remove("loader");
-            let generatedHTML = createHTML(response, widgetSlug);       
+            let generatedHTML = createHTML(response, widgetSlug);
             if (typeof container === "object") {
                 container.innerHTML = generatedHTML;
             } else {
@@ -545,10 +545,22 @@ function viewDuNewsPage(state, id, event) {
     sessionStorage.setItem('du-widget-state', state);
     var innerContent = document.getElementById("du_news_page");
     innerContent.innerHTML = "";
+    var backStateDuNews = "Back to Du News";
+    var backStateHome = "Home";
+    switch (duStateLanguage) {
+        default:
+            backStateDuNews = "Back to Du News";
+            backStateHome = "Home";
+        break;
+        case 'AR':
+            backStateDuNews = "الرجوع الى Du News";
+            backStateHome = "الرئيسية";
+        break;
+    }
     innerContent.innerHTML = `<div class="du-container-fluid">
     <div class="du-row"><div class="du-col-md-12 news-left-col">
-    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="#" onClick="duNewsSummaryPage('summaryPage', event);">Home</a></li>
-    <li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="duNewsBackState();">Back to Du News Summary</li></ol></nav><div id="du_related_news_view_container"></div>
+    <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="#" onClick="duNewsSummaryPage('summaryPage', event);">` + backStateHome + `</a></li>
+    <li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="duNewsBackState();">` + backStateDuNews + `</li></ol></nav><div id="du_related_news_view_container"></div>
     <div id="du_related_news_container"></div>
     </div></div></div>`;
     info_widgets_config_data = {
@@ -590,10 +602,22 @@ function duListingNewsPage(state, event) {
     sessionStorage.setItem('du-widget-state', state);
     var innerContent = document.getElementById("du_news_page");
     innerContent.innerHTML = "";
+    var backStateDuNews = "Back to Du News";
+    var backStateHome = "Home";
+    switch (duStateLanguage) {
+        default:
+            backStateDuNews = "Back to Du News";
+            backStateHome = "Home";
+        break;
+        case 'AR':
+            backStateDuNews = "الرجوع الى Du News";
+            backStateHome = "الرئيسية";
+        break;
+    }
     innerContent.innerHTML = `<section class="banking du-mb-5"><div class="du-container-fluid container-section">
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-    <a href="#" onClick="duNewsSummaryPage('summaryPage', event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="duNewsBackState();">
-    Back to Du News Summary</li></ol></nav><div id="du_news_view_container"></div></div></div></div></section>`
+    <a href="#" onClick="duNewsSummaryPage('summaryPage', event);">` + backStateHome + `</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" 
+    onClick="duNewsBackState();">` + backStateDuNews + `</li></ol></nav><div id="du_news_view_container"></div></div></div></div></section>`
     info_widgets_config_data = {
         "widgets": [
             {
