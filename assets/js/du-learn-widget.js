@@ -188,7 +188,7 @@ function detailCourseHTML(response) {
             outputHtmlString = ` <h3 class="main-color du-mb-3 du-mt-5">Courses Details</h3><div class="du-row du-justify-content-center">
             <div class="du-col-md-7 du-pr-0"><img class="du-card-img-top" src=` + response.img + ` width="100%"></div>
             <div class="du-col-md-5 du-d-flex du-flex-wrap du-align-content-center"><div><h3 class="font25 du-black-title">` + response.title + `</h3><br><p class="opacity07 
-            font19">` + response.description + `</p><p class="opacity07 du-mb-2"><img class="img-fluid du-mr-2" src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/video-play.svg">`
+            font16">` + response.description + `</p><p class="opacity07 du-mb-2"><img class="img-fluid du-mr-2" src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/video-play.svg">`
                 + response.duration + `</p><p class="du-mb-4 ff-hel-b"><span><img src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/icon-material-language.svg">
             <span class="opacity07">` + response.language + `</span></span></p><a class="du-btn du-btn-default du-btn-block start-btn ff-hel-b main-bg du-btn-course-start du-text-white" 
             onClick="viewListingCoursesPage(event, ` + response.id + `)">Start</a></div></div></div><div class="du-row du-mt-5 du-mb-5"><div class="du-col-md-12"></div></div>`;
@@ -206,7 +206,7 @@ function detailCourseHTML(response) {
             }
             outputHtmlStringAr = ` <h3 class="main-color du-mb-3 du-mt-5 du-text-right">تفاصيل الكورسات</h3><div class="du-row du-justify-content-center">
             <div class="du-col-md-5 du-flex-wrap du-align-content-center"><h3 class="font25 du-black-title du-text-right du-mt-4">` + response.title + `</h3><br><p class="opacity07 
-            font19 du-text-right">` + response.description + `</p><p class="opacity07 du-mb-2 du-text-right"><img class="img-fluid du-mr-2" 
+            font16 du-text-right">` + response.description + `</p><p class="opacity07 du-mb-2 du-text-right"><img class="img-fluid du-mr-2" 
             src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/video-play.svg">` + response.duration + `</p><p class="du-mb-4 ff-hel-b du-text-right">
             <span><img src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/icon-material-language.svg"><span class="opacity07">` + response.language + `</span></span>
             </p><a class="du-btn du-btn-default du-btn-block start-btn ff-hel-b main-bg du-btn-course-start du-text-white" onClick="viewListingCoursesPage(event, ` +
