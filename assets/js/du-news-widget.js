@@ -2,6 +2,7 @@ var duStateLanguage = sessionStorage.getItem('duStateLanguage');
 var duLangState = 2;
 
 if (duStateLanguage === "AR") {
+    duStateLanguage = "EN";
     duLangState = 1;
 }
 var info_news_widget_urls = [
@@ -13,6 +14,10 @@ var info_news_widget_urls = [
     { "slug": "du_islamic_finance", "url": "http://5.79.47.21:80/" + duLangState + "/" },
     { "slug": "du_news_exclusive", "url": "http://5.79.47.21:80/" + duLangState + "/" },
 ];
+
+console.log("duStateLanguage", duStateLanguage);
+console.log("duLangState", duLangState);
+console.log("info_news_widget_urls", info_news_widget_urls);
 
 function loadInfoJsWidget(widget_data) {
     widget_data.widgets.forEach((config_data) => {
