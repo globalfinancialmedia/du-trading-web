@@ -166,7 +166,7 @@ function learnTopCoursesHTML(response) {
                 <span class="du-d-block slide-text-wrap du-mt-4"><span class="du-d-flex du-justify-content-between"><span class="course-price text-dark 
                 font15 ff-hel-b">` + data.price + `</span> <span class="main-color ff-hel-b">` + data.paid + `</span></span></span></div></div></div>`
             });
-            outputHtmlStringAr = `<h3 class="main-color du-mb-3 du-text-right">أفضل الدورات</h3><div class="du-row">` + insideLoopHTMLAr + `</div>`;
+            outputHtmlStringAr = `<h3 class="main-color du-mb-3 du-text-right">أفضل الكورسات</h3><div class="du-row">` + insideLoopHTMLAr + `</div>`;
             return outputHtmlStringAr;
         break;
     }
@@ -205,7 +205,7 @@ function detailCourseHTML(response) {
             } else {
                 response.language = 'English'
             }
-            outputHtmlStringAr = ` <h3 class="main-color du-mb-3 du-mt-5 du-text-right">تفاصيل الدورات</h3><div class="du-row du-justify-content-center">
+            outputHtmlStringAr = ` <h3 class="main-color du-mb-3 du-mt-5 du-text-right">تفاصيل الكورسات</h3><div class="du-row du-justify-content-center">
             <div class="du-col-md-5 du-flex-wrap du-align-content-center"><h3 class="font25 du-black-title du-text-right du-mt-4">` + response.title + `</h3><br><p class="opacity07 
             font19 du-text-right">` + response.description + `</p><p class="opacity07 du-mb-2 du-text-right"><img class="img-fluid du-mr-2" src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/video-play.svg">` + 
             response.duration + `</p><p class="du-text-right"><span class="font19">` + response.instructor + `</span></p><p class="du-mb-4 ff-hel-b du-text-right">
@@ -247,7 +247,7 @@ function courseListingViewHTML(response) {
                 <div class="du-col-sm-4"><a href="#" onClick="listingDetailCoursePage(event, ` + data.id + ` ,` + data.course.id + `)"><img class="du-img-fluid width-100" 
                 src=` + data.img + ` alt=""></a> </div><div class="du-col-12"><hr></div></div>`
             });
-            outputHtmlStringAr = `<h2 class="main-news-title du-mt-5 main-color du-mb-5 du-text-right">قائمة الدورات</h2>` + insideLoopHTMLAr;
+            outputHtmlStringAr = `<h2 class="main-news-title du-mt-5 main-color du-mb-5 du-text-right">قائمة الكورسات</h2>` + insideLoopHTMLAr;
             return outputHtmlStringAr;
             break;
     }
@@ -263,7 +263,7 @@ function courseListingDetailHTML(response) {
             break;
         case 'AR':
             let outputHtmlStringAr = "";
-            outputHtmlStringAr = `<h3 class="main-news-title du-mt-4 du-mb-4 main-color du-text-right">تفاصيل الدورات</h3><hr>` + response.content;
+            outputHtmlStringAr = `<h3 class="main-news-title du-mt-4 du-mb-4 main-color du-text-right">تفاصيل الكورسات</h3><hr>` + response.content;
             return outputHtmlStringAr;
             break;
     }

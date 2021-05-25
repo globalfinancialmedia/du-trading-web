@@ -245,7 +245,7 @@ function mostReadNewsHTML(responseDataObj) {
                 </div><div class="du-col-8"><a href="#" onClick="viewDuNewsPage('summaryPage',` + data.id + `, event);"><div class="sidebar-readmore-description txt-black font15">`
                     + data.title + `</div></a></div><div class="du-col-12"><hr class="sidebar-hr"></div></div>`
             });
-            outputHtmlStringAr = `<div class="most-read-news-list"><h4 class="sidebar-readmore-title">الأخبار الأكثر</h4>` + insideLoopHTMLAr + `<div class="du-row">
+            outputHtmlStringAr = `<div class="most-read-news-list"><h4 class="sidebar-readmore-title du-black-title">الأخبار الأكثر</h4>` + insideLoopHTMLAr + `<div class="du-row">
             <div class="du-col-sm-12 du-text-center du-mb-3"><a href="#" class="view-all-text main-color" onClick="paginateNews('du_most_read', event)">عرض الكل <img class="pr-1 rotate90" 
             src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/path-392.svg" alt=""></a></div></div></div>`;
             return outputHtmlStringAr;
