@@ -1,8 +1,9 @@
-var duStateLanguage = sessionStorage.getItem('duStateLanguage');
+var duStateLanguage = "EN";
+duStateLanguage = sessionStorage.getItem('duStateLanguage');
 var duLangState = 2;
 
 if (duStateLanguage === "AR") {
-    duStateLanguage = "EN";
+    duStateLanguage = "AR";
     duLangState = 1;
 }
 var info_news_widget_urls = [
