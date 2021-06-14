@@ -5,8 +5,10 @@ if (duStateLanguage === "AR") {
     duLangState = 1;
 }
 
+var duLearnBaseUrl = 'https://api.du.mubashertrade.com:8080';
+
 var info_learn_widget_urls = [
-    { "slug": "du_learn_top_courses", "url": "http://52.31.246.107:4600/api/v1/learn/courses/" + duLangState + "/" }
+    { "slug": "du_learn_top_courses", "url": duLearnBaseUrl + "/learnservice/api/v1/learn/courses/" + duLangState + "/" }
 ];
 
 function loadInfoJsWidget(widget_data) {
@@ -125,22 +127,22 @@ function learnTopCoursesHTML(response) {
             let outputHtmlString = "";
             let insideLoopHTML = "";
             response.forEach(data => {
-                if (data.price == 0) {
-                    data.price = data.duration;
-                }
+                // if (data.price == 0) {
+                //     data.price = data.duration;
+                // }
                 if (data.paid === false) {
                     data.paid = 'Free';
                 } else {
-                    data.paid = 'Paid';
+                    data.paid = data.price + ' LE';
                 }
                 if (!data.img) {
                     data.img = 'https://du-assets-bucket.s3-eu-west-1.amazonaws.com/Basics-and-Fundamentals-of-Stock-Markets/3_2_basicsandfundamentalsofstockmarkets.jpg'
                 }
                 insideLoopHTML += `<div class="du-col-md-4"><div class="du-card du-top-course-card du-mb-3"><a href="" onClick="viewCourseDetailPage(event,` + data.id + `)">
-                <img class="du-card-img-top"  src=` + data.img + ` width="100%"></a>
-                <div class="du-card-body du-p-3"><a href="" onClick="viewCourseDetailPage(event,` + data.id + `)"><h5 class="du-card-title">` + data.title + `</h5></a>
+                <img class="du-card-img-top img-width-100"  src=` + data.img + ` width="100%"></a>
+                <div class="du-card-body du-p-3 img-width-120"><a href="" onClick="viewCourseDetailPage(event,` + data.id + `)"><h5 class="du-card-title">` + data.title + `</h5></a>
                 <span class="du-d-block slide-text-wrap du-mt-4"><span class="du-d-flex du-justify-content-between"><span class="course-price text-dark 
-                font15 ff-hel-b">` + data.price + `</span> <span class="main-color ff-hel-b">` + data.paid + `</span></span></span></div></div></div>`
+                font15 ff-hel-b">` + data.duration + `</span> <span class="main-color ff-hel-b">` + data.paid + `</span></span></span></div></div></div>`
             });
             outputHtmlString = `<h3 class="main-color du-mb-3">Top Courses</h3><div class="du-row">` + insideLoopHTML + `</div>`;
             return outputHtmlString;
@@ -149,22 +151,28 @@ function learnTopCoursesHTML(response) {
             let outputHtmlStringAr = "";
             let insideLoopHTMLAr = "";
             response.forEach(data => {
-                if (data.price == 0) {
-                    data.price = data.duration;
-                }
+                // if (data.price == 0) {
+                //     data.price = data.duration;
+                // }
                 if (data.paid === false) {
-                    data.paid = 'حر';
+                    data.paid = 'مجانا';
                 } else {
-                    data.paid = 'مدفوع';
+                    // data.paid = 'مدفوع';
+                    data.paid = data.price + ' LE';
+                }
+                if(data.duration.split(' ')[1] === 'lectures'){
+                    data.duration = data.duration.split(' ')[0] + ' دروس';
+                } else {
+                    data.duration = data.duration.split(' ')[0] + ' درس';
                 }
                 if (!data.img) {
                     data.img = 'https://du-assets-bucket.s3-eu-west-1.amazonaws.com/Basics-and-Fundamentals-of-Stock-Markets/3_2_basicsandfundamentalsofstockmarkets.jpg'
                 }
                 insideLoopHTMLAr += `<div class="du-col-md-4"><div class="du-card du-top-course-card du-mb-3"><a href="" onClick="viewCourseDetailPage(event,` + data.id + `)">
-                <img class="du-card-img-top"  src=` + data.img + ` width="100%"></a>
+                <img class="du-card-img-top img-width-100" src=` + data.img + ` width="100%"></a>
                 <div class="du-card-body du-p-3"><a href="" onClick="viewCourseDetailPage(event,` + data.id + `)"><h5 class="du-card-title du-text-right">` + data.title + `</h5></a>
                 <span class="du-d-block slide-text-wrap du-mt-4"><span class="du-d-flex du-justify-content-between"><span class="course-price text-dark 
-                font15 ff-hel-b">` + data.price + `</span> <span class="main-color ff-hel-b">` + data.paid + `</span></span></span></div></div></div>`
+                font15 ff-hel-b">` + data.duration + `</span> <span class="main-color ff-hel-b">` + data.paid + `</span></span></span></div></div></div>`
             });
             outputHtmlStringAr = `<h3 class="main-color du-mb-3 du-text-right">أفضل الكورسات</h3><div class="du-row">` + insideLoopHTMLAr + `</div>`;
             return outputHtmlStringAr;
@@ -186,8 +194,8 @@ function detailCourseHTML(response) {
                 response.language = 'English'
             }
             outputHtmlString = ` <h3 class="main-color du-mb-3 du-mt-5">Courses Details</h3><div class="du-row du-justify-content-center">
-            <div class="du-col-md-7 du-pr-0"><img class="du-card-img-top" src=` + response.img + ` width="100%"></div>
-            <div class="du-col-md-5 du-d-flex du-flex-wrap du-align-content-center"><div><h3 class="font25 du-black-title">` + response.title + `</h3><br><p class="opacity07 
+            <div class="du-col-md-6 du-pr-0"><img class="du-card-img-top" src=` + response.img + ` width="100%"></div>
+            <div class="du-col-md-6 du-d-flex du-flex-wrap du-align-content-center"><div><h3 class="font25 du-black-title">` + response.title + `</h3><br><p class="opacity07 
             font16">` + response.description + `</p><p class="opacity07 du-mb-2"><img class="img-fluid du-mr-2" src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/video-play.svg">`
                 + response.duration + `</p><p class="du-mb-4 ff-hel-b"><span><img src="https://du-assets-bucket.s3-eu-west-1.amazonaws.com/du/assets/images/icon-material-language.svg">
             <span class="opacity07">` + response.language + `</span></span></p><a class="du-btn du-btn-default du-btn-block start-btn ff-hel-b main-bg du-btn-course-start du-text-white" 
@@ -203,6 +211,11 @@ function detailCourseHTML(response) {
                 response.language = 'عربى'
             } else {
                 response.language = 'English'
+            }
+            if(response.duration.split(' ')[1] === 'lectures'){
+                response.duration = response.duration.split(' ')[0] + ' دروس';
+            } else {
+                response.duration = response.duration.split(' ')[0] + ' دروس';
             }
             outputHtmlStringAr = ` <h3 class="main-color du-mb-3 du-mt-5 du-text-right">تفاصيل الكورسات</h3><div class="du-row du-justify-content-center">
             <div class="du-col-md-5 du-flex-wrap du-align-content-center"><h3 class="font25 du-black-title du-text-right du-mt-4">` + response.title + `</h3><br><p class="opacity07 
@@ -290,12 +303,11 @@ function duLearnTopCoursesPage(event) {
             ]
         },
         ],
-        authToken:
-            "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+        authToken: sessionStorage.getItem('token')
     };
     info_learn_widget_urls = [];
     info_learn_widget_urls = [
-        { "slug": "du_learn_top_courses", "url": "http://52.31.246.107:4600/api/v1/learn/courses/" + duLangState + "/" }
+        { "slug": "du_learn_top_courses", "url": duLearnBaseUrl +  "/learnservice/api/v1/learn/courses/" + duLangState + "/" }
     ];
     loadInfoJsWidget(info_widgets_config_data);
 };
@@ -304,10 +316,22 @@ function viewCourseDetailPage(event, id) {
     event.preventDefault();
     var innerContent = document.getElementById("du_learn_page");
     innerContent.innerHTML = "";
+    var backStateDuLearn = "Back to Top Courses";
+    var backStateHome = "Home";
+    switch (duStateLanguage) {
+        default:
+            backStateDuLearn = "Back to Top Courses";
+            backStateHome = "Home";
+        break;
+        case 'AR':
+            backStateDuLearn = "الرجوع الي افضل الكورسات";
+            backStateHome = "الرئيسية";
+        break;
+    }
     innerContent.innerHTML = `<section><div class="du-container-fluid container-section">
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-    <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" 
-    onClick="duLearnTopCoursesPage(event);">Back to Top Courses</li></ol></nav><div id="du_learn_course_view_container"></div></div></div></div></section>`;
+    <a href="#" onClick="duLearnTopCoursesPage(event);">` + backStateHome + `</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" 
+    onClick="duLearnTopCoursesPage(event);">` + backStateDuLearn + `</li></ol></nav><div id="du_learn_course_view_container"></div></div></div></div></section>`;
     info_widgets_config_data = {
         "widgets": [
             {
@@ -321,10 +345,9 @@ function viewCourseDetailPage(event, id) {
                 ]
             }
         ],
-        authToken:
-            "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+        authToken: sessionStorage.getItem('token')
     };
-    var widget_slug_url = { "slug": "du_learn_course_detail", "url": "http://52.31.246.107:4600//api/v1/learn/courses/" + id };
+    var widget_slug_url = { "slug": "du_learn_course_detail", "url": duLearnBaseUrl +  "/learnservice/api/v1/learn/courses/" + id };
     info_learn_widget_urls.push(widget_slug_url);
     info_learn_widget_urls.shift();
     loadInfoJsWidget(info_widgets_config_data);
@@ -334,10 +357,22 @@ function viewListingCoursesPage(event, id) {
     event.preventDefault();
     var innerContent = document.getElementById("du_learn_page");
     innerContent.innerHTML = "";
+    var backStateDuLearn = "Back to Top Courses";
+    var backStateHome = "Home";
+    switch (duStateLanguage) {
+        default:
+            backStateDuLearn = "Back to Top Courses";
+            backStateHome = "Home";
+        break;
+        case 'AR':
+            backStateDuLearn = "الرجوع الي افضل الكورسات";
+            backStateHome = "الرئيسية";
+        break;
+    }
     innerContent.innerHTML = `<section><div class="du-container-fluid container-section">
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-    <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="duLearnTopCoursesPage(event);">
-    Back to Top Courses</li></ol></nav><div id="du_learn_listing_view_container"></div></div></div></div></section>`;
+    <a href="#" onClick="duLearnTopCoursesPage(event);">` + backStateHome + `</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="duLearnTopCoursesPage(event);">
+    ` + backStateDuLearn + `</li></ol></nav><div id="du_learn_listing_view_container"></div></div></div></div></section>`;
     info_widgets_config_data = {
         "widgets": [
             {
@@ -351,12 +386,11 @@ function viewListingCoursesPage(event, id) {
                 ]
             }
         ],
-        authToken:
-            "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+        authToken: sessionStorage.getItem('token')
     };
     info_learn_widget_urls = [];
     info_learn_widget_urls = [
-        { "slug": "du_learn_listing_view", "url": "http://52.31.246.107:4600/api/v1/learn/lectures/course/" + id }
+        { "slug": "du_learn_listing_view", "url": duLearnBaseUrl + "/learnservice/api/v1/learn/lectures/course/" + id }
     ];
     loadInfoJsWidget(info_widgets_config_data);
 };
@@ -365,10 +399,22 @@ function listingDetailCoursePage(event, id, courseId) {
     event.preventDefault();
     var innerContent = document.getElementById("du_learn_page");
     innerContent.innerHTML = "";
+    var backStateDuLearn = "Back to Courses Listing";
+    var backStateHome = "Home";
+    switch (duStateLanguage) {
+        default:
+            backStateDuLearn = "Back to Courses Listing";
+            backStateHome = "Home";
+        break;
+        case 'AR':
+            backStateDuLearn = "الرجوع إلى القائمة";
+            backStateHome = "الرئيسية";
+        break;
+    }
     innerContent.innerHTML = `<section"><div class="du-container-fluid container-section">
     <div class="du-row"><div class="du-col-sm-12 news-left-col"><br><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-    <a href="#" onClick="duLearnTopCoursesPage(event);">Home</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="viewListingCoursesPage(event, `+ courseId + `);">
-    Back to Courses Listing</li></ol></nav><div id="du_learn_listing_detail_view_container"></div></div></div></div></section>`;
+    <a href="#" onClick="duLearnTopCoursesPage(event);">` + backStateHome + `</a></li><li class="breadcrumb-item du-cursor-pointer du-black-title" aria-current="page" onClick="viewListingCoursesPage(event, `+ courseId + `);">
+    ` + backStateDuLearn + `</li></ol></nav><div id="du_learn_listing_detail_view_container"></div></div></div></div></section>`;
     info_widgets_config_data = {
         "widgets": [
             {
@@ -382,12 +428,11 @@ function listingDetailCoursePage(event, id, courseId) {
                 ]
             }
         ],
-        authToken:
-            "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+        authToken: sessionStorage.getItem('token')
     };
     info_learn_widget_urls = [];
     info_learn_widget_urls = [
-        { "slug": "du_learn_listing_detail_view", "url": "http://52.31.246.107:4600/api/v1/learn/lectures/" + id }
+        { "slug": "du_learn_listing_detail_view", "url": duLearnBaseUrl + "/learnservice/api/v1/learn/lectures/" + id }
     ];
     loadInfoJsWidget(info_widgets_config_data);
 };

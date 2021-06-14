@@ -158,8 +158,7 @@
                 ]
             },
             ],
-            authToken:
-                "Barear eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwNzYyNDQ1NywiaWF0IjoxNjA3NTgxMjU3fQ.iu1snAa8e04EbYIBJihU0lSvscTg5mpm1Iyf9g8YueE"
+            authToken: sessionStorage.getItem('token')
         };
         window.onload = (event) => {
             loadInfoJsWidget(info_widgets_config_data);

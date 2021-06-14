@@ -73,6 +73,12 @@
     max-width: 100% !important;
     max-height: 100% !important;
 }
+.img-width-120{
+    height: 115px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
 .width-25{
     width: 25%;
 }
@@ -712,6 +718,7 @@ ul.navbar-nav li.nav-item > a {
 .du-predict-leader-overflow{
     overflow-y: scroll;
     height: 550px;
+    width: 100%;
 }
 .du-predict-list-overflow{
     overflow-y: scroll;
@@ -735,6 +742,19 @@ ul.navbar-nav li.nav-item > a {
 #prediction-list-table .du-table th, .du-table td{
     padding: 8px 15px !important;
     font-size: 15px !important;
+}
+.du-predict-contest-heading{
+    font-weight: 600 !important;
+    font-size: 15px !important;
+}
+.du-predict-table-data{
+    font-family: 'Hind', sans-serif !important;
+    font-weight: 300 !important;
+}
+.du-predict-contest-volume{
+    /* color: #E30000; */
+    font-weight: 400;
+    font-size: 13px;
 }
 
 /* Global Custom */
@@ -817,14 +837,23 @@ ul.navbar-nav li.nav-item > a {
 }
 /* Global Custom End */
 .du-predict-down-arrow{
-    width: 15px;
+    width: 30px;
     fill: #E30000;
-    margin-left: 10px;
+    margin-right: 6px;
 }
 .du-predict-up-arrow{
-    width: 15px;
+    width: 30px;
     fill: #E30000;
-    margin-left: 10px;
+    margin-right: 6px;
+}
+#du_predict_symbol_container a.du-learn-main-color{
+    color: #00AAC7 !important;
+    text-decoration: underline !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+}
+.du-predict-leader-table{
+    border: 1px solid #dee2e6 !important;
 }
 /* Custom End */
 

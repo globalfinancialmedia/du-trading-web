@@ -13,6 +13,7 @@
 
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/du-bootstrap.css">
+  <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
   <!-- 
   <style>
     .table-even tr td:nth-child(2n) {
@@ -90,9 +91,6 @@
               <div id="du_predict_symbol_container"></div>
             </section>
             <section>
-              <div id="du_predict_time_container_zone"></div>
-            </section>
-            <section>
               <div id="du_make_prediction_container_widget"></div>
             </section>
           </div>
@@ -124,32 +122,10 @@
       },
       {
         "widget_config": [
-          { "widgetSlug": "du_predict_time_zone" },
-          { "htmlContainerId": "du_predict_time_container_zone" },
-          { "requestType": "GET" },
-          { "data": [] },
-          { "urlParam": "" },
-          { "customeStyles": [] }
-        ]
-      },
-      {
-        "widget_config": [
           { "widgetSlug": "du_make_prediction_widget" },
           { "htmlContainerId": "du_make_prediction_container_widget" },
-          { "requestType": "POST" },
-          {
-            "data": [
-              {
-                "id": 23,
-                "from_date": "2021-02-20T00:00:00.000+00:00",
-                "to_date": "2021-02-27T00:00:00.000+00:00",
-                "result_date": "2021-03-01T00:00:00.000+00:00",
-                "symbol": {
-                  "id": 120
-                }
-              }
-            ]
-          },
+          { "requestType": "GET" },
+          { "data": [] },
           { "urlParam": "" },
           { "customeStyles": [] }
         ]

@@ -10295,17 +10295,17 @@ main *:after {
 
 
   /* Du Loader */
-  .loader {
+  /* .loader {
     margin: 150px auto;
     border: 5px solid #f3f3f3;
     border-radius: 50%;
     border-top: 5px solid #3498db;
     width: 60px;
     height: 60px;
-    -webkit-animation: spin 2s linear infinite; /* Safari */
-    animation: spin 2s linear infinite;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite; */
     /* After */
-    position: absolute;
+    /* position: absolute;
     z-index: 10000;
     left: 0;
     right: 0;
@@ -10321,7 +10321,7 @@ main *:after {
     height: 100vh;
     z-index: 10000000;
     background: #fcfcfcc2;
-  }
+  } */
   
   /* Safari */
   @-webkit-keyframes spin {
