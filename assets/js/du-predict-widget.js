@@ -1,4 +1,4 @@
-var duPredictBaseUrl = 'http://331f088d7590.ngrok.io';
+var duPredictBaseUrl = 'ttps://jsonplaceholder.typicode.com/todos';
 
 var getPredictContestDetails = {};
 var duPredictListArray = [];
